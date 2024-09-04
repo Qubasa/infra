@@ -4,6 +4,7 @@
 
   inputs = {
     clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
+    # clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     data-mesher.url = "https://git.clan.lol/clan/data-mesher/archive/decay.zip";
 
     simple-nixos-mailserver = {
@@ -50,16 +51,15 @@
               ./modules/shared.nix
               ./machines/demo/configuration.nix
             ];
-            clan.deployment.requireExplicitUpdate = true;
             nixpkgs.hostPlatform = system;
           };
-          wintux = {
-            imports = [
-              ./modules/shared.nix
-              ./machines/wintux/configuration.nix
-            ];
-            nixpkgs.hostPlatform = system;
-          };
+          # wintux = {
+          #   imports = [
+          #     ./modules/shared.nix
+          #     ./machines/wintux/configuration.nix
+          #   ];
+          #   nixpkgs.hostPlatform = system;
+          # };
         };
       };
     in

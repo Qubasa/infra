@@ -20,6 +20,7 @@
       "inputs": {
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "nixos-facter-modules": "nixos-facter-modules",
         "nixos-images": "nixos-images",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
@@ -27,11 +28,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1725279935,
-        "narHash": "sha256-wDIqweyLWqrB/Iqz0t3TotragaICwRCfCZDc750IYDY=",
-        "rev": "04e53a8680e7313668dc74556ad13df69e55dba7",
+        "lastModified": 1725463855,
+        "narHash": "sha256-Gx4nZPx/iYKseJgVxIdR0SxQh5OzW6eR+ysYxbEbpPc=",
+        "rev": "344fdf26dba5eea22fe5ad4021c51cb0031c9064",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/04e53a8680e7313668dc74556ad13df69e55dba7.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/344fdf26dba5eea22fe5ad4021c51cb0031c9064.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -132,6 +133,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "nixos-facter-modules": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724681057,
+        "narHash": "sha256-wxx2Sh/urE3sKY/1v3tmrWTNMIQ3RoJtd7bcuqVpY2Y=",
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
+        "rev": "55088bf19810d23ca7cb86fb71516c95d97f035b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
         "type": "github"
       }
     },
