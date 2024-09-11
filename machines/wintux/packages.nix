@@ -5,6 +5,7 @@
   programs.nix-index.enable = true;
   programs.command-not-found.enable = false;
 
+  programs.nix-index-database.comma.enable = true;
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
   programs.chromium.enable = true;
@@ -16,6 +17,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    lshw
+    pciutils
+    nixd
     chromium
     docker
     docker-compose

@@ -13,6 +13,7 @@
     inputs.data-mesher.nixosModules.data-mesher
     clan-core.clanModules.user-password
     inputs.chrome-pwa.nixosModule
+    inputs.nix-index-database.nixosModules.nix-index
     ./hardware-configuration.nix
     ./disko.nix
     ./initrd.nix
@@ -20,16 +21,22 @@
     ./packages.nix
     ./zsh.nix
     ./display.nix
-    ./nvidia.nix
+    ./radeon.nix
+    # ./nvidia.nix
   ];
+
+  nix = {
+    package = pkgs.nixVersions.latest;
+  };
+
+  # boot.kernelPackages = lib.mkIf config.boot.zfs.enabled (
+  #   lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages
+  # );
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+  boot.zfs.package = pkgs.zfsUnstable;
 
   clan.user-password.user = "lhebendanz";
   services.chrome-pwa.enable = true;
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
 
   users.users."lhebendanz" = {
     extraGroups = [
@@ -43,7 +50,7 @@
 
   security.sudo = {
     enable = true;
-    wheelNeedsPassword = true;
+    wheelNeedsPassword = false;
     execWheelOnly = true;
   };
 
@@ -60,7 +67,10 @@
 
   # Set keyboard layout
   console.keyMap = "de";
-  services.automatic-timezoned.enable = true;
+  services.localtimed.enable = true;
+  services.geoclue2 = {
+    enable = true;
+  };
   # Select internationalisation properties  .
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {

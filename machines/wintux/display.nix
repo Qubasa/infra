@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -7,4 +7,10 @@
   systemd.services."autovt@tty1".enable = false;
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "lhebendanz";
+
+  environment.systemPackages = [
+    pkgs.gnomeExtensions.appindicator
+    pkgs.pomodoro-gtk
+    pkgs.gnomeExtensions.night-theme-switcher
+  ];
 }

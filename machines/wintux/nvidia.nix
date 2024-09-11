@@ -1,9 +1,23 @@
-{ config, pkgs }:
+{
+  config,
+  ...
+}:
 
 {
 
   # Load "nvidia" driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  # hardware.nvidia-container-toolkit.enable = true;
+
+  # environment.sessionVariables = {
+  #   GBM_BACKEND="nvidia-drm";
+  #   __GLX_VENDOR_LIBRARY_NAME="nvidia";
+  # };
+
+  hardware.graphics = {
+    enable = true;
+  };
 
   hardware.nvidia = {
 
@@ -18,7 +32,7 @@
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    # powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -27,13 +41,23 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
     # Only available from driver 515.43.04+
     # Currently "beta quality", so false is currently the recommended setting.
-    open = true;
+    open = false;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
+    nvidiaSettings = false;
+
+    # prime = {
+    # offload = {
+    # 	enable = true;
+    # 	enableOffloadCmd = true;
+    # };
+    # # Make sure to use the correct Bus ID values for your system!
+    # amdgpuBusId = "PCI:66:0:0";
+    # nvidiaBusId = "PCI:64:0:0";
+    # };
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 }

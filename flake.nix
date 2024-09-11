@@ -2,25 +2,31 @@
   description = "Qubasa's cLAN";
 
   inputs = {
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
     # clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
     data-mesher = {
       url = "https://git.clan.lol/clan/data-mesher/archive/main.zip";
-      inputs.nixpkgs.follows = "clan-core";
+      # inputs.nixpkgs.follows = "clan-core";
     };
     treefmt-nix = {
-      inputs.nixpkgs.follows = "clan-core";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
 
     simple-nixos-mailserver = {
-      inputs.nixpkgs.follows = "clan-core";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
     };
 
     chrome-pwa = {
       url = "github:Qubasa/nixos-chrome-pwa";
-      inputs.nixpkgs.follows = "clan-core";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
   };
 
