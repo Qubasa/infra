@@ -1,14 +1,14 @@
-{ pkgs, config, lib, ... }:
+{ ... }:
 
 {
 
   clan.postgresql.users.gitea = { };
   clan.postgresql.databases.gitea.create.options = {
-      TEMPLATE = "template0";
-      LC_COLLATE = "C";
-      LC_CTYPE = "C";
-      ENCODING = "UTF8";
-      OWNER = "gitea";
+    TEMPLATE = "template0";
+    LC_COLLATE = "C";
+    LC_CTYPE = "C";
+    ENCODING = "UTF8";
+    OWNER = "gitea";
   };
   clan.postgresql.databases.gitea.restore.stopOnRestore = [ "gitea" ];
 
@@ -50,7 +50,5 @@
       };
     };
   };
-
-
 
 }

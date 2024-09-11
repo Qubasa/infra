@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   config = {
     networking.dhcpcd.enable = false;

@@ -2,12 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
 
   networking.interfaces.ens3.ipv6 = {
-    addresses = [{ address = "2a01:4f9:c010:51cd::2"; prefixLength = 64; }];
+    addresses = [
+      {
+        address = "2a01:4f9:c010:51cd::2";
+        prefixLength = 64;
+      }
+    ];
   };
   networking.defaultGateway6 = {
     address = "fe80::1";
@@ -56,7 +61,7 @@
 
       "noreply@qube.email" = {
         sendOnly = true;
-        hashedPasswordFile = config.sops.secrets.qube-email-simplemail-noreply-hash.path; 
+        hashedPasswordFile = config.sops.secrets.qube-email-simplemail-noreply-hash.path;
       };
 
       "notrust@qube.email" = {
@@ -89,8 +94,11 @@
   systemd.watchdog.runtimeTime = "5m";
   systemd.watchdog.rebootTime = "15m";
 
-
-  networking.firewall.allowedTCPPorts = [ 7171 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    7171
+    80
+    443
+  ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

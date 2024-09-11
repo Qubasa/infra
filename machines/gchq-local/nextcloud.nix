@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 rec {
 
@@ -14,9 +14,9 @@ rec {
     };
     package = pkgs.nextcloud29;
     settings = {
-        default_phone_region = "DE";
-        # TODO: systemd backend needs a packaged https://github.com/systemd/php-systemd which doesn't exist yet
-        log_type = "file";
+      default_phone_region = "DE";
+      # TODO: systemd backend needs a packaged https://github.com/systemd/php-systemd which doesn't exist yet
+      log_type = "file";
     };
     config = {
       dbtype = "pgsql";
@@ -55,19 +55,17 @@ rec {
   # Afterwards disable and enable postgresql
   # to ensure the nextcloud table is created
   clan.postgresql.databases.nextcloud.create.options = {
-      TEMPLATE = "template0";
-      LC_COLLATE = "C";
-      LC_CTYPE = "C";
-      ENCODING = "UTF8";
-      OWNER = "nextcloud";
+    TEMPLATE = "template0";
+    LC_COLLATE = "C";
+    LC_CTYPE = "C";
+    ENCODING = "UTF8";
+    OWNER = "nextcloud";
   };
   clan.postgresql.databases.nextcloud.restore.stopOnRestore = [ "phpfpm-nextcloud" ];
-
 
   services.nginx.virtualHosts.${services.nextcloud.hostName} = {
     enableACME = true;
     onlySSL = true;
-      extraConfig = ''
-      '';
+    extraConfig = '''';
   };
 }
