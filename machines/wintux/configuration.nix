@@ -29,11 +29,18 @@
     package = pkgs.nixVersions.latest;
   };
 
+  environment.variables = {
+    EDITOR = "hx";
+    VISUAL = "vscode";
+  };
+
   # boot.kernelPackages = lib.mkIf config.boot.zfs.enabled (
   #   lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages
   # );
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   boot.zfs.package = pkgs.zfsUnstable;
+
+  virtualisation.libvirtd.enable = true;
 
   clan.user-password.user = "lhebendanz";
   services.chrome-pwa.enable = true;

@@ -10,6 +10,12 @@
   programs.nix-ld.enable = true;
   programs.chromium.enable = true;
 
+ 
+  # services.ollama = {
+  #   enable = true;
+  #   # acceleration = "rocm";
+  # };
+
   nixpkgs.config.allowUnfree = true;
   virtualisation.docker = {
     enable = true;
@@ -17,6 +23,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ollama
     lshw
     pciutils
     nixd
