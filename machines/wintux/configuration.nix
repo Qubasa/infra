@@ -58,7 +58,7 @@
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
-    execWheelOnly = true;
+    # execWheelOnly = true;
   };
 
   clan.core.networking.targetHost = pkgs.lib.mkDefault "root@127.0.0.1";

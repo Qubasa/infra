@@ -12,6 +12,8 @@
     ./simplemail.nix
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
+    clan-core.clanModules.machine-id
+    clan-core.clanModules.disk-id
     inputs.simple-nixos-mailserver.nixosModule
     inputs.data-mesher.nixosModules.data-mesher
   ];

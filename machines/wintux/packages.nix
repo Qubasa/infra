@@ -10,7 +10,6 @@
   programs.nix-ld.enable = true;
   programs.chromium.enable = true;
 
- 
   # services.ollama = {
   #   enable = true;
   #   # acceleration = "rocm";
@@ -23,6 +22,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    wl-clipboard
     ollama
     lshw
     pciutils

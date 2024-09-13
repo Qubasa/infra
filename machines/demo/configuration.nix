@@ -8,9 +8,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./disko.nix
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
-    clan-core.clanModules.single-disk
+    clan-core.clanModules.machine-id
     # # === Demo 1 === ##
     # clan-core.clanModules.dyndns
     # # === Demo 2 === ##
@@ -19,7 +20,7 @@
     # clan-core.clanModules.matrix-synapse
   ];
 
-  clan.single-disk.device = "/dev/sda";
+  disko.devices.disk.main.device = "/dev/sda";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
   clan.core.networking.targetHost = pkgs.lib.mkDefault "root@157.90.21.116";
