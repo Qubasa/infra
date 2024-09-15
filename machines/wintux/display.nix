@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -6,7 +6,7 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
   services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "lhebendanz";
+  services.displayManager.autoLogin.user = config.clan.user-password.user;
 
   environment.systemPackages = [
     pkgs.gnomeExtensions.appindicator

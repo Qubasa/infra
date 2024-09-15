@@ -3,6 +3,7 @@
   clan-core,
   lib,
   pkgs,
+  config,
   ...
 }:
 
@@ -11,7 +12,6 @@
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
     inputs.data-mesher.nixosModules.data-mesher
-    clan-core.clanModules.user-password
     inputs.chrome-pwa.nixosModule
     inputs.nix-index-database.nixosModules.nix-index
     ./hardware-configuration.nix
@@ -42,10 +42,9 @@
 
   virtualisation.libvirtd.enable = true;
 
-  clan.user-password.user = "lhebendanz";
   services.chrome-pwa.enable = true;
 
-  users.users."lhebendanz" = {
+  users.users."${config.clan.user-password.user}" = {
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -58,7 +57,7 @@
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
-    # execWheelOnly = true;
+    execWheelOnly = true;
   };
 
   clan.core.networking.targetHost = pkgs.lib.mkDefault "root@127.0.0.1";

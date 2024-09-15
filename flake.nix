@@ -56,6 +56,26 @@
           inherit inputs;
         };
 
+        # Testing the inventory
+        inventory = {
+          machines = {
+            wintux = {
+              name = "wintux";
+            };
+          };
+          services = {
+            "user-password"."instance1" = {
+              meta.name = "instance1";
+              roles.default.machines = [ "wintux" ];
+              config = {
+                user = "lhebendanz";
+              };
+            };
+          };
+        };
+
+
+
         machines = {
           gchq-local = {
             imports = [
