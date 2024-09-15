@@ -9,7 +9,7 @@
     };
 
     # clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-    clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/machine_id_v3.zip";
+    clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
     data-mesher = {
       url = "https://git.clan.lol/clan/data-mesher/archive/main.zip";
       # inputs.nixpkgs.follows = "clan-core";

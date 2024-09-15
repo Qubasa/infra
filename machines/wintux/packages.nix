@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -22,6 +22,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    signal-desktop
+    d-spy
     wl-clipboard
     ollama
     lshw

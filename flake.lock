@@ -49,15 +49,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1726219980,
-        "narHash": "sha256-SB7NXa7F9Mbg7jcBG2fLE4IHXovOimlf8aA9LRlApVA=",
-        "rev": "f9cf9cfa4211f782ce16d03b48aec465a59fac47",
+        "lastModified": 1726047725,
+        "narHash": "sha256-OubCVilKx5/D05kIxPSdDnIa/8PGmieyXX4dqkhCYR8=",
+        "rev": "c85210785e8c3048261511bfcd88ce5b7fec384f",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/f9cf9cfa4211f782ce16d03b48aec465a59fac47.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/c85210785e8c3048261511bfcd88ce5b7fec384f.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.clan.lol/Qubasa/clan-core/archive/machine_id_v3.zip"
+        "url": "https://git.clan.lol/Qubasa/clan-core/archive/main.zip"
       }
     },
     "data-mesher": {
