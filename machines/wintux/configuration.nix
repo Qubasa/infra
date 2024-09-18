@@ -10,11 +10,13 @@
 {
   imports = [
     clan-core.clanModules.trusted-nix-caches
+    clan-core.clanModules.iwd
     clan-core.clanModules.zerotier-static-peers
     inputs.data-mesher.nixosModules.data-mesher
     inputs.chrome-pwa.nixosModule
     inputs.nix-index-database.nixosModules.nix-index
     ./hardware-configuration.nix
+    ../../modules/backups.nix
     ./disko.nix
     ./initrd.nix
     ./network.nix

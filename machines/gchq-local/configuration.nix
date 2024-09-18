@@ -20,6 +20,7 @@ in
     ./gitea.nix
     ./nextcloud.nix
     ./backups.nix
+    ../../modules/backups.nix
     clan-core.clanModules.user-password
     clan-core.clanModules.dyndns
     clan-core.clanModules.matrix-synapse

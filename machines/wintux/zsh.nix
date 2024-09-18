@@ -2,12 +2,27 @@
 
 {
 
-  fonts.packages = [
-    pkgs.nerdfonts
+  fonts.packages = with pkgs; [
+    nerdfonts
   ];
+
+  environment.systemPackages = with pkgs; [
+    zoxide
+    atuin
+    lsd
+  ];
+
+  # Shell history database
+  services.atuin = {
+    enable = true;
+  };
 
   programs.zsh = {
     enable = true;
+    shellAliases = {
+      ls="lsd";
+      cd="z";
+    };
 
     # With Oh-My-Zsh:
     ohMyZsh = {
@@ -17,6 +32,11 @@
       ];
       theme = "gnzh";
     };
+
+    interactiveShellInit = ''
+      eval "$(zoxide init zsh)"
+      eval "$(atuin init zsh)"
+    '';
 
     syntaxHighlighting.enable = true;
 

@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   services.zfs = lib.mkIf (config.boot.zfs.enabled) {
     autoSnapshot.enable = true;
@@ -6,4 +6,8 @@
     autoSnapshot.monthly = lib.mkDefault 1;
     autoScrub.enable = true;
   };
+
+  environment.systemPackages = [
+    pkgs.httm
+  ];
 }

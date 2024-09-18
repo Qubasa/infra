@@ -8,9 +8,10 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = config.clan.user-password.user;
 
-  environment.systemPackages = [
-    pkgs.gnomeExtensions.appindicator
-    pkgs.pomodoro-gtk
-    pkgs.gnomeExtensions.night-theme-switcher
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.appindicator
+    gnome.pomodoro
+    gnomeExtensions.night-theme-switcher
+    gnomeExtensions.tactile
   ];
 }
