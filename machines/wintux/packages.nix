@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
 
@@ -9,17 +9,21 @@ let
       "--ignore-gpu-blocklist"
     ];
   };
-in {
+in
+{
 
   # Enable Wayland support in all chromium based apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  programs.nix-index.enable = true;
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = false;
+    enableBashIntegration = false;
+  };
   programs.command-not-found.enable = false;
   programs.nix-index-database.comma.enable = true;
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
-
 
   programs.chromium.enable = true;
   programs.firefox = {
@@ -36,7 +40,7 @@ in {
     };
     package = pkgs.firefox-beta;
     nativeMessagingHosts.packages = with pkgs; [
-      jabref 
+      jabref
     ];
   };
   programs.thunderbird = {
@@ -46,7 +50,12 @@ in {
     };
   };
 
-  virtualisation.docker = { 
+  programs.lazygit = {
+    enable = true;
+    settings = builtins.fromJSON (builtins.readFile ./lazygit.json);
+  };
+
+  virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
   };
@@ -54,16 +63,17 @@ in {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages =
     with pkgs;
-      # Web tools
-      [
-        my_chromium
-      ] ++
+    # Web tools
+    [
+      my_chromium
+    ]
+    ++
       # Office tools
       [
         texliveFull
         jabref # reference manager
       ]
-      ++
+    ++
       # Development Tools
       [
         helix
@@ -80,6 +90,9 @@ in {
       # Terminals and Shell Utilities
       [
         kitty
+        tmate
+        tmux
+        delta
         fzf
         calc
         tree

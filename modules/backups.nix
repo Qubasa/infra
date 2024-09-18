@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   services.zfs = lib.mkIf (config.boot.zfs.enabled) {
     autoSnapshot.enable = true;

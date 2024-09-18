@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-
   fonts.packages = with pkgs; [
     nerdfonts
   ];
@@ -20,8 +19,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      ls="lsd";
-      cd="z";
+      ls = "lsd";
+      cd = "z";
+      lg = "lazygit";
     };
 
     # With Oh-My-Zsh:

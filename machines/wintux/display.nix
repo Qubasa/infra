@@ -10,7 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
-    gnome.pomodoro
+    gnome-pomodoro
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.tactile
   ];
