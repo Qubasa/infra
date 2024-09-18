@@ -13,5 +13,6 @@
     gnome-pomodoro
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.tactile
+    dipc
   ];
 }

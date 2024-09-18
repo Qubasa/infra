@@ -24,6 +24,7 @@
     ./zsh.nix
     ./display.nix
     ./radeon.nix
+    ./wallpaper.nix
     # ./nvidia.nix
   ];
 
