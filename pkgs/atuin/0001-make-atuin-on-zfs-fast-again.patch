@@ -1,13 +1,30 @@
 diff --git a/crates/atuin-client/src/database.rs b/crates/atuin-client/src/database.rs
-index d01dadb4..770ebb29 100644
+index d01dadb4..f0b22131 100644
 --- a/crates/atuin-client/src/database.rs
 +++ b/crates/atuin-client/src/database.rs
-@@ -140,7 +140,7 @@ impl Sqlite {
+@@ -138,9 +138,9 @@ impl Sqlite {
+         }
+ 
          let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
-             .journal_mode(SqliteJournalMode::Wal)
+-            .journal_mode(SqliteJournalMode::Wal)
++            .journal_mode(SqliteJournalMode::Memory)
              .optimize_on_close(true, None)
 -            .synchronous(SqliteSynchronous::Normal)
 +            .synchronous(SqliteSynchronous::Off)
              .with_regexp()
+             .create_if_missing(true);
+ 
+diff --git a/crates/atuin-client/src/record/sqlite_store.rs b/crates/atuin-client/src/record/sqlite_store.rs
+index 31de311b..b905977e 100644
+--- a/crates/atuin-client/src/record/sqlite_store.rs
++++ b/crates/atuin-client/src/record/sqlite_store.rs
+@@ -41,7 +41,8 @@ impl SqliteStore {
+         }
+ 
+         let opts = SqliteConnectOptions::from_str(path.as_os_str().to_str().unwrap())?
+-            .journal_mode(SqliteJournalMode::Wal)
++            .journal_mode(SqliteJournalMode::Memory)
++            .synchronous(sqlx::sqlite::SqliteSynchronous::Off)
+             .foreign_keys(true)
              .create_if_missing(true);
  

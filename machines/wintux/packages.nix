@@ -90,6 +90,7 @@ in
       # Terminals and Shell Utilities
       [
         kitty
+        wl-clipboard
         tmate
         tmux
         delta

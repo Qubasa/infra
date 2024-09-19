@@ -26,6 +26,8 @@ in {
       ls = "lsd";
       cd = "z";
       lg = "lazygit";
+      c = "wl-copy";
+      v = "wl-paste";
     };
 
     # With Oh-My-Zsh:
