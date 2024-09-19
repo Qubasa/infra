@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
-{
+let
+
+  patch_atuin = pkgs.callPackage ../../pkgs/atuin {};
+in {
   fonts.packages = with pkgs; [
     nerdfonts
   ];
@@ -14,13 +17,14 @@
   # Shell history database
   services.atuin = {
     enable = true;
+    package = patch_atuin;
   };
 
   programs.zsh = {
     enable = true;
     shellAliases = {
       ls = "lsd";
-      # cd = "z";
+      cd = "z";
       lg = "lazygit";
     };
 
@@ -34,7 +38,7 @@
     };
 
     interactiveShellInit = ''
-      # eval "$(zoxide init zsh)"
+      eval "$(zoxide init zsh)"
       eval "$(atuin init zsh)"
     '';
 

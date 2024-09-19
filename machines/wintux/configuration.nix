@@ -12,6 +12,7 @@
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.iwd
     clan-core.clanModules.zerotier-static-peers
+    clan-core.clanModules.user-password
     inputs.data-mesher.nixosModules.data-mesher
     inputs.chrome-pwa.nixosModule
     inputs.nix-index-database.nixosModules.nix-index
@@ -28,6 +29,8 @@
     # ./nvidia.nix
   ];
 
+  clan.user-password.user = "lhebendanz";
+
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";
@@ -42,10 +45,9 @@
     VISUAL = "vscode";
   };
 
-  # boot.kernelPackages = lib.mkIf config.boot.zfs.enabled (
-  #   lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages
-  # );
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkIf config.boot.zfs.enabled (
+    lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages
+  );
   boot.zfs.package = pkgs.zfsUnstable;
 
   virtualisation.libvirtd.enable = true;

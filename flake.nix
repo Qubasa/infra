@@ -3,8 +3,8 @@
 
   inputs = {
 
-    # clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-    clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
+    clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+    # clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -55,22 +55,22 @@
         };
 
         # Testing the inventory
-        inventory = {
-          machines = {
-            wintux = {
-              name = "wintux";
-            };
-          };
-          services = {
-            "user-password"."instance1" = {
-              meta.name = "instance1";
-              roles.default.machines = [ "wintux" ];
-              config = {
-                user = "lhebendanz";
-              };
-            };
-          };
-        };
+        # inventory = {
+        #   machines = {
+        #     wintux = {
+        #       name = "wintux";
+        #     };
+        #   };
+        #   services = {
+        #     "user-password"."instance1" = {
+        #       meta.name = "instance1";
+        #       roles.default.machines = [ "wintux" ];
+        #       config = {
+        #         user = "lhebendanz";
+        #       };
+        #     };
+        #   };
+        # };
 
         machines = {
           gchq-local = {
