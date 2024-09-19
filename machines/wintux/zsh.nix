@@ -20,7 +20,7 @@
     enable = true;
     shellAliases = {
       ls = "lsd";
-      cd = "z";
+      # cd = "z";
       lg = "lazygit";
     };
 
@@ -34,7 +34,7 @@
     };
 
     interactiveShellInit = ''
-      eval "$(zoxide init zsh)"
+      # eval "$(zoxide init zsh)"
       eval "$(atuin init zsh)"
     '';
 

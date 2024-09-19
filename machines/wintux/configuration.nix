@@ -17,6 +17,7 @@
     inputs.nix-index-database.nixosModules.nix-index
     ./hardware-configuration.nix
     ../../modules/backups.nix
+    ../../modules/wallpaper
     ./disko.nix
     ./initrd.nix
     ./network.nix
@@ -24,9 +25,13 @@
     ./zsh.nix
     ./display.nix
     ./radeon.nix
-    ./wallpaper.nix
     # ./nvidia.nix
   ];
+
+  programs.wallpaper = {
+    darkWallDir = "$HOME/Pictures/Wallpapers/dark";
+    lightWallDir = "$HOME/Pictures/Wallpapers/light";
+  };
 
   nix = {
     package = pkgs.nixVersions.latest;
