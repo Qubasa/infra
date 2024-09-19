@@ -19,7 +19,6 @@ in
     ./initrd.nix
     ./gitea.nix
     ./nextcloud.nix
-    ./backups.nix
     ../../modules/backups.nix
     clan-core.clanModules.user-password
     clan-core.clanModules.dyndns
@@ -44,6 +43,8 @@ in
     openFirewall = true;
     initNetwork = true;
   };
+
+  clan.nginx.acme.email = "acme@qube.email";
 
   nixpkgs.config = {
     permittedInsecurePackages = [
