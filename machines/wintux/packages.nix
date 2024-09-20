@@ -15,6 +15,17 @@ in
   # Enable Wayland support in all chromium based apps
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # Printing
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   programs.nix-index = {
     enable = true;
     enableZshIntegration = false;
@@ -63,20 +74,24 @@ in
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages =
     with pkgs;
-    # Web tools
-    [
-      my_chromium
-    ]
+      # Web tools
+      [
+        my_chromium
+      ]
     ++
       # Office tools
       [
-        texliveFull
+        hplipWithPlugin # printer software
         jabref # reference manager
+        texlivePackages.latexcheat
+        texlivePackages.undergradmath
+        texliveFull
       ]
     ++
       # Development Tools
       [
         helix
+        nixd
         vscode-fhs
         radare2
       ]
@@ -113,6 +128,7 @@ in
     ++
       # File and Archive Utilities
       [
+        pika-backup
         fd
         ripgrep
         ripgrep-all
@@ -128,8 +144,6 @@ in
       # System Tools
       [
         cheat
-        texlivePackages.latexcheat
-        texlivePackages.undergradmath
         man-pages
         posix_man_pages
         patchelf

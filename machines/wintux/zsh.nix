@@ -14,11 +14,11 @@ in {
     lsd
   ];
 
-  # Shell history database
-  services.atuin = {
-    enable = true;
-    package = patch_atuin;
-  };
+  # # Shell history database
+  # services.atuin = {
+  #   enable = true;
+  #   package = patch_atuin;
+  # };
 
   programs.zsh = {
     enable = true;
