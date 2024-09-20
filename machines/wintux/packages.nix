@@ -4,16 +4,9 @@ let
 
   my_chromium = pkgs.chromium.override {
     enableWideVine = true;
-    commandLineArgs = [
-      "--enable-zero-copy"
-      "--ignore-gpu-blocklist"
-    ];
   };
 in
 {
-
-  # Enable Wayland support in all chromium based apps
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Printing
   services.printing = {
@@ -90,6 +83,7 @@ in
     ++
       # Development Tools
       [
+        rust-analyzer
         helix
         nixd
         vscode-fhs

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
 
@@ -10,15 +10,15 @@ in {
 
   environment.systemPackages = with pkgs; [
     zoxide
-    atuin
+    patch_atuin
     lsd
   ];
 
   # # Shell history database
-  # services.atuin = {
-  #   enable = true;
-  #   package = patch_atuin;
-  # };
+  services.atuin = {
+    enable = true;
+    package = patch_atuin;
+  };
 
   programs.zsh = {
     enable = true;
@@ -40,8 +40,8 @@ in {
     };
 
     interactiveShellInit = ''
-      eval "$(zoxide init zsh)"
-      eval "$(atuin init zsh)"
+      eval "$(${lib.getExe pkgs.zoxide} init zsh)"
+      eval "$(${lib.getExe patch_atuin} init zsh)"
     '';
 
     syntaxHighlighting.enable = true;
