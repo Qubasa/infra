@@ -115,5 +115,16 @@
     ];
   };
 
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+    gc.automatic = true;
+    gc.dates = "daily";
+    gc.options = "--delete-older-than 30d";
+  };
+
+
   system.stateVersion = "24.11";
 }

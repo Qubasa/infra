@@ -55,22 +55,18 @@
         };
 
         # Testing the inventory
-        # inventory = {
-        #   machines = {
-        #     wintux = {
-        #       name = "wintux";
-        #     };
-        #   };
-        #   services = {
-        #     "user-password"."instance1" = {
-        #       meta.name = "instance1";
-        #       roles.default.machines = [ "wintux" ];
-        #       config = {
-        #         user = "lhebendanz";
-        #       };
-        #     };
-        #   };
-        # };
+        inventory = {
+          machines = {
+            wintux = {
+              name = "wintux";
+            };
+          };
+          services = {
+            "disk-id"."instance1" = {
+              roles.default.machines = [ "wintux" ];
+            };
+          };
+        };
 
         machines = {
           gchq-local = {

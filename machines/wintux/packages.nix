@@ -70,6 +70,7 @@ in
       # Web tools
       [
         my_chromium
+        signal-desktop
       ]
     ++
       # Office tools
