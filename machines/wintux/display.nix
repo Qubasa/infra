@@ -8,11 +8,14 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = config.clan.user-password.user;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
     gnome-pomodoro
     gnomeExtensions.night-theme-switcher
     gnomeExtensions.tactile
     dipc
+    gnome-tweaks
   ];
 }
