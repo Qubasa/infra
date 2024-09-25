@@ -104,6 +104,7 @@ in
         tmate
         tmux
         delta
+        pwgen
         fzf
         calc
         tree

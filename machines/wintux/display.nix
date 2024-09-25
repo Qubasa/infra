@@ -17,5 +17,6 @@
     gnomeExtensions.tactile
     dipc
     gnome-tweaks
+    dconf-editor
   ];
 }

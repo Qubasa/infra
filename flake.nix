@@ -6,6 +6,11 @@
     clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     # clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
