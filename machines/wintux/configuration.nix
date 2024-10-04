@@ -19,6 +19,7 @@
     ./hardware-configuration.nix
     ../../modules/backups.nix
     ../../modules/wallpaper
+    ../../modules/latest-zfs-kernel.nix
     ./disko.nix
     ./initrd.nix
     ./network.nix
@@ -45,10 +46,6 @@
     VISUAL = "vscode";
   };
 
-  boot.kernelPackages = lib.mkIf config.boot.zfs.enabled (
-    lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages
-  );
-  boot.zfs.package = pkgs.zfsUnstable;
 
   virtualisation.libvirtd.enable = true;
 

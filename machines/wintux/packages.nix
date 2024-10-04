@@ -28,6 +28,7 @@ in
   programs.nix-index-database.comma.enable = true;
   programs.direnv.enable = true;
   programs.nix-ld.enable = true;
+  services.envfs.enable = true;
 
   programs.chromium.enable = true;
   programs.firefox = {
@@ -75,6 +76,8 @@ in
     ++
       # Office tools
       [
+        docker-compose
+        pdfarranger
         hplipWithPlugin # printer software
         jabref # reference manager
         texlivePackages.latexcheat
