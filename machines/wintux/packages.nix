@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 let
-
   my_chromium = pkgs.chromium.override {
     enableWideVine = true;
   };
@@ -44,9 +43,6 @@ in
       DisableFirefoxAccounts = true;
     };
     package = pkgs.firefox-beta;
-    nativeMessagingHosts.packages = with pkgs; [
-      jabref
-    ];
   };
   programs.thunderbird = {
     enable = true;
@@ -79,7 +75,7 @@ in
         docker-compose
         pdfarranger
         hplipWithPlugin # printer software
-        jabref # reference manager
+        zotero # reference manager
         texlivePackages.latexcheat
         texlivePackages.undergradmath
         texliveFull
