@@ -2,8 +2,9 @@
 
 let
 
-  patch_atuin = pkgs.callPackage ../../pkgs/atuin {};
-in {
+  patch_atuin = pkgs.callPackage ../../pkgs/atuin { };
+in
+{
   fonts.packages = with pkgs; [
     nerdfonts
   ];

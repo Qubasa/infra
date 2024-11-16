@@ -1,10 +1,16 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
 
   cfg = config.programs.wallpaper;
-  postProcessFlag = if cfg.postProcessing.enable then "true" else "false"; 
-in {
+  postProcessFlag = if cfg.postProcessing.enable then "true" else "false";
+in
+{
 
   options.programs.wallpaper = {
     lightWallDir = lib.mkOption {
@@ -32,11 +38,15 @@ in {
     systemd.user.services = {
       # Service to execute the script
       wallpaper = {
-        path = with pkgs; [ dipc bash glib ];
+        path = with pkgs; [
+          dipc
+          bash
+          glib
+        ];
         description = "Update Wallpaper Every 4 Hours";
         environment = {
-          LIGHT_PALETTE=cfg.postProcessing.light;
-          DARK_PALETTE=cfg.postProcessing.dark;
+          LIGHT_PALETTE = cfg.postProcessing.light;
+          DARK_PALETTE = cfg.postProcessing.dark;
         };
         script = ''
           ${./wallpaper.sh} "${cfg.darkWallDir}" "${cfg.lightWallDir}" "${postProcessFlag}"

@@ -20,13 +20,13 @@
 
   networking.domain = "dark";
 
-  services.data-mesher = {
-    enable = true;
-    logLevel = "DEBUG";
-    interface = "ztzvcqjigy";
-    openFirewall = true;
-    bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
-  };
+  # services.data-mesher = {
+  #   enable = true;
+  #   logLevel = "DEBUG";
+  #   interface = "ztzvcqjigy";
+  #   openFirewall = true;
+  #   bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
+  # };
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;

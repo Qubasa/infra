@@ -7,7 +7,6 @@
     enable = true;
     enable32Bit = true;
     extraPackages = [
-      pkgs.blender-hip
       pkgs.rocmPackages.clr.icd
     ];
   };

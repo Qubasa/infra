@@ -64,15 +64,16 @@ in
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages =
     with pkgs;
-      # Web tools
-      [
-        my_chromium
-        signal-desktop
-      ]
+    # Web tools
+    [
+      my_chromium
+      signal-desktop
+    ]
     ++
       # Office tools
       [
         docker-compose
+        libreoffice
         pdfarranger
         hplipWithPlugin # printer software
         zotero # reference manager
@@ -100,6 +101,7 @@ in
       [
         kitty
         wl-clipboard
+        git-lfs
         tmate
         tmux
         delta
@@ -134,13 +136,14 @@ in
       # Security and Encryption
       [
         gnupg
+        bitwarden
       ]
     ++
       # System Tools
       [
         cheat
         man-pages
-        posix_man_pages
+        man-pages-posix
         patchelf
         binutils
       ];

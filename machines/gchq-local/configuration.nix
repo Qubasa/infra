@@ -36,13 +36,13 @@ in
   # TODO: The zerotier interface name should be a fact
   # FIXME: Open Firewall should be default true
   # FIXME: bootstrap peer should be mandatory
-  services.data-mesher = {
-    enable = true;
-    logLevel = "DEBUG";
-    interface = "ztzvcqjigy";
-    openFirewall = true;
-    initNetwork = true;
-  };
+  # services.data-mesher = {
+  #   enable = true;
+  #   logLevel = "DEBUG";
+  #   interface = "ztzvcqjigy";
+  #   openFirewall = true;
+  #   initNetwork = true;
+  # };
 
   clan.nginx.acme.email = "acme@qube.email";
 

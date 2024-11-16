@@ -13,6 +13,7 @@
     clan-core.clanModules.iwd
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.user-password
+    clan-core.clanModules.localsend
     inputs.data-mesher.nixosModules.data-mesher
     inputs.chrome-pwa.nixosModule
     inputs.nix-index-database.nixosModules.nix-index
@@ -30,6 +31,8 @@
     # ./nvidia.nix
   ];
 
+  clan.localsend.displayName = config.clan.user-password.user;
+  clan.localsend.ipv4Addr = "192.168.192.3/24";
   clan.user-password.user = "lhebendanz";
 
   programs.wallpaper = {
@@ -45,7 +48,6 @@
     EDITOR = "hx";
     VISUAL = "vscode";
   };
-
 
   virtualisation.libvirtd.enable = true;
 
@@ -70,13 +72,13 @@
   clan.core.networking.targetHost = pkgs.lib.mkDefault "root@127.0.0.1";
 
   networking.domain = "dark";
-  services.data-mesher = {
-    enable = true;
-    logLevel = "DEBUG";
-    interface = "ztzvcqjigy";
-    openFirewall = true;
-    bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
-  };
+  # services.data-mesher = {
+  #   enable = true;
+  #   logLevel = "DEBUG";
+  #   interface = "ztzvcqjigy";
+  #   openFirewall = true;
+  #   bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
+  # };
 
   # Set keyboard layout
   console.keyMap = "de";
@@ -112,6 +114,8 @@
     ];
   };
 
+  # Perless nix activation
+  services.userborn.enable = true;
 
   nix = {
     settings = {
@@ -120,8 +124,8 @@
     gc.automatic = true;
     gc.dates = "daily";
     gc.options = "--delete-older-than 30d";
+    settings.trusted-users = [ "@wheel" ];
   };
-
 
   system.stateVersion = "24.11";
 }
