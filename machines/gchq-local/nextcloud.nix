@@ -12,7 +12,7 @@ rec {
     phpOptions = {
       "opcache.interned_strings_buffer" = "23";
     };
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     settings = {
       default_phone_region = "DE";
       # TODO: systemd backend needs a packaged https://github.com/systemd/php-systemd which doesn't exist yet

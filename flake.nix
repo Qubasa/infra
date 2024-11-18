@@ -3,33 +3,44 @@
 
   inputs = {
 
-    clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-    # clan-core.url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
+
+    clan-core = {
+      url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
+      # url = "/home/lhebendanz/Projects/clan-core";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixvim = {
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     data-mesher = {
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "git+https://git.clan.lol/clan/data-mesher";
-      # inputs.nixpkgs.follows = "clan-core";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     simple-nixos-mailserver = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     chrome-pwa = {
+      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

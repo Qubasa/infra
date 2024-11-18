@@ -28,6 +28,7 @@
     ./zsh.nix
     ./display.nix
     ./radeon.nix
+    ./mitm.nix
     # ./nvidia.nix
   ];
 
