@@ -72,6 +72,7 @@ in
     ++
       # Office tools
       [
+        gimp
         docker-compose
         libreoffice
         pdfarranger

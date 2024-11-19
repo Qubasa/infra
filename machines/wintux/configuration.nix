@@ -20,7 +20,8 @@
     ./hardware-configuration.nix
     ../../modules/backups.nix
     ../../modules/wallpaper
-    ../../modules/latest-zfs-kernel.nix
+    # ../../modules/latest-zfs-kernel.nix
+    ./kernel.nix
     ./disko.nix
     ./initrd.nix
     ./network.nix
@@ -31,6 +32,8 @@
     ./mitm.nix
     # ./nvidia.nix
   ];
+
+  
 
   clan.localsend.displayName = config.clan.user-password.user;
   clan.localsend.ipv4Addr = "192.168.192.3/24";

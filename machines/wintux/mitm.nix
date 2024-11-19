@@ -8,8 +8,14 @@
   programs.proxychains = {
     enable = true;
     proxies = {
-      mitmproxy = {
-        type = "http";
+      # mitmproxy = {
+      #   type = "http";
+      #   port = 54321;
+      #   host = "127.0.0.1";
+      #   enable = true;
+      # };
+      mitmsocks = {
+        type = "socks5";
         port = 54321;
         host = "127.0.0.1";
         enable = true;
