@@ -31,7 +31,8 @@ set_wallpaper() {
     local uri_setting="$4"
 
     # Pick a random wallpaper from the directory
-    local wallpaper=$(find "$wallpaper_dir" -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)
+    local wallpaper
+    wallpaper=$(find "$wallpaper_dir" -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)
 
     if [[ "$DIPC_ENABLED" == "true" ]]; then
         # Process the wallpaper with dipc

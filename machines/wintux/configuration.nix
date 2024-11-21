@@ -33,8 +33,6 @@
     # ./nvidia.nix
   ];
 
-  
-
   clan.localsend.displayName = config.clan.user-password.user;
   clan.localsend.ipv4Addr = "192.168.192.3/24";
   clan.user-password.user = "lhebendanz";

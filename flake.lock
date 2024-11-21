@@ -49,15 +49,18 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1731844801,
-        "narHash": "sha256-guATXnXQ7GgH3sqFHSgZ/2FTciFghTlz6Bf/azacfjM=",
-        "rev": "7d1bacc9942f17b4c9e83feacd147caa63ef0ee1",
-        "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/7d1bacc9942f17b4c9e83feacd147caa63ef0ee1.tar.gz"
+        "lastModified": 1732190898,
+        "narHash": "sha256-CixWWjtaJMwi6y5M4HV/4WZaOmFOLyPC+mZJeCNN9yA=",
+        "ref": "refs/heads/main",
+        "rev": "604c16c30f306594d60a705a9881d01a1a9cc6c8",
+        "shallow": true,
+        "type": "git",
+        "url": "https://git.clan.lol/clan/clan-core"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://git.clan.lol/Qubasa/clan-core/archive/main.zip"
+        "shallow": true,
+        "type": "git",
+        "url": "https://git.clan.lol/clan/clan-core"
       }
     },
     "data-mesher": {
@@ -423,6 +426,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1732189968,
+        "narHash": "sha256-yubhE3gSgUPxenUaJu0uG5/3x1q/vtJr4znuJ4XKExU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4f3146511849639b73c1fc7b16eb41952bf858df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "devshell": "devshell",
@@ -517,9 +536,7 @@
           "clan-core",
           "nixpkgs"
         ],
-        "nixpkgs-stable": [
-          "clan-core"
-        ]
+        "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
         "lastModified": 1731213149,
