@@ -25,8 +25,11 @@
       ]
     },
     "wintux": {
-      "deploy": {},
+      "deploy": {
+        "targetHost": "asdasdasd"
+      },
       "name": "wintux",
+      "description": "",
       "tags": [
         "all"
       ]
