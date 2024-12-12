@@ -137,6 +137,7 @@
             pkgs.mkpasswd
           ];
           shellHook = ''
+            export GIT_ROOT="$(git rev-parse --show-toplevel)"
             export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
           '';
         }
