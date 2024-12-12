@@ -18,7 +18,7 @@
       session.COOKIE_SECURE = true;
       service.DISABLE_REGISTRATION = true;
       server = {
-        SSH_PORT = 7171;
+        # SSH_PORT = 7171;
         ROOT_URL = "https://gitea.gchq.icu";
         HTTP_ADDR = "localhost";
         DOMAIN = "gitea.gchq.icu";

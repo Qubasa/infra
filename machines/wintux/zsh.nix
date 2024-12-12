@@ -6,7 +6,7 @@ let
 in
 {
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.fira-code
   ];
 
   environment.systemPackages = with pkgs; [

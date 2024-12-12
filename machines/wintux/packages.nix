@@ -73,6 +73,7 @@ in
       # Office tools
       [
         gimp
+        inkscape-with-extensions
         docker-compose
         libreoffice
         pdfarranger

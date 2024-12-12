@@ -71,7 +71,7 @@
     execWheelOnly = true;
   };
 
-  clan.core.networking.targetHost = pkgs.lib.mkDefault "root@127.0.0.1";
+  clan.core.networking.targetHost = "root@127.0.0.1";
 
   networking.domain = "dark";
   # services.data-mesher = {
@@ -126,7 +126,7 @@
     gc.automatic = true;
     gc.dates = "daily";
     gc.options = "--delete-older-than 30d";
-    settings.trusted-users = [ "@wheel" ];
+    settings.trusted-users = [ "@wheel" config.clan.user-password.user ];
   };
 
   system.stateVersion = "24.11";

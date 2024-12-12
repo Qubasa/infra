@@ -12,6 +12,7 @@
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.machine-id
+    clan-core.clanModules.iwd
     # # === Demo 1 === ##
     # clan-core.clanModules.dyndns
     # # === Demo 2 === ##
@@ -19,6 +20,12 @@
     # # === Demo 3 === ##
     # clan-core.clanModules.matrix-synapse
   ];
+
+  clan.iwd.networks = {
+    "testnet" = {
+      AutoConnect = true;
+    };
+  };
 
   disko.devices.disk.main.device = "/dev/sda";
 
