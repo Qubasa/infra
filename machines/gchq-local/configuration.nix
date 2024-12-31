@@ -21,7 +21,7 @@ in
     ./nextcloud.nix
     #./home-assistant.nix
     ../../modules/backups.nix
-    ../../modules/wildcard-certs.nix
+    ../../modules/porkbun-wildcard-certs.nix
     clan-core.clanModules.user-password
     clan-core.clanModules.dyndns
     clan-core.clanModules.matrix-synapse
@@ -93,14 +93,7 @@ in
     };
   };
 
-  clan.dyndns = {
-    server = {
-      enable = true;
-      domain = "home.gchq.icu";
-    };
-    settings = 
-    
-    let 
+  clan.dyndns = let 
       generateConfig = host: {
         provider = "porkbun";
         domain = "gchq.icu";
@@ -114,6 +107,11 @@ in
         };
       };
     in {
+    server = {
+      enable = true;
+      domain = "home.gchq.icu";
+    };
+    settings = {
       "gchq.icu" = generateConfig "@";
       "home.gchq.icu" = generateConfig "home";
       "gitea.gchq.icu" = generateConfig "gitea";
@@ -122,6 +120,12 @@ in
       "cloud.gchq.icu" = generateConfig "cloud";
     };
   };
+
+  clan.porkbun-wildcard-certs = {
+    porkbun_api_key = config.clan.dyndns.settings."gchq.icu".extraSettings.api_key;
+    porkbun_secret_generator = "dyndns-porkbun-gchq.icu";
+  };
+
 
   # Automatically set timezone
   time.timeZone = null;
