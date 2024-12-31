@@ -89,7 +89,6 @@ in
         rust-analyzer
         helix
         nixd
-        vscode-fhs
         radare2
       ]
     ++

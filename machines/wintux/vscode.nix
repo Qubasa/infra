@@ -13,7 +13,7 @@ in
         alefragnani.bookmarks
         tamasfe.even-better-toml
         james-yu.latex-workshop
-      ] ++ with extensions;
+      ] ++ (with extensions;
       [
         github.vscode-pull-request-github
         github.copilot
@@ -21,9 +21,9 @@ in
         ms-vscode-remote.remote-ssh
         eamodio.gitlens
         rust-lang.rust-analyzer
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      ];
+      ])
+      ++ (with pkgs.vscode-utils.extensionsFromVscodeMarketplace; [
+      ]);
     })
   ];
 }

@@ -21,6 +21,7 @@
     ../../modules/backups.nix
     ../../modules/wallpaper
     # ../../modules/latest-zfs-kernel.nix
+    ./vscode.nix
     ./kernel.nix
     ./disko.nix
     ./initrd.nix
@@ -57,6 +58,7 @@
 
   users.users."${config.clan.user-password.user}" = {
     extraGroups = [
+      "dialout" # for writing to serial
       "wheel"
       "networkmanager"
       "docker"

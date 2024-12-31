@@ -19,7 +19,9 @@ in
     ./initrd.nix
     ./gitea.nix
     ./nextcloud.nix
+    #./home-assistant.nix
     ../../modules/backups.nix
+    ../../modules/wildcard-certs.nix
     clan-core.clanModules.user-password
     clan-core.clanModules.dyndns
     clan-core.clanModules.matrix-synapse
@@ -96,50 +98,28 @@ in
       enable = true;
       domain = "home.gchq.icu";
     };
-    settings = {
-      "gchq.icu" = {
-        provider = "namecheap";
+    settings = 
+    
+    let 
+      generateConfig = host: {
+        provider = "porkbun";
         domain = "gchq.icu";
+        secret_field_name = "secret_api_key";
         extraSettings = {
-          host = "@";
+          host = host;
+          ip_version = "ipv4";
+          ipv6_suffix = "";
+          # This is a pubkey. It is not a secret.
+          api_key= "pk1_49dcc3b4df71eaebe608d951aac06a13c23d932e3564b577c1232e5a257e2973";
         };
       };
-      "gitea.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "gitea";
-        };
-      };
-      "element.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "element";
-        };
-      };
-      "bitwarden.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "bitwarden";
-        };
-      };
-      "cloud.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "cloud";
-        };
-      };
-      "home.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-
-        extraSettings = {
-          host = "home";
-        };
-      };
+    in {
+      "gchq.icu" = generateConfig "@";
+      "home.gchq.icu" = generateConfig "home";
+      "gitea.gchq.icu" = generateConfig "gitea";
+      "element.gchq.icu" = generateConfig "element";
+      "bitwarden.gchq.icu" = generateConfig "bitwarden";
+      "cloud.gchq.icu" = generateConfig "cloud";
     };
   };
 

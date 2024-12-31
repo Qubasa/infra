@@ -14,7 +14,7 @@
     clan-core.clanModules.machine-id
     clan-core.clanModules.iwd
     # # === Demo 1 === ##
-    # clan-core.clanModules.dyndns
+    clan-core.clanModules.dyndns
     # # === Demo 2 === ##
     # inputs.data-mesher.nixosModules.data-mesher
     # # === Demo 3 === ##
@@ -30,31 +30,32 @@
   disko.devices.disk.main.device = "/dev/sda";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  clan.core.networking.targetHost = pkgs.lib.mkDefault "root@157.90.21.116";
+  # clan.core.networking.targetHost = pkgs.lib.mkDefault "root@157.90.21.116";
 
   ## === Demo 1 === ##
-  # clan.dyndns = {
-  #     server = {
-  #       enable = true;
-  #       domain = "demo.gchq.icu";
-  #     };
-  #     settings = {
-  #     "demo.gchq.icu" = {
-  #         provider = "namecheap";
-  #         domain = "gchq.icu";
-  #         extraSettings = {
-  #           host = "demo";
-  #         };
-  #     };
-  #     "matrix.demo.gchq.icu" = {
-  #         provider = "namecheap";
-  #         domain = "gchq.icu";
-  #         extraSettings = {
-  #           host = "matrix.demo";
-  #         };
-  #     };
-  #   };
-  # };
+  clan.nginx.acme.email = "demo@qube.email";
+  clan.dyndns = {
+      server = {
+        enable = true;
+        domain = "demo.gchq.icu";
+      };
+      settings = {
+      "demo.gchq.icu" = {
+          provider = "namecheap";
+          domain = "gchq.icu";
+          extraSettings = {
+            host = "demo";
+          };
+      };
+      "matrix.demo.gchq.icu" = {
+          provider = "namecheap";
+          domain = "gchq.icu";
+          extraSettings = {
+            host = "matrix.demo";
+          };
+      };
+    };
+  };
 
   ## === Demo 2 === ##
   # networking.domain = "dark";

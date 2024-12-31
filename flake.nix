@@ -5,6 +5,8 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
 
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+  
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
       # url = "path:/home/lhebendanz/Projects/clan-core";
