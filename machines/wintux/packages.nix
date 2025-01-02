@@ -100,7 +100,7 @@ in
     ++
       # Terminals and Shell Utilities
       [
-        kitty
+        ghostty
         wl-clipboard
         git-lfs
         tmate

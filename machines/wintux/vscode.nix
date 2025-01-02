@@ -8,6 +8,10 @@ in
       vscodeExtensions = with vscode-extensions; [
         ms-python.python
         ms-python.vscode-pylance
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.vscode-jupyter-slideshow
         yzhang.markdown-all-in-one
         jnoortheen.nix-ide
         alefragnani.bookmarks
