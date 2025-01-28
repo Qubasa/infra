@@ -41,7 +41,7 @@ rec {
   };
 
   # Note: The occ commands is called nextcloud-occ
-  # The nextcloud service is called phpfpm-nextcloud.service 
+  # The nextcloud service is called phpfpm-nextcloud.service
 
   # Note: All nextcloud data is stored at /var/lib/nextcloud
   # if you have to do a fresh install backup the data folder

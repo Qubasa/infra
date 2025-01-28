@@ -3,47 +3,49 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-  
+
+    # clan-core-upstream = {
+    #   url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
+    # };
+
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
-      # url = "path:/home/lhebendanz/Projects/clan-core";
-      url = "git+https://git.clan.lol/clan/clan-core?shallow=1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "path:/home/lhebendanz/Projects/clan-core";
+      # url = "git+https://git.clan.lol/clan/clan-core?shallow=1";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
     nixvim = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    data-mesher = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
-      url = "git+https://git.clan.lol/clan/data-mesher";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     simple-nixos-mailserver = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     chrome-pwa = {
-      # inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -64,13 +66,14 @@
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       clan = inputs.clan-core.lib.buildClan {
-        directory = self;
+        inherit self;
+        #directory = self;
         meta = {
           name = "Qubasas_Clan"; # Ensure this is internet wide unique.
         };
-
+    
         specialArgs = {
-          inherit inputs;
+          flakeInputs = inputs;
         };
 
         # Testing the inventory
@@ -102,13 +105,6 @@
               ./machines/qube-email/configuration.nix
             ];
 
-            nixpkgs.hostPlatform = system;
-          };
-          demo = {
-            imports = [
-              ./modules/shared.nix
-              ./machines/demo/configuration.nix
-            ];
             nixpkgs.hostPlatform = system;
           };
           wintux = {

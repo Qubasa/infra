@@ -10,7 +10,6 @@
     };
 
     services.zerotierone.joinNetworks = [
-      "9bee8941b53da940"
     ];
   };
 }

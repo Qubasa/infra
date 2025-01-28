@@ -1,13 +1,13 @@
 {
   clan-core,
   pkgs,
-  lib,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/shared.nix
     ./disko.nix
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
@@ -35,24 +35,24 @@
   ## === Demo 1 === ##
   clan.nginx.acme.email = "demo@qube.email";
   clan.dyndns = {
-      server = {
-        enable = true;
-        domain = "demo.gchq.icu";
-      };
-      settings = {
+    server = {
+      enable = true;
+      domain = "demo.gchq.icu";
+    };
+    settings = {
       "demo.gchq.icu" = {
-          provider = "namecheap";
-          domain = "gchq.icu";
-          extraSettings = {
-            host = "demo";
-          };
+        provider = "namecheap";
+        domain = "gchq.icu";
+        extraSettings = {
+          host = "demo";
+        };
       };
       "matrix.demo.gchq.icu" = {
-          provider = "namecheap";
-          domain = "gchq.icu";
-          extraSettings = {
-            host = "matrix.demo";
-          };
+        provider = "namecheap";
+        domain = "gchq.icu";
+        extraSettings = {
+          host = "matrix.demo";
+        };
       };
     };
   };

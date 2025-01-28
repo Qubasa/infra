@@ -1,72 +1,20 @@
 {
-  "meta": {
-    "name": "Qubasas_Clan"
-  },
   "machines": {
-    "demo": {
-      "deploy": {},
-      "name": "demo",
-      "tags": [
-        "all"
-      ]
-    },
-    "gchq-local": {
-      "deploy": {},
-      "name": "gchq-local",
-      "tags": [
-        "all"
-      ]
-    },
-    "qube-email": {
-      "deploy": {},
-      "name": "qube-email",
-      "tags": [
-        "all"
-      ]
-    },
-    "wintux": {
-      "deploy": {
-        "targetHost": "root@127.0.0.1"
-      },
-      "name": "wintux",
-      "description": "",
-      "tags": [
-        "all"
-      ]
-    }
   },
-  "modules": {},
   "services": {
-    "disk-id": {
-      "instance1": {
-        "config": {},
-        "enabled": true,
-        "extraModules": [],
-        "machines": {},
-        "meta": {
-          "description": null,
-          "icon": null,
-          "name": "instance1"
-        },
+    "admin": {
+      "one": {
         "roles": {
           "default": {
-            "config": {},
-            "extraModules": [],
-            "machines": [
-              "wintux"
-            ],
-            "tags": []
+            "config": {
+              "allowedKeys": {
+                "mykey": "asdasdasd"
+              }
+            },
+            "machines": ["wintux"]
           }
         }
       }
     }
-  },
-  "tags": {
-    "all": [
-      "demo",
-      "gchq-local",
-      "qube-email",
-      "wintux"
-    ]
   }
 }

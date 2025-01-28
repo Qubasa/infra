@@ -48,12 +48,12 @@ in
 
   clan.nginx.acme.email = "acme@qube.email";
 
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "olm-3.2.16"
-    ];
-    allowUnfree = true;
-  };
+  # nixpkgs.config = {
+  #   permittedInsecurePackages = [
+  #     "olm-3.2.16"
+  #   ];
+  #   allowUnfree = true;
+  # };
 
   # Disable deep sleep on lid close
   services.logind = {
@@ -93,7 +93,8 @@ in
     };
   };
 
-  clan.dyndns = let 
+  clan.dyndns =
+    let
       generateConfig = host: {
         provider = "porkbun";
         domain = "gchq.icu";
@@ -103,29 +104,29 @@ in
           ip_version = "ipv4";
           ipv6_suffix = "";
           # This is a pubkey. It is not a secret.
-          api_key= "pk1_49dcc3b4df71eaebe608d951aac06a13c23d932e3564b577c1232e5a257e2973";
+          api_key = "pk1_49dcc3b4df71eaebe608d951aac06a13c23d932e3564b577c1232e5a257e2973";
         };
       };
-    in {
-    server = {
-      enable = true;
-      domain = "home.gchq.icu";
+    in
+    {
+      server = {
+        enable = true;
+        domain = "home.gchq.icu";
+      };
+      settings = {
+        "gchq.icu" = generateConfig "@";
+        "home.gchq.icu" = generateConfig "home";
+        "gitea.gchq.icu" = generateConfig "gitea";
+        "element.gchq.icu" = generateConfig "element";
+        "bitwarden.gchq.icu" = generateConfig "bitwarden";
+        "cloud.gchq.icu" = generateConfig "cloud";
+      };
     };
-    settings = {
-      "gchq.icu" = generateConfig "@";
-      "home.gchq.icu" = generateConfig "home";
-      "gitea.gchq.icu" = generateConfig "gitea";
-      "element.gchq.icu" = generateConfig "element";
-      "bitwarden.gchq.icu" = generateConfig "bitwarden";
-      "cloud.gchq.icu" = generateConfig "cloud";
-    };
-  };
 
   clan.porkbun-wildcard-certs = {
     porkbun_api_key = config.clan.dyndns.settings."gchq.icu".extraSettings.api_key;
     porkbun_secret_generator = "dyndns-porkbun-gchq.icu";
   };
-
 
   # Automatically set timezone
   time.timeZone = null;

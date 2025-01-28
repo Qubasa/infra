@@ -76,6 +76,7 @@
 
   # Set this for clan commands use ssh i.e. `clan machines update`
   clan.core.networking.targetHost = pkgs.lib.mkDefault "root@qube.email";
+  clan.core.networking.buildHost = "root@127.0.0.1";
 
   # IMPORTANT! Add your SSH key here
   # e.g. > cat ~/.ssh/id_ed25519.pub

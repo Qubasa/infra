@@ -1,7 +1,6 @@
 {
   clan-core,
   pkgs,
-  lib,
   ...
 }:
 

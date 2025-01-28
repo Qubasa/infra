@@ -1,7 +1,6 @@
 {
-  inputs,
+  flakeInputs,
   clan-core,
-  lib,
   pkgs,
   config,
   ...
@@ -13,16 +12,14 @@
     clan-core.clanModules.iwd
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.user-password
-    clan-core.clanModules.localsend
-    inputs.data-mesher.nixosModules.data-mesher
-    inputs.chrome-pwa.nixosModule
-    inputs.nix-index-database.nixosModules.nix-index
+    flakeInputs.chrome-pwa.nixosModule
+    flakeInputs.nix-index-database.nixosModules.nix-index
     ./hardware-configuration.nix
     ../../modules/backups.nix
     ../../modules/wallpaper
-    # ../../modules/latest-zfs-kernel.nix
+    ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
-    ./kernel.nix
+    # ./kernel.nix
     ./disko.nix
     ./initrd.nix
     ./network.nix
@@ -34,8 +31,6 @@
     # ./nvidia.nix
   ];
 
-  clan.localsend.displayName = config.clan.user-password.user;
-  clan.localsend.ipv4Addr = "192.168.192.3/24";
   clan.user-password.user = "lhebendanz";
 
   programs.wallpaper = {
@@ -76,13 +71,6 @@
   clan.core.networking.targetHost = "root@127.0.0.1";
 
   networking.domain = "dark";
-  # services.data-mesher = {
-  #   enable = true;
-  #   logLevel = "DEBUG";
-  #   interface = "ztzvcqjigy";
-  #   openFirewall = true;
-  #   bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
-  # };
 
   # Set keyboard layout
   console.keyMap = "de";
@@ -128,7 +116,10 @@
     gc.automatic = true;
     gc.dates = "daily";
     gc.options = "--delete-older-than 30d";
-    settings.trusted-users = [ "@wheel" config.clan.user-password.user ];
+    settings.trusted-users = [
+      "@wheel"
+      config.clan.user-password.user
+    ];
   };
 
   system.stateVersion = "24.11";

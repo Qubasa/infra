@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ flakeInputs, config, pkgs, ... }:
 
 let
   my_chromium = pkgs.chromium.override {
@@ -61,6 +61,10 @@ in
     autoPrune.enable = true;
   };
 
+  services.udev.packages = with pkgs; [
+    logitech-udev-rules
+  ];
+
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages =
     with pkgs;
@@ -72,6 +76,7 @@ in
     ++
       # Office tools
       [
+        solaar # logitech device tool
         gimp
         inkscape-with-extensions
         docker-compose
@@ -79,6 +84,7 @@ in
         pdfarranger
         hplipWithPlugin # printer software
         zotero # reference manager
+        tex-fmt
         texlivePackages.latexcheat
         texlivePackages.undergradmath
         texliveFull
@@ -86,6 +92,7 @@ in
     ++
       # Development Tools
       [
+        flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
         rust-analyzer
         helix
         nixd
@@ -94,13 +101,14 @@ in
     ++
       # Virtualization and Remote Desktop
       [
+        google-cloud-sdk
         virt-manager
         remmina
       ]
     ++
       # Terminals and Shell Utilities
       [
-        ghostty
+        # ghostty
         wl-clipboard
         git-lfs
         tmate

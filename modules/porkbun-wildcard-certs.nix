@@ -1,8 +1,9 @@
-{config, lib, ...}:
+{ config, lib, ... }:
 
 let
   cfg = config.clan.porkbun-wildcard-certs;
-in {
+in
+{
   options.clan.porkbun-wildcard-certs = {
     porkbun_api_key = lib.mkOption {
       type = lib.types.string;
@@ -15,10 +16,9 @@ in {
   };
 
   config = {
-    clan.core.vars.generators.acme-porkbun-creds = 
-    {
+    clan.core.vars.generators.acme-porkbun-creds = {
       share = true;
-      files."acme-porkbun-creds" = {};
+      files."acme-porkbun-creds" = { };
       dependencies = [
         cfg.porkbun_secret_generator
       ];
@@ -35,7 +35,8 @@ in {
         extraDomainNames = [ "*.gchq.icu" ];
         dnsProvider = "porkbun";
         dnsPropagationCheck = true;
-        credentialsFile = config.clan.core.vars.generators.acme-porkbun-creds.files."acme-porkbun-creds".path;
+        credentialsFile =
+          config.clan.core.vars.generators.acme-porkbun-creds.files."acme-porkbun-creds".path;
         webroot = null;
       };
     };
