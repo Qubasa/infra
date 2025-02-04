@@ -9,6 +9,18 @@
       "deploy": {
         "targetHost": "root@127.0.0.1"
       }
+    },
+    "demo": {
+      "name": "demo"
+    },
+    "gchq-local": {
+      "name": "gchq-local"
+    },
+    "qube-email": {
+      "name": "qube-email"
+    },
+    "test": {
+      "name": "test"
     }
   },
   "services": {
@@ -25,6 +37,18 @@
               "wintux"
             ]
           }
+        },
+        "enabled": true,
+        "meta": {
+          "name": "one"
+        }
+      }
+    },
+    "disk-id": {
+      "instance1": {
+        "enabled": true,
+        "meta": {
+          "name": "instance1"
         }
       }
     }
