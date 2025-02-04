@@ -1,5 +1,15 @@
 {
   "machines": {
+    "wintux": {
+      "name": "wintux",
+      "tags": [
+        "all"
+      ],
+      "description": null,
+      "deploy": {
+        "targetHost": "root@127.0.0.1"
+      }
+    }
   },
   "services": {
     "admin": {
@@ -11,7 +21,9 @@
                 "mykey": "asdasdasd"
               }
             },
-            "machines": ["wintux"]
+            "machines": [
+              "wintux"
+            ]
           }
         }
       }
