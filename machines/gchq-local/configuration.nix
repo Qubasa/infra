@@ -35,6 +35,12 @@ in
 
   clan.nginx.acme.email = "acme@qube.email";
 
+  nix = {
+    gc.automatic = true;
+    gc.dates = "daily";
+    gc.options = "--delete-older-than 30d";
+  };
+
   # nixpkgs.config = {
   #   permittedInsecurePackages = [
   #     "olm-3.2.16"
