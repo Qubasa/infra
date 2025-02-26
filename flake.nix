@@ -18,9 +18,6 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
     nixvim = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nixvim";
@@ -120,6 +117,13 @@
     {
       # all machines managed by cLAN
       inherit (clan) nixosConfigurations clanInternals;
+
+      clan.templates.disko = {
+        "single-disk" = {
+          description = "A simple ext4 disk with a single partition";
+          path = ./modules;
+        };
+      };
 
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 

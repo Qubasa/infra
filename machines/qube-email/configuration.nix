@@ -1,5 +1,5 @@
 {
-  inputs,
+  flakeInputs,
   clan-core,
   pkgs,
   ...
@@ -14,19 +14,15 @@
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.machine-id
     clan-core.clanModules.disk-id
-    inputs.simple-nixos-mailserver.nixosModule
-    inputs.data-mesher.nixosModules.data-mesher
+    flakeInputs.simple-nixos-mailserver.nixosModule
   ];
 
   networking.domain = "dark";
 
-  # services.data-mesher = {
-  #   enable = true;
-  #   logLevel = "DEBUG";
-  #   interface = "ztzvcqjigy";
-  #   openFirewall = true;
-  #   bootstrapPeers = [ "http://[fd16:aa77:dbef:737b:3799:9316:aa77:dbef]:7331" ];
-  # };
+  services.iperf3 = {
+      enable = true;
+      openFirewall = true;
+  };
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;

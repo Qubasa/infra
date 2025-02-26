@@ -29,22 +29,9 @@ in
     clan-core.clanModules.heisenbridge
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
-    inputs.data-mesher.nixosModules.data-mesher
   ];
 
   networking.domain = "dark";
-
-  # TODO: It's not clear what tld is in this case is it the end of the domain or the whole domain?
-  # TODO: The zerotier interface name should be a fact
-  # FIXME: Open Firewall should be default true
-  # FIXME: bootstrap peer should be mandatory
-  # services.data-mesher = {
-  #   enable = true;
-  #   logLevel = "DEBUG";
-  #   interface = "ztzvcqjigy";
-  #   openFirewall = true;
-  #   initNetwork = true;
-  # };
 
   clan.nginx.acme.email = "acme@qube.email";
 

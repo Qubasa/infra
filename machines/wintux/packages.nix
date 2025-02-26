@@ -92,8 +92,10 @@ in
     ++
       # Development Tools
       [
-        flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
+        # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
+        ghostty
         rust-analyzer
+        code-cursor
         helix
         nixd
         radare2
@@ -146,6 +148,7 @@ in
       [
         gnupg
         bitwarden
+        bitwarden-cli
       ]
     ++
       # System Tools
