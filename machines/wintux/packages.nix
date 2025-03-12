@@ -1,4 +1,10 @@
-{ flakeInputs, config, pkgs, ... }:
+{
+  flakeInputs,
+  unstablePkgs,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   my_chromium = pkgs.chromium.override {
@@ -95,7 +101,7 @@ in
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
         ghostty
         rust-analyzer
-        code-cursor
+        unstablePkgs.claude-code
         helix
         nixd
         radare2

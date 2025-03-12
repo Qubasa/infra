@@ -3,7 +3,7 @@
 
   inputs = {
 
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable?shallow=1";
+    unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
@@ -14,35 +14,32 @@
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
       url = "path:/home/lhebendanz/Projects/clan-core";
-      # url = "git+https://git.clan.lol/clan/clan-core?shallow=1";
-      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    vpn-bench = {
+      url = "git+https://git.clan.lol/Qubasa/vpn-benchmark";
     };
 
     nixvim = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:numtide/treefmt-nix";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     simple-nixos-mailserver = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     chrome-pwa = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -51,11 +48,19 @@
       self,
       nixpkgs,
       systems,
+      unstable-nixpkgs,
       ...
     }:
     let
       system = "x86_64-linux";
 
+      # Override the unstable-nixpkgs with allowUnfree set to true
+      unstablePkgs = import unstable-nixpkgs {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
       # Small tool to iterate over each systems
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
@@ -68,9 +73,10 @@
         meta = {
           name = "Qubasas_Clan"; # Ensure this is internet wide unique.
         };
-    
+
         specialArgs = {
           flakeInputs = inputs;
+          inherit unstablePkgs;
         };
 
         # Testing the inventory
@@ -93,7 +99,6 @@
               ./modules/shared.nix
               ./machines/gchq-local/configuration.nix
             ];
-
             nixpkgs.hostPlatform = system;
           };
           qube-email = {
@@ -109,6 +114,7 @@
               ./modules/shared.nix
               ./machines/wintux/configuration.nix
             ];
+
             nixpkgs.hostPlatform = system;
           };
         };

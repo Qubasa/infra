@@ -12,6 +12,8 @@ in
   environment.systemPackages = with pkgs; [
     zoxide
     patch_atuin
+    colordiff
+    bat
     lsd
   ];
 
@@ -21,12 +23,24 @@ in
     package = patch_atuin;
   };
 
+  programs.bat = {
+    enable = true;
+  };
+
+  environment.etc."zshrc.local".text = ''
+      # Delay Atuin init until after zsh-vi-mode init to prevent overwriting of keybinds
+      eval "$(${lib.getExe patch_atuin} init zsh --disable-up-arrow)"
+      eval "$(${lib.getExe pkgs.zoxide} init zsh)"
+  '';
+
   programs.zsh = {
     enable = true;
     shellAliases = {
       ls = "lsd";
       cd = "z";
       lg = "lazygit";
+      cat = "bat -p";
+      diff = "colordiff";
       c = "wl-copy";
       v = "wl-paste";
     };
@@ -40,14 +54,10 @@ in
       theme = "gnzh";
     };
 
-    interactiveShellInit = ''
-      eval "$(${lib.getExe pkgs.zoxide} init zsh)"
-      eval "$(${lib.getExe patch_atuin} init zsh)"
-    '';
-
     syntaxHighlighting.enable = true;
 
-    histSize = 10000;
+  
+    enableCompletion = false; # slows down session start when enabled
     autosuggestions = {
       enable = true;
       strategy = [

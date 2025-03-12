@@ -33,6 +33,12 @@ in
         ])
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           # {
+          #    name = "cline";
+          #    publisher = "saoudrizwan.claude-dev";
+          #    version = "3.4.9";
+          #    # sha256 = "sha256-YdHbJ3jju98EuEJQkhqCPvOglM1oRAxDpDr+709B/98=";
+          # }
+          # {
           #    name = "treefmt-vscode";
           #    publisher = "ibecker";
           #    version = "2.1.1";

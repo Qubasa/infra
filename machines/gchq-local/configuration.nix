@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   clan-core,
   pkgs,

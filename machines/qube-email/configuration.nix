@@ -19,10 +19,6 @@
 
   networking.domain = "dark";
 
-  services.iperf3 = {
-      enable = true;
-      openFirewall = true;
-  };
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;

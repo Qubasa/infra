@@ -58,9 +58,53 @@
         "type": "path"
       }
     },
+    "clan-core_2": {
+      "inputs": {
+        "disko": "disko_2",
+        "flake-parts": "flake-parts_3",
+        "nixos-facter-modules": "nixos-facter-modules_2",
+        "nixpkgs": "nixpkgs_4",
+        "sops-nix": "sops-nix_2",
+        "systems": "systems_5",
+        "treefmt-nix": "treefmt-nix_3"
+      },
+      "locked": {
+        "lastModified": 1741352345,
+        "narHash": "sha256-WXvOWLunU8wnHXrhr1t3lvcHR6NA9EfV69/AVV6PAJY=",
+        "rev": "c335e3124e3fb1d85410eed01a2125568e255c6d",
+        "type": "tarball",
+        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/c335e3124e3fb1d85410eed01a2125568e255c6d.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.clan.lol/Qubasa/clan-core/archive/vpb-patches.zip"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
+          "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739634831,
+        "narHash": "sha256-xFnU+uUl48Icas2wPQ+ZzlL2O3n8f6J2LrzNK9f2nng=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "fa5746ecea1772cf59b3f34c5816ab3531478142",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
+    "disko_2": {
+      "inputs": {
+        "nixpkgs": [
+          "vpn-bench",
           "clan-core",
           "nixpkgs"
         ]
@@ -145,6 +189,49 @@
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "rev": "32ea77a06711b758da0ad9bd6a844c5740a87abd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "vpn-bench",
+          "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738453229,
+        "narHash": "sha256-7H9XgNiGLKN1G1CgRh0vUL4AheZSYzPm+zmZ7vxbJdo=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "32ea77a06711b758da0ad9bd6a844c5740a87abd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_4": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "vpn-bench",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736143030,
+        "narHash": "sha256-+hu54pAoLDEZT9pjHlqL9DNzWz0NbUn8NEAHP7PQPzU=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "b905f6fc23a9051a6e1b741e1438dbfc0634c6de",
         "type": "github"
       },
       "original": {
@@ -273,6 +360,21 @@
         "type": "github"
       }
     },
+    "nixos-facter-modules_2": {
+      "locked": {
+        "lastModified": 1738752252,
+        "narHash": "sha256-/nA3tDdp/2g0FBy8966ppC2WDoyXtUWaHkZWL+N3ZKc=",
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
+        "rev": "60f8b8f3f99667de6a493a44375e5506bf0c48b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1739512841,
@@ -332,6 +434,18 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 315532800,
+        "narHash": "sha256-+vOiMQwHEYBbWgvK//cuUqHZQ/y3DddCLyxZAbDdpnM=",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre762233.02032da4af07/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://nixos.org/channels/nixpkgs-unstable/nixexprs.tar.xz"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -388,7 +502,9 @@
         "nixvim": "nixvim",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "systems": "systems_4",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "unstable-nixpkgs": "unstable-nixpkgs",
+        "vpn-bench": "vpn-bench"
       }
     },
     "simple-nixos-mailserver": {
@@ -419,6 +535,29 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
+          "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736953253,
+        "narHash": "sha256-shJxzy7qypjq9hpETQ3gJsBZXO5E3KR0INca/xwiVp4=",
+        "owner": "pinpox",
+        "repo": "sops-nix",
+        "rev": "a7c6e64401b6dde13c0de90230cb64087c9d9693",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pinpox",
+        "ref": "lazy-assertions",
+        "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "sops-nix_2": {
+      "inputs": {
+        "nixpkgs": [
+          "vpn-bench",
           "clan-core",
           "nixpkgs"
         ]
@@ -497,6 +636,21 @@
         "type": "indirect"
       }
     },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -537,6 +691,90 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
+      }
+    },
+    "treefmt-nix_3": {
+      "inputs": {
+        "nixpkgs": [
+          "vpn-bench",
+          "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739829690,
+        "narHash": "sha256-mL1szCeIsjh6Khn3nH2cYtwO5YXG6gBiTw1A30iGeDU=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "3d0579f5cc93436052d94b73925b48973a104204",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_4": {
+      "inputs": {
+        "nixpkgs": [
+          "vpn-bench",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736154270,
+        "narHash": "sha256-p2r8xhQZ3TYIEKBoiEhllKWQqWNJNoT9v64Vmg4q8Zw=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "13c913f5deb3a5c08bb810efd89dc8cb24dd968b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "unstable-nixpkgs": {
+      "locked": {
+        "lastModified": 1740597150,
+        "narHash": "sha256-aOi6p33W3+CLSeIyVeC9e/8suJRSu7L3+jyWhGHzZl4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "18ef7bdf96ed86a1fa81c3ad510bd3b3aeb35225",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "vpn-bench": {
+      "inputs": {
+        "clan-core": "clan-core_2",
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": [
+          "vpn-bench",
+          "clan-core",
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix_4"
+      },
+      "locked": {
+        "lastModified": 1741580699,
+        "narHash": "sha256-0KL4jFSdutfaiFaMXj6jRz7ic7CrTfDIx/RxAgVTrTw=",
+        "ref": "refs/heads/main",
+        "rev": "02145aa139bbea796259d70d49858556902ff2e7",
+        "revCount": 45,
+        "type": "git",
+        "url": "https://git.clan.lol/Qubasa/vpn-benchmark"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.clan.lol/Qubasa/vpn-benchmark"
       }
     }
   },
