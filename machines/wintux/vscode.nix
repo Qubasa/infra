@@ -1,7 +1,4 @@
 { flakeInputs, pkgs, ... }:
-let
-  extensions = flakeInputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace-release;
-in
 {
   environment.systemPackages = with pkgs; [
     (vscode-with-extensions.override {
@@ -23,14 +20,14 @@ in
           matangover.mypy
           charliermarsh.ruff
         ]
-        ++ (with extensions; [
-          # github.vscode-pull-request-github
+        ++ [ # from nix-vscode-extensions input
+           # github.vscode-pull-request-github
           github.copilot
           github.copilot-chat
           ms-vscode-remote.remote-ssh
           eamodio.gitlens
           rust-lang.rust-analyzer
-        ])
+        ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           # {
           #    name = "cline";

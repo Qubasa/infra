@@ -16,7 +16,7 @@ in
   # Printing
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
+   #  drivers = [ pkgs.hplipWithPlugin ];
   };
   services.avahi = {
     enable = true;
@@ -48,7 +48,7 @@ in
       DisableFirefoxStudies = true;
       DisableFirefoxAccounts = true;
     };
-    package = pkgs.firefox-beta;
+    package = pkgs.firefox-beta-bin;
   };
   programs.thunderbird = {
     enable = true;
@@ -88,7 +88,7 @@ in
         docker-compose
         libreoffice
         pdfarranger
-        hplipWithPlugin # printer software
+       # hplipWithPlugin # printer software
         zotero # reference manager
         tex-fmt
         texlivePackages.latexcheat

@@ -4,13 +4,6 @@
   inputs = {
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
-
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-
-    # clan-core-upstream = {
-    #   url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
-    # };
-
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
       url = "path:/home/lhebendanz/Projects/clan-core";
@@ -20,11 +13,10 @@
       url = "git+https://git.clan.lol/Qubasa/vpn-benchmark";
     };
 
-    nixvim = {
+    nix-vscode-extensions = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nix-vscode-extensions";
     };
-
     nix-index-database = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";
@@ -115,7 +107,9 @@
               ./machines/wintux/configuration.nix
             ];
 
+            nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
             nixpkgs.hostPlatform = system;
+            nixpkgs.config.allowUnfree = true;
           };
         };
       };
