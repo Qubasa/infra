@@ -28,9 +28,9 @@ in
   };
 
   environment.etc."zshrc.local".text = ''
-      # Delay Atuin init until after zsh-vi-mode init to prevent overwriting of keybinds
-      eval "$(${lib.getExe patch_atuin} init zsh --disable-up-arrow)"
-      eval "$(${lib.getExe pkgs.zoxide} init zsh)"
+    # Delay Atuin init until after zsh-vi-mode init to prevent overwriting of keybinds
+    eval "$(${lib.getExe patch_atuin} init zsh --disable-up-arrow)"
+    eval "$(${lib.getExe pkgs.zoxide} init zsh)"
   '';
 
   programs.zsh = {
@@ -56,7 +56,6 @@ in
 
     syntaxHighlighting.enable = true;
 
-  
     enableCompletion = false; # slows down session start when enabled
     autosuggestions = {
       enable = true;

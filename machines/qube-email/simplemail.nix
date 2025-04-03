@@ -87,9 +87,9 @@
     enableManageSieve = true;
 
     virusScanning = false;
-    rebootAfterKernelUpgrade.enable = true;
-
   };
+
+  system.autoUpgrade.allowReboot = true;
 
   systemd.watchdog.runtimeTime = "5m";
   systemd.watchdog.rebootTime = "15m";

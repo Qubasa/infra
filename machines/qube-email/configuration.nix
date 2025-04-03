@@ -1,4 +1,5 @@
 {
+  config,
   flakeInputs,
   clan-core,
   pkgs,
@@ -18,7 +19,6 @@
   ];
 
   networking.domain = "dark";
-
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;
@@ -57,6 +57,18 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  users.users."admin" = {
+    isNormalUser = true;
+    openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
+    extraGroups = [ "wheel" ];
+  };
+
+  security.sudo.wheelNeedsPassword = false;
+  nix.settings.trusted-users = [
+    "@wheel"
+    "root"
+  ];
+
   environment.systemPackages = with pkgs; [
     # Add packages you want to install here
     # e.g. vim
@@ -67,7 +79,7 @@
   ];
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  clan.core.networking.targetHost = pkgs.lib.mkDefault "root@qube.email";
+  clan.core.networking.targetHost = "admin@qube.email";
   clan.core.networking.buildHost = "root@127.0.0.1";
 
   # IMPORTANT! Add your SSH key here
