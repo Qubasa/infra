@@ -20,9 +20,10 @@
         ms-vscode-remote.remote-ssh
         eamodio.gitlens
         rust-lang.rust-analyzer
-        continue.continue
-
-      ];
+      ] ++ (with pkgs.vscode-marketplace-release; [
+          github.copilot
+          github.copilot-chat        
+      ]);
     })
   ];
 }
