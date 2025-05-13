@@ -11,7 +11,15 @@
       }
     },
     "demo": {
-      "name": "demo"
+      "name": "demo",
+      "description": null,
+      "tags": [
+        "all",
+        "nixos"
+      ],
+      "deploy": {
+        "targetHost": "root@192.168.122.86"
+      }
     },
     "gchq-local": {
       "name": "gchq-local"
