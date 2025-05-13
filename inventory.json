@@ -17,10 +17,15 @@
       "name": "gchq-local"
     },
     "qube-email": {
-      "name": "qube-email"
-    },
-    "test": {
-      "name": "test"
+      "name": "qube-email",
+      "description": null,
+      "tags": [
+        "all",
+        "nixos"
+      ],
+      "deploy": {
+        "targetHost": "root@qube.email"
+      }
     }
   },
   "services": {
