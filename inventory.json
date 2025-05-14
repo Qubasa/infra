@@ -18,7 +18,7 @@
         "nixos"
       ],
       "deploy": {
-        "targetHost": "root@192.168.122.86"
+        "targetHost": "root@192.168.122.87"
       }
     },
     "gchq-local": {
