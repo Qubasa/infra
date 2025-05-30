@@ -1,38 +1,8 @@
 {
   "machines": {
-    "wintux": {
-      "name": "wintux",
-      "tags": [
-        "all"
-      ],
-      "description": null,
-      "deploy": {
-        "targetHost": "root@127.0.0.1"
-      }
-    },
     "demo": {
-      "name": "demo",
-      "description": null,
-      "tags": [
-        "all",
-        "nixos"
-      ],
       "deploy": {
         "targetHost": "root@192.168.122.86"
-      }
-    },
-    "gchq-local": {
-      "name": "gchq-local"
-    },
-    "qube-email": {
-      "name": "qube-email",
-      "description": null,
-      "tags": [
-        "all",
-        "nixos"
-      ],
-      "deploy": {
-        "targetHost": "root@qube.email"
       }
     }
   },
