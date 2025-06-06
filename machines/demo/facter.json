@@ -1333,6 +1333,7 @@
           "/dev/disk/by-path/pci-0000:00:1f.2-ata-1",
           "/dev/disk/by-path/pci-0000:00:1f.2-ata-1.0",
           "/dev/disk/by-uuid/1980-01-01-00-00-00-00",
+          "/dev/root",
           "/dev/sr0"
         ],
         "unix_device_name2": "/dev/sg0",
@@ -1497,9 +1498,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 0,
         "siblings": 1,
@@ -1658,9 +1660,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 1,
         "siblings": 1,
@@ -1819,9 +1822,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 2,
         "siblings": 1,
@@ -1980,9 +1984,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 3,
         "siblings": 1,
@@ -2141,9 +2146,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 4,
         "siblings": 1,
@@ -2302,9 +2308,10 @@
           "spectre_v1",
           "spectre_v2",
           "spec_store_bypass",
+          "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.98,
+        "bogo": 3999.94,
         "cache": 512,
         "physical_id": 5,
         "siblings": 1,
@@ -2530,7 +2537,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.23 xhci-hcd",
+          "name": "Linux 6.14.5 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2540,11 +2547,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "6.12",
+          "name": "6.14",
           "value": 0
         },
         "serial": "0000:02:00.0",
-        "model": "Linux 6.12.23 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.14.5 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb1/1-0:1.0",
         "sysfs_bus_id": "1-0:1.0",
         "resources": [
@@ -2588,7 +2595,7 @@
         "drivers": [
           "hub"
         ],
-        "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
+        "module_alias": "usb:v1D6Bp0002d0614dc09dsc00dp01ic09isc00ip00in00"
       },
       {
         "index": 46,
@@ -2613,7 +2620,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.23 xhci-hcd",
+          "name": "Linux 6.14.5 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2623,11 +2630,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "6.12",
+          "name": "6.14",
           "value": 0
         },
         "serial": "0000:02:00.0",
-        "model": "Linux 6.12.23 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.14.5 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb2/2-0:1.0",
         "sysfs_bus_id": "2-0:1.0",
         "detail": {
@@ -2661,7 +2668,7 @@
         "drivers": [
           "hub"
         ],
-        "module_alias": "usb:v1D6Bp0003d0612dc09dsc00dp03ic09isc00ip00in00"
+        "module_alias": "usb:v1D6Bp0003d0614dc09dsc00dp03ic09isc00ip00in00"
       }
     ],
     "memory": [
@@ -2686,7 +2693,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 8203632640,
+            "range": 8203325440,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"
@@ -3627,7 +3634,7 @@
           },
           {
             "type": "irq",
-            "base": 59,
+            "base": 57,
             "triggered": 0,
             "enabled": true
           },
@@ -3645,7 +3652,7 @@
           "command": 1287,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 59,
+          "irq": 57,
           "prog_if": 1
         },
         "driver": "ahci",

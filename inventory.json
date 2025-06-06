@@ -4,6 +4,11 @@
       "deploy": {
         "targetHost": "root@192.168.122.86"
       }
+    },
+    "qube-email": {
+      "deploy": {
+        "targetHost": "root@qube.email"
+      }
     }
   },
   "services": {

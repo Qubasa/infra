@@ -6,56 +6,58 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    # ./hardware-configuration.nix
     ../../modules/shared.nix
     ./disko.nix
+    clan-core.clanModules.sshd
     clan-core.clanModules.trusted-nix-caches
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.machine-id
-    clan-core.clanModules.iwd
+    # clan-core.clanModules.iwd
     # # === Demo 1 === ##
-    clan-core.clanModules.dyndns
+    # clan-core.clanModules.dyndns
     # # === Demo 2 === ##
     # inputs.data-mesher.nixosModules.data-mesher
     # # === Demo 3 === ##
     # clan-core.clanModules.matrix-synapse
   ];
 
-  clan.iwd.networks = {
-    "testnet" = {
-      AutoConnect = true;
-    };
-  };
+  hardware.graphics.enable = true;
+  # clan.iwd.networks = {
+  #   "testnet" = {
+  #     AutoConnect = true;
+  #   };
+  # };
 
-  disko.devices.disk.main.device = "/dev/sda";
+  disko.devices.disk.main.device = "/dev/vda";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  # clan.core.networking.targetHost = pkgs.lib.mkDefault "root@157.90.21.116";
+  clan.core.networking.targetHost = "root@192.168.122.87";
 
-  ## === Demo 1 === ##
-  clan.nginx.acme.email = "demo@qube.email";
-  clan.dyndns = {
-    server = {
-      enable = true;
-      domain = "demo.gchq.icu";
-    };
-    settings = {
-      "demo.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "demo";
-        };
-      };
-      "matrix.demo.gchq.icu" = {
-        provider = "namecheap";
-        domain = "gchq.icu";
-        extraSettings = {
-          host = "matrix.demo";
-        };
-      };
-    };
-  };
+  # === Demo 1 === ##
+  # clan.nginx.acme.email = "demo@qube.email";
+  # clan.dyndns = {
+  #   server = {
+  #     enable = true;
+  #     domain = "demo.gchq.icu";
+  #   };
+  #   settings = {
+  #     "demo.gchq.icu" = {
+  #       provider = "namecheap";
+  #       domain = "gchq.icu";
+  #       extraSettings = {
+  #         host = "demo";
+  #       };
+  #     };
+  #     "matrix.demo.gchq.icu" = {
+  #       provider = "namecheap";
+  #       domain = "gchq.icu";
+  #       extraSettings = {
+  #         host = "matrix.demo";
+  #       };
+  #     };
+  #   };
+  # };
 
   ## === Demo 2 === ##
   # networking.domain = "dark";

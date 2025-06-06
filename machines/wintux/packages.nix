@@ -5,17 +5,12 @@
   ...
 }:
 
-let
-  my_chromium = pkgs.chromium.override {
-    enableWideVine = true;
-  };
-in
 {
 
   # Printing
   services.printing = {
     enable = true;
-    #  drivers = [ pkgs.hplipWithPlugin ];
+     drivers = [ pkgs.hplipWithPlugin ];
   };
   services.avahi = {
     enable = true;
@@ -34,21 +29,7 @@ in
   programs.nix-ld.enable = true;
   services.envfs.enable = true;
 
-  programs.chromium.enable = true;
-  programs.firefox = {
-    enable = true;
-    languagePacks = [
-      "de"
-      "en-US"
-    ];
-    policies = {
-      DisableTelemetry = true;
-      DontCheckDefaultBrowser = true;
-      DisableFirefoxStudies = true;
-      DisableFirefoxAccounts = true;
-    };
-    package = pkgs.firefox-beta-bin;
-  };
+  # programs.chromium.enable = true;
   programs.thunderbird = {
     enable = true;
     policies = {
@@ -75,8 +56,8 @@ in
     with pkgs;
     # Web tools
     [
-      my_chromium
       signal-desktop
+      brave
     ]
     ++
       # Office tools
@@ -87,7 +68,7 @@ in
         docker-compose
         libreoffice
         pdfarranger
-        # hplipWithPlugin # printer software
+        hplipWithPlugin # printer software
         zotero # reference manager
         tex-fmt
         texlivePackages.latexcheat

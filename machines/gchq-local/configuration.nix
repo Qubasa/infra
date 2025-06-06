@@ -1,6 +1,7 @@
 {
   config,
   clan-core,
+  lib,
   pkgs,
   ...
 }:
@@ -27,6 +28,7 @@ in
     clan-core.clanModules.vaultwarden
     clan-core.clanModules.heisenbridge
     clan-core.clanModules.trusted-nix-caches
+    # clan-core.clanModules.borgbackup
     clan-core.clanModules.zerotier-static-peers
   ];
 
@@ -85,6 +87,9 @@ in
     };
   };
 
+  # FIXME: Building ddns-updater with devshell / nix sandbox breaks the package
+  # however same revision but manual build works. I just uploaded the manual build here
+  systemd.services.dyndns.serviceConfig.ExecStart = lib.mkForce "/var/lib/dyndns/ddns-updater";
   clan.dyndns =
     let
       generateConfig = host: {
@@ -105,6 +110,7 @@ in
         enable = true;
         domain = "home.gchq.icu";
       };
+      period = 15;
       settings = {
         "gchq.icu" = generateConfig "@";
         "home.gchq.icu" = generateConfig "home";

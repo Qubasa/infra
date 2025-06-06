@@ -1,12 +1,14 @@
 {
-  description = "Qubasa's cLAN";
+  description = "Qubasa's cLANs";
 
-  inputs = {
+   inputs = {
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
+      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/kenji/clan-core/archive/ke-vaultwarden-migrate-to-vars.zip";
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip";
-      url = "path:/home/lhebendanz/Projects/clan-core";
+      # url = "path:/home/lhebendanz/Projects/clan-core";
     };
 
     vpn-bench = {
@@ -137,6 +139,7 @@
           packages = [
             pkgs.python3
             pkgs.mkpasswd
+            inputs.clan-core.packages.x86_64-linux.clan-cli
           ];
           shellHook = ''
             export GIT_ROOT="$(git rev-parse --show-toplevel)"
@@ -146,3 +149,4 @@
       );
     };
 }
+

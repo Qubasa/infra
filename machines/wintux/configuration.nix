@@ -111,8 +111,17 @@
   services.userborn.enable = true;
 
   nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes auto-allocate-uids cgroups
+    '';
     settings = {
       auto-optimise-store = true;
+      auto-allocate-uids = true;
+
+      system-features = [
+        "nixos-test"
+        "uid-range"        
+      ];
     };
     gc.automatic = true;
     gc.dates = "daily";
