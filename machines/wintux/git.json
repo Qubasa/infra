@@ -1,0 +1,57 @@
+{
+  "user": {
+    "name": "Qubasa",
+    "email": "consulting@qube.email"
+  },
+  "core": {
+    "editor": "code --wait",
+    "autocrlf": "input",
+    "fsmonitor": true
+  },
+  "init": {
+    "defaultBranch": "main"
+  },
+  "pull": {
+    "rebase": true
+  },
+  "fetch": {
+    "prune": true
+  },
+  "push": {
+    "autoSetupRemote": true
+  },
+  "color": {
+    "ui": "auto"
+  },
+  "alias": {
+    "st": "status -sb",
+    "co": "checkout",
+    "br": "branch",
+    "ci": "commit",
+    "lg": "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit",
+    "last": "log -1 HEAD",
+    "unstage": "reset HEAD --"
+  },
+  "diff": {
+    "tool": "difftastic",
+    "external": "dft --color=always --display=inline"
+  },
+  "difftool": {
+    "prompt": false,
+    "difftastic": {
+      "cmd": "dft \"$LOCAL\" \"$REMOTE\""
+    }
+  },
+  "merge": {
+    "tool": "mergegiraf",
+    "conflictstyle": "diff3"
+  },
+  "mergetool": {
+    "prompt": false,
+    "keepBackup": false,
+    "mergegiraf": {
+      "cmd": "mergegiraf --base \"$BASE\" --local \"$LOCAL\" --remote \"$REMOTE\" --output \"$MERGED\"",
+      "trustExitCode": true
+    }
+  }
+}

@@ -91,6 +91,7 @@
         nixd
         radare2
         mergiraf
+        difftastic
       ]
     ++
       # Virtualization and Remote Desktop
