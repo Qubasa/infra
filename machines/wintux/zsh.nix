@@ -43,6 +43,7 @@ in
       diff = "colordiff";
       c = "wl-copy";
       v = "wl-paste";
+      brave-browser = "brave";
     };
 
     # With Oh-My-Zsh:

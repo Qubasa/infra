@@ -9,12 +9,10 @@
 {
   imports = [
     clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.iwd
     clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.user-password
     flakeInputs.chrome-pwa.nixosModule
     flakeInputs.nix-index-database.nixosModules.nix-index
-    ./hardware-configuration.nix
     ../../modules/backups.nix
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix

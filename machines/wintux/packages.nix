@@ -42,6 +42,11 @@
     settings = builtins.fromJSON (builtins.readFile ./lazygit.json);
   };
 
+  programs.git = {
+    enable = true;
+    config = builtins.fromJSON (builtins.readFile ./git.json);
+  };
+
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
@@ -85,6 +90,7 @@
         helix
         nixd
         radare2
+        mergiraf
       ]
     ++
       # Virtualization and Remote Desktop

@@ -4,6 +4,9 @@
     networking.dhcpcd.enable = false;
     networking.nameservers = [ "127.0.0.1" ];
     networking.hostId = lib.mkDefault "8425e349";
+    services.resolved = {
+      enable = true;
+    };
 
     services.tailscale = {
       enable = true;
