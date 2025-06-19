@@ -1,7 +1,7 @@
 {
   description = "Qubasa's cLANs";
 
-   inputs = {
+  inputs = {
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
@@ -84,6 +84,16 @@
             "disk-id"."instance1" = {
               roles.default.machines = [ "wintux" ];
             };
+
+            zerotier.default = {
+              roles.controller.machines = [
+                "gchq-local"
+              ];
+              roles.peer.machines = [
+                "wintux"
+                "qube-email"
+              ];
+            };
           };
         };
 
@@ -149,4 +159,3 @@
       );
     };
 }
-

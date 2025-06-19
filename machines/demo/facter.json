@@ -1501,7 +1501,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 0,
         "siblings": 1,
@@ -1663,7 +1663,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 1,
         "siblings": 1,
@@ -1825,7 +1825,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 2,
         "siblings": 1,
@@ -1987,7 +1987,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 3,
         "siblings": 1,
@@ -2149,7 +2149,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 4,
         "siblings": 1,
@@ -2311,7 +2311,7 @@
           "srso",
           "ibpb_no_ret"
         ],
-        "bogo": 3999.94,
+        "bogo": 3999.96,
         "cache": 512,
         "physical_id": 5,
         "siblings": 1,
@@ -2693,7 +2693,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 8203325440,
+            "range": 8203333632,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"

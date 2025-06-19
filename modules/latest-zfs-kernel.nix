@@ -41,12 +41,13 @@ let
     else if kernelCount == 1 then
       # Only one compatible kernel - use it (it's the latest and only option)
       lib.warn "Only one ZFS-compatible kernel found, using the latest." # Add if needed
-      lib.last sortedKernelPackageSets # or lib.elemAt sortedKernelPackageSets 0
+        lib.last
+        sortedKernelPackageSets # or lib.elemAt sortedKernelPackageSets 0
     else
       # At least two compatible kernels - select the second-to-last one.
       lib.last (lib.lists.init sortedKernelPackageSets)
-      # Alternative using index: lib.elemAt sortedKernelPackageSets (kernelCount - 2)
-    ;
+  # Alternative using index: lib.elemAt sortedKernelPackageSets (kernelCount - 2)
+  ;
 
 in
 {

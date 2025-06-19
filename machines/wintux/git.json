@@ -34,23 +34,23 @@
   },
   "diff": {
     "tool": "difftastic",
-    "external": "dft --color=always --display=inline"
+    "external": "difft --color=always --display=inline"
   },
   "difftool": {
     "prompt": false,
     "difftastic": {
-      "cmd": "dft \"$LOCAL\" \"$REMOTE\""
+      "cmd": "difft \"$LOCAL\" \"$REMOTE\""
     }
   },
   "merge": {
-    "tool": "mergegiraf",
+    "tool": "mergiraf",
     "conflictstyle": "diff3"
   },
   "mergetool": {
     "prompt": false,
     "keepBackup": false,
     "mergegiraf": {
-      "cmd": "mergegiraf --base \"$BASE\" --local \"$LOCAL\" --remote \"$REMOTE\" --output \"$MERGED\"",
+      "cmd": "mergiraf --base \"$BASE\" --local \"$LOCAL\" --remote \"$REMOTE\" --output \"$MERGED\"",
       "trustExitCode": true
     }
   }

@@ -12,7 +12,5 @@
       enable = true;
     };
 
-    services.zerotierone.joinNetworks = [
-    ];
   };
 }

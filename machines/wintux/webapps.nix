@@ -16,7 +16,12 @@
 
   services.nginx = {
     enable = true;
-    defaultListen = [ { addr = "localhost"; ssl=false;} ];
+    defaultListen = [
+      {
+        addr = "localhost";
+        ssl = false;
+      }
+    ];
     virtualHosts = {
       "openwebui.local" = {
         locations."/" = {

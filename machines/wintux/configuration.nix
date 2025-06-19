@@ -9,8 +9,8 @@
 {
   imports = [
     clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.user-password
+    clan-core.clanModules.iwd
     flakeInputs.chrome-pwa.nixosModule
     flakeInputs.nix-index-database.nixosModules.nix-index
     ../../modules/backups.nix
@@ -118,7 +118,7 @@
 
       system-features = [
         "nixos-test"
-        "uid-range"        
+        "uid-range"
       ];
     };
     gc.automatic = true;

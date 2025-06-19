@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
     ./simplemail.nix
     clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.zerotier-static-peers
     clan-core.clanModules.machine-id
     clan-core.clanModules.disk-id
     flakeInputs.simple-nixos-mailserver.nixosModule
