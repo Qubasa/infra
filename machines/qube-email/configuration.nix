@@ -1,7 +1,6 @@
 {
   config,
   flakeInputs,
-  clan-core,
   pkgs,
   ...
 }:
@@ -11,13 +10,12 @@
   imports = [
     ./hardware-configuration.nix
     ./simplemail.nix
-    clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.machine-id
-    clan-core.clanModules.disk-id
     flakeInputs.simple-nixos-mailserver.nixosModule
   ];
 
   networking.domain = "dark";
+
+  clan.core.settings.machine-id.enable = true;
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub.enable = true;

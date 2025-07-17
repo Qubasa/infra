@@ -21,7 +21,7 @@ in
     ./nextcloud.nix
     #./home-assistant.nix
     ../../modules/backups.nix
-    ../../modules/porkbun-wildcard-certs.nix
+    #../../modules/porkbun-wildcard-certs.nix
     clan-core.clanModules.user-password
     clan-core.clanModules.dyndns
     clan-core.clanModules.matrix-synapse
@@ -88,41 +88,33 @@ in
   # FIXME: Building ddns-updater with devshell / nix sandbox breaks the package
   # however same revision but manual build works. I just uploaded the manual build here
   systemd.services.dyndns.serviceConfig.ExecStart = lib.mkForce "/var/lib/dyndns/ddns-updater";
-  clan.dyndns =
-    let
-      generateConfig = host: {
+  clan.dyndns = {
+    server = {
+      enable = true;
+      domain = "home.gchq.icu";
+    };
+    period = 15;
+    settings = {
+      "all-gchq.icu" = {
         provider = "porkbun";
         domain = "gchq.icu";
         secret_field_name = "secret_api_key";
         extraSettings = {
-          host = host;
+          host = "@,element,gitea,home,bitwarden,cloud";
           ip_version = "ipv4";
           ipv6_suffix = "";
           # This is a pubkey. It is not a secret.
-          api_key = "pk1_49dcc3b4df71eaebe608d951aac06a13c23d932e3564b577c1232e5a257e2973";
+          api_key = "pk1_b0a5183f51a42c3459cdce3e58a4482c6696f417d6408035d19189c2b40425f1";
         };
       };
-    in
-    {
-      server = {
-        enable = true;
-        domain = "home.gchq.icu";
-      };
-      period = 15;
-      settings = {
-        "gchq.icu" = generateConfig "@";
-        "home.gchq.icu" = generateConfig "home";
-        "gitea.gchq.icu" = generateConfig "gitea";
-        "element.gchq.icu" = generateConfig "element";
-        "bitwarden.gchq.icu" = generateConfig "bitwarden";
-        "cloud.gchq.icu" = generateConfig "cloud";
-      };
-    };
 
-  clan.porkbun-wildcard-certs = {
-    porkbun_api_key = config.clan.dyndns.settings."gchq.icu".extraSettings.api_key;
-    porkbun_secret_generator = "dyndns-porkbun-gchq.icu";
+    };
   };
+
+  # clan.porkbun-wildcard-certs = {
+  #   porkbun_api_key = config.clan.dyndns.settings."gchq.icu".extraSettings.api_key;
+  #   porkbun_secret_generator = "dyndns-porkbun-gchq.icu";
+  # };
 
   # Automatically set timezone
   time.timeZone = null;

@@ -35,7 +35,6 @@
     };
     # mailerPasswordFile = config.sops.secrets.gchq-local-gitea-smtp.path;
     enable = true;
-    useWizard = false;
   };
 
   services.nginx = {

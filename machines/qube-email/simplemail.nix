@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -41,7 +41,8 @@
 
   security.acme.acceptTerms = true;
 
-  mailserver = rec {
+  mailserver = {
+    stateVersion = 3;
     enable = true;
     fqdn = "qube.email";
     domains = [ "qube.email" ];
@@ -75,7 +76,8 @@
 
     };
 
-    debug = false;
+    # debug = false;
+
     certificateScheme = "acme-nginx";
     dkimSelector = "mail";
     dkimSigning = true;
@@ -106,4 +108,16 @@
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
+  # 2. Add extra configuration directly to Postfix.
+  services.postfix.extraConfig =
+    let
+      submissionChecksFile = pkgs.writeText "submission_header_checks" ''
+        # This regular expression matches any "Received:" header and tells Postfix to IGNORE (delete) it.
+        /^Received: .*/ IGNORE
+      '';
+    in
+    ''
+      # Apply header checks only to mail coming through the submission service.
+      submission_header_checks = regexp:${submissionChecksFile}
+    '';
 }

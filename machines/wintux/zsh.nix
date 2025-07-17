@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 
 let
-
   patch_atuin = pkgs.callPackage ../../pkgs/atuin { };
 in
 {

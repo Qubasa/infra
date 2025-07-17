@@ -79,12 +79,14 @@
         texlivePackages.latexcheat
         texlivePackages.undergradmath
         texliveFull
+        converseen # image processor
       ]
     ++
       # Development Tools
       [
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
-        ghostty
+        # ghostty
+        devtoolbox
         rust-analyzer
         unstablePkgs.claude-code
         helix
@@ -107,7 +109,7 @@
         wl-clipboard
         git-lfs
         tmate
-        tmux
+        zellij
         delta
         pwgen
         fzf
@@ -132,7 +134,6 @@
         pika-backup
         fd
         ripgrep
-        ripgrep-all
         file
         p7zip
       ]
@@ -146,7 +147,8 @@
     ++
       # System Tools
       [
-        cheat
+        tldr
+        mission-center
         man-pages
         man-pages-posix
         patchelf

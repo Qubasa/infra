@@ -12,5 +12,9 @@
       enable = true;
     };
 
+    services.zerotierone.joinNetworks = [
+      "a9b4872919354736" # storinator01
+    ];
+
   };
 }

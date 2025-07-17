@@ -1,16 +1,12 @@
 {
-  flakeInputs,
-  clan-core,
-  pkgs,
   config,
+  flakeInputs,
+  pkgs,
   ...
 }:
 
 {
   imports = [
-    clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.user-password
-    clan-core.clanModules.iwd
     flakeInputs.chrome-pwa.nixosModule
     flakeInputs.nix-index-database.nixosModules.nix-index
     ../../modules/backups.nix
@@ -30,8 +26,6 @@
     # ./nvidia.nix
   ];
 
-  clan.user-password.user = "lhebendanz";
-
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";
@@ -49,17 +43,6 @@
   virtualisation.libvirtd.enable = true;
 
   services.chrome-pwa.enable = true;
-
-  users.users."${config.clan.user-password.user}" = {
-    extraGroups = [
-      "dialout" # for writing to serial
-      "wheel"
-      "networkmanager"
-      "docker"
-      "devices"
-    ];
-    shell = pkgs.zsh;
-  };
 
   security.sudo = {
     enable = true;
@@ -126,7 +109,6 @@
     gc.options = "--delete-older-than 30d";
     settings.trusted-users = [
       "@wheel"
-      config.clan.user-password.user
     ];
   };
 

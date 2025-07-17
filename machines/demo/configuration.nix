@@ -1,5 +1,4 @@
 {
-  clan-core,
   pkgs,
   ...
 }:
@@ -9,9 +8,9 @@
     # ./hardware-configuration.nix
     ../../modules/shared.nix
     ./disko.nix
-    clan-core.clanModules.sshd
-    clan-core.clanModules.trusted-nix-caches
-    clan-core.clanModules.machine-id
+    #clan-core.clanModules.sshd
+    # clan-core.clanModules.trusted-nix-caches
+    #clan-core.clanModules.machine-id
     # clan-core.clanModules.iwd
     # # === Demo 1 === ##
     # clan-core.clanModules.dyndns
@@ -31,7 +30,7 @@
   # disko.devices.disk.main.device = "/dev/vda";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  clan.core.networking.targetHost = "root@192.168.122.87";
+  clan.core.networking.targetHost = "root@192.168.122.86";
 
   # === Demo 1 === ##
   # clan.nginx.acme.email = "demo@qube.email";
