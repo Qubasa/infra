@@ -88,7 +88,7 @@
         # ghostty
         devtoolbox
         rust-analyzer
-        unstablePkgs.claude-code
+        claude-code
         helix
         nixd
         radare2
@@ -127,6 +127,7 @@
         wget
         curl
         ldns
+        nettools
       ]
     ++
       # File and Archive Utilities
@@ -148,7 +149,6 @@
       # System Tools
       [
         tldr
-        mission-center
         man-pages
         man-pages-posix
         patchelf

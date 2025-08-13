@@ -1,15 +1,15 @@
 { unstablePkgs, pkgs, ... }:
+
+let
+  vscode = unstablePkgs.vscode-with-extensions;
+in
 {
   environment.systemPackages = [
-    (unstablePkgs.vscode-with-extensions.override {
+    (vscode.override {
       vscodeExtensions =
         with pkgs.vscode-marketplace;
         [
           ms-python.python
-          # ms-toolsai.jupyter
-          # ms-toolsai.jupyter-keymap
-          # ms-toolsai.jupyter-renderers
-          # ms-toolsai.vscode-jupyter-slideshow
           llvm-vs-code-extensions.vscode-clangd
           yzhang.markdown-all-in-one
           jnoortheen.nix-ide
@@ -20,7 +20,7 @@
           matangover.mypy
           charliermarsh.ruff
           ms-vscode-remote.remote-ssh
-          # eamodio.gitlens
+          eamodio.gitlens
           rust-lang.rust-analyzer
         ]
         ++ (with pkgs.vscode-marketplace-release; [

@@ -30,7 +30,7 @@
   # disko.devices.disk.main.device = "/dev/vda";
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  clan.core.networking.targetHost = "root@192.168.122.86";
+  clan.core.networking.targetHost = "root@192.168.122.87";
 
   # === Demo 1 === ##
   # clan.nginx.acme.email = "demo@qube.email";

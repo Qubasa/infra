@@ -6,7 +6,9 @@
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
       #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      url = "https://git.clan.lol/Qubasa/clan-core/archive/migrate_away_buildClan.zip";
+      # url = "https://git.clan.lol/Qubasa/clan-core/archive/deploy_network.zip";
+      url = "https://git.clan.lol/Qubasa/clan-core/archive/networking_2.zip";
+      #url = "path:///home/lhebendanz/Projects/clan-core";
       # url = "path:/home/lhebendanz/Projects/clan-core";
     };
 
@@ -15,7 +17,6 @@
     # };
 
     nix-vscode-extensions = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-vscode-extensions";
     };
     nix-index-database = {
@@ -60,8 +61,8 @@
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
-      clan = inputs.clan-core.lib.buildClan {
-      #clan = inputs.clan-core.lib.clan {
+      clan = inputs.clan-core.lib.clan {
+
         inherit self;
         #directory = self;
         meta = {
@@ -92,19 +93,32 @@
                 all = { };
               };
             };
-            # internet = {
-            #   module = {
-            #     name = "internet";
-            #     input = "clan-core";
-            #   };
-            #   roles.default.settings = {
-            #     host = "root@192.168.122.86";
-            #   };
-            #   roles.default.machines = {
-            #     demo = { };
-            #   };
-            # };
+            internet = {
+              # module = {
+              #   name = "internet";
+              #  # input = "clan-core";
+              # };
+              roles.default.settings = {
+                host = "root@192.168.122.86";
+              };
+              roles.default.machines = {
+                demo = { };
+              };
+            };
 
+            tor = {
+              # module = {
+              #   name = "tor";
+              #   #input = "clan-core";
+              # };
+              roles.server.machines = {
+                # wintux = { };
+                demo = { };
+              };
+              # roles.client.machines = {
+              #   wintux = {};
+              # };
+            };
 
             user-root = {
               module = {
@@ -196,23 +210,23 @@
         };
 
         templates.disko = {
-        "single-disk" = {
-          description = "A simple ext4 disk with a single partition";
-          path = ./modules;
+          "single-disk" = {
+            description = "A simple ext4 disk with a single partition";
+            path = ./modules;
+          };
         };
-      };
       };
     in
     {
 
-      #inherit clan;
-      # all machines managed by cLAN
-      inherit (clan) nixosConfigurations clanInternals; 
-      # new
-      #inherit (clan.config) nixosConfigurations clanInternals;
-      #clan = clan.config;
+      inherit (clan.config) nixosConfigurations clanInternals;
+      clan = clan.config;
 
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
+      flake = {
+        myDirtyRev = self.sourceInfo.dirtyRev;
+      };
 
       checks = eachSystem (pkgs: {
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
@@ -225,7 +239,7 @@
             pkgs.python3
             pkgs.python3Packages.argcomplete
             pkgs.mkpasswd
-            #inputs.clan-core.packages.x86_64-linux.clan-cli
+            # inputs.clan-core.packages.x86_64-linux.clan-cli
           ];
           shellHook = ''
             export GIT_ROOT="$(git rev-parse --show-toplevel)"
