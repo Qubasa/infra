@@ -1,8 +1,6 @@
 {
   "machines": {
-    "demo": {
-      "installedAt": 1756815834
-    },
+    "demo": {},
     "gchq-local": {
       "installedAt": 1756814302
     },
@@ -21,6 +19,7 @@
       }
     },
     "Papa": {
+      "installedAt": 1756814302,
       "deploy": {
         "targetHost": ""
       },
