@@ -1,6 +1,8 @@
 {
   "machines": {
-    "demo": {},
+    "demo": {
+      "installedAt": 1756830201
+    },
     "gchq-local": {
       "installedAt": 1756814302
     },
