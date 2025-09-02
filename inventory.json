@@ -8,6 +8,13 @@
         "targetHost": ""
       },
       "description": ""
+    },
+    "Mama": {
+      "machineClass": "darwin",
+      "description": "",
+      "deploy": {
+        "targetHost": ""
+      }
     }
   }
 }
