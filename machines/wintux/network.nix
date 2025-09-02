@@ -14,6 +14,7 @@
 
     services.zerotierone.joinNetworks = [
       "a9b4872919354736" # storinator01
+      "8cf9e05d03205934" # test-clan: jon
     ];
 
   };

@@ -5,9 +5,9 @@
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
-      #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      url = "https://git.clan.lol/Qubasa/clan-core/archive/demo.zip";
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/deploy_network.zip";
-      url = "https://git.clan.lol/Qubasa/clan-core/archive/networking_2.zip";
+      # url = "https://git.clan.lol/Qubasa/clan-core/archive/networking_2.zip";
       #url = "path:///home/lhebendanz/Projects/clan-core";
       # url = "path:/home/lhebendanz/Projects/clan-core";
     };
@@ -62,125 +62,13 @@
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       clan = inputs.clan-core.lib.clan {
+        imports = [ ./clan.nix ];
 
         inherit self;
-        #directory = self;
-        meta = {
-          name = "Qubasas_Clan"; # Ensure this is internet wide unique.
-        };
 
         specialArgs = {
           flakeInputs = inputs;
           inherit unstablePkgs;
-        };
-
-        # Testing the inventory
-        inventory = {
-          machines = {
-            wintux = {
-              name = "wintux";
-            };
-          };
-          instances = {
-            sshd = {
-              roles.server.tags = {
-                all = { };
-              };
-            };
-
-            trusted-nix-caches = {
-              roles.default.tags = {
-                all = { };
-              };
-            };
-            internet = {
-              # module = {
-              #   name = "internet";
-              #  # input = "clan-core";
-              # };
-              roles.default.settings = {
-                host = "root@192.168.122.86";
-              };
-              roles.default.machines = {
-                demo = { };
-              };
-            };
-
-            tor = {
-              # module = {
-              #   name = "tor";
-              #   #input = "clan-core";
-              # };
-              roles.server.machines = {
-                # wintux = { };
-                demo = { };
-              };
-              # roles.client.machines = {
-              #   wintux = {};
-              # };
-            };
-
-            user-root = {
-              module = {
-                name = "users";
-                input = "clan-core";
-              };
-              roles.default.settings = {
-                user = "root";
-              };
-              roles.default.tags = {
-                all = { };
-              };
-            };
-            user-lhebendanz =
-              let
-                username = "lhebendanz";
-              in
-              {
-                module = {
-                  name = "users";
-                  input = "clan-core";
-                };
-                roles.default.machines = {
-                  wintux = { };
-                };
-                roles.default.settings = {
-                  user = username;
-                  groups = [
-                    "dialout" # for writing to serial
-                    "wheel"
-                    "networkmanager"
-                    "docker"
-                    "devices"
-                  ];
-                };
-                roles.default.extraModules = [
-                  # # FIXME: This doesn't work
-                  # (
-                  #   { pkgs, settings, ... }:
-                  #   {
-                  #     users.users."${username}".shell = pkgs.zsh;
-                  #   }
-                  # )
-                  ./users/lhebendanz.nix
-                ];
-              };
-          };
-          services = {
-            # "disk-id"."instance1" = {
-            #   roles.default.machines = [ "wintux" ];
-            # };
-
-            zerotier.default = {
-              roles.controller.machines = [
-                "gchq-local"
-              ];
-              roles.peer.machines = [
-                "wintux"
-                "qube-email"
-              ];
-            };
-          };
         };
 
         machines = {
@@ -202,10 +90,7 @@
             imports = [
               ./modules/shared.nix
             ];
-
-            nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
             nixpkgs.hostPlatform = system;
-            nixpkgs.config.allowUnfree = true;
           };
         };
 

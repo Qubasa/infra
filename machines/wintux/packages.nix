@@ -1,7 +1,7 @@
 {
-  unstablePkgs,
   config,
   pkgs,
+  flakeInputs,
   ...
 }:
 
@@ -57,6 +57,8 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ flakeInputs.nix-vscode-extensions.overlays.default ];
+
   environment.systemPackages =
     with pkgs;
     # Web tools

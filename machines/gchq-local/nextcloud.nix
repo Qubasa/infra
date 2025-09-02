@@ -54,14 +54,14 @@ rec {
   # $ DROP DATABASE nextcloud;
   # Afterwards disable and enable postgresql
   # to ensure the nextcloud table is created
-  clan.postgresql.databases.nextcloud.create.options = {
+  clan.core.postgresql.databases.nextcloud.create.options = {
     TEMPLATE = "template0";
     LC_COLLATE = "C";
     LC_CTYPE = "C";
     ENCODING = "UTF8";
     OWNER = "nextcloud";
   };
-  clan.postgresql.databases.nextcloud.restore.stopOnRestore = [ "phpfpm-nextcloud" ];
+  clan.core.postgresql.databases.nextcloud.restore.stopOnRestore = [ "phpfpm-nextcloud" ];
 
   services.nginx.virtualHosts.${services.nextcloud.hostName} = {
     enableACME = true;
