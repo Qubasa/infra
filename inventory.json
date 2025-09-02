@@ -2,6 +2,12 @@
   "machines": {
     "demo": {
       "installedAt": 1756814302
+    },
+    "Papa": {
+      "deploy": {
+        "targetHost": ""
+      },
+      "description": ""
     }
   }
 }
