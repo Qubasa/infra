@@ -6,10 +6,6 @@
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
       url = "https://git.clan.lol/Qubasa/clan-core/archive/demo.zip";
-      # url = "https://git.clan.lol/Qubasa/clan-core/archive/deploy_network.zip";
-      # url = "https://git.clan.lol/Qubasa/clan-core/archive/networking_2.zip";
-      #url = "path:///home/lhebendanz/Projects/clan-core";
-      # url = "path:/home/lhebendanz/Projects/clan-core";
     };
 
     # vpn-bench = {
