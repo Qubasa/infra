@@ -24,27 +24,8 @@
       },
       "machineClass": "darwin",
       "description": "Johanne's work machine"
-    },
-    "kinhub": {
-      "tags": [
-        "family"
-      ],
-      "installedAt": 1756910657
     }
   },
   "instances": {
-    "monitoring": {
-      "roles": {
-        "telegraf": {
-          "tags": {},
-          "machines": {
-            "kinhub": {}
-          }
-        }
-      },
-      "module": {
-        "name": "monitoring"
-      }
-    }
   }
 }
