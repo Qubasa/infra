@@ -1,8 +1,5 @@
 {
   "machines": {
-    "demo": {
-      "installedAt": 1756830608
-    },
     "gchq-local": {
       "installedAt": 1756814302
     },
@@ -30,18 +27,5 @@
     }
   },
   "instances": {
-    "monitoring": {
-      "roles": {
-        "telegraf": {
-          "machines": {
-            "demo": {}
-          },
-          "tags": {}
-        }
-      },
-      "module": {
-        "name": "monitoring"
-      }
-    }
   }
 }

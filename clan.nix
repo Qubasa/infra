@@ -62,11 +62,7 @@
     };
 
     internet = {
-      module = {
-        name = "internet";
-        input = "clan-core";
-      };
-      roles.default.machines.demo.settings.host = "root@192.168.122.87";
+      roles.default.machines.demo.settings.host = "root@192.168.122.67";
       roles.default.machines.wintux.settings.host = "root@127.0.0.1";
       roles.default.machines.gchq-local.settings.host = "root@home.gchq.icu";
       roles.default.machines.qube-email.settings.host = "root@qube.email";
