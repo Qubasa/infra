@@ -88,18 +88,18 @@
       };
     };
 
-    user-root = {
-      module = {
-        name = "users";
-        input = "clan-core";
-      };
-      roles.default.settings = {
-        user = "root";
-      };
-      roles.default.tags = {
-        all = { };
-      };
-    };
+    # user-root = {
+    #   module = {
+    #     name = "users";
+    #     input = "clan-core";
+    #   };
+    #   roles.default.settings = {
+    #     user = "root";
+    #   };
+    #   roles.default.tags = {
+    #     all = { };
+    #   };
+    # };
     user-lhebendanz =
       let
         username = "lhebendanz";
