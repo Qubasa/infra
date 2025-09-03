@@ -24,8 +24,12 @@
       },
       "machineClass": "darwin",
       "description": "Johanne's work machine"
+    },
+    "kinhub": {
+      "tags": [
+        "family"
+      ]
     }
   },
-  "instances": {
-  }
+  "instances": {}
 }
