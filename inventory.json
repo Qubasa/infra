@@ -31,5 +31,19 @@
       ]
     }
   },
-  "instances": {}
+  "instances": {
+    "monitoring": {
+      "roles": {
+        "telegraf": {
+          "tags": {},
+          "machines": {
+            "kinhub": {}
+          }
+        }
+      },
+      "module": {
+        "name": "monitoring"
+      }
+    }
+  }
 }
