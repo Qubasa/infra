@@ -26,7 +26,10 @@
         "targetHost": ""
       },
       "machineClass": "darwin",
-      "description": "Johanne's work machine"
+      "description": "Johanne's work machine",
+      "tags": [
+        "family"
+      ]
     },
     "kinhub": {
       "tags": [
