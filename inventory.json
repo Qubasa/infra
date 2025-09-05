@@ -15,7 +15,10 @@
       "description": "",
       "deploy": {
         "targetHost": ""
-      }
+      },
+      "tags": [
+        "family"
+      ]
     },
     "Papa": {
       "installedAt": 1756814302,
