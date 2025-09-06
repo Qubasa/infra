@@ -30,8 +30,12 @@
       "tags": [
         "family"
       ]
+    },
+    "kinhub": {
+      "tags": [
+        "family"
+      ]
     }
   },
-  "instances": {
-  }
+  "instances": {}
 }
