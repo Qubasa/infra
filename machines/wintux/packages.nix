@@ -18,6 +18,9 @@
     openFirewall = true;
   };
 
+  # sysdig debugging tool
+  programs.sysdig.enable = true;
+
   programs.nix-index = {
     enable = true;
     enableZshIntegration = false;
