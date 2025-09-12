@@ -37,5 +37,19 @@
       ]
     }
   },
-  "instances": {}
+  "instances": {
+    "monitoring": {
+      "roles": {
+        "telegraf": {
+          "machines": {
+            "kinub": {}
+          },
+          "tags": {}
+        }
+      },
+      "module": {
+        "name": "monitoring"
+      }
+    }
+  }
 }
