@@ -18,6 +18,13 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
     uv2nix = {
       url = "github:pyproject-nix/uv2nix";
       # inputs.pyproject-nix.follows = "pyproject-nix";

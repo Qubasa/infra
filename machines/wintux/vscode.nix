@@ -20,7 +20,6 @@ in
           matangover.mypy
           charliermarsh.ruff
           ms-vscode-remote.remote-ssh
-          eamodio.gitlens
           rust-lang.rust-analyzer
         ]
         ++ (with pkgs.vscode-marketplace-release; [
