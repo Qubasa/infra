@@ -34,7 +34,7 @@
   },
   "diff": {
     "tool": "difftastic",
-    "external": "difft --color=always --display=inline"
+    "external": "difft"
   },
   "difftool": {
     "prompt": false,
@@ -43,15 +43,10 @@
     }
   },
   "merge": {
-    "tool": "mergiraf",
-    "conflictstyle": "diff3"
-  },
-  "mergetool": {
-    "prompt": false,
-    "keepBackup": false,
-    "mergegiraf": {
-      "cmd": "mergiraf --base \"$BASE\" --local \"$LOCAL\" --remote \"$REMOTE\" --output \"$MERGED\"",
-      "trustExitCode": true
+    "conflictstyle": "diff3",
+    "mergiraf": {
+      "name": "mergiraf",
+      "driver": "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L"
     }
   }
 }

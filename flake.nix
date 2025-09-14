@@ -13,6 +13,17 @@
     #   url = "git+https://git.clan.lol/Qubasa/vpn-benchmark";
     # };
 
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      # inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };

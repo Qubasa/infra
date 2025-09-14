@@ -1,0 +1,16 @@
+[project]
+name = "pexpect-mcp"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "pexpect>=4.9.0",
+    "mcp",
+    "pygments>=2.0.0",
+]
+
+[project.scripts]
+pexpect-mcp = "pexpect_mcp.server:run"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

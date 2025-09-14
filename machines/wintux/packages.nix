@@ -5,6 +5,11 @@
   ...
 }:
 
+let
+
+  pexpect-mcp = pkgs.python3.pkgs.callPackage ../../pkgs/pexpect-mcp { };
+  my-claude-code = pkgs.callPackage ../../pkgs/claude-code { pexpect-mcp = pexpect-mcp; };
+in
 {
 
   # Printing
@@ -18,8 +23,11 @@
     openFirewall = true;
   };
 
-  # sysdig debugging tool
+  # sysdig debugging tool -> gets stderr from all processes
   programs.sysdig.enable = true;
+
+  # trace the kernel calls of a program
+  programs.bcc.enable = true;
 
   programs.nix-index = {
     enable = true;
@@ -32,7 +40,6 @@
   programs.nix-ld.enable = true;
   services.envfs.enable = true;
 
-  # programs.chromium.enable = true;
   programs.thunderbird = {
     enable = true;
     policies = {
@@ -90,15 +97,21 @@
       # Development Tools
       [
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
-        # ghostty
+        ghostty
         devtoolbox
         rust-analyzer
-        claude-code
+        my-claude-code
+        nix-init # init nix packages in a directory
         helix
         nixd
         radare2
         mergiraf
         difftastic
+        ast-grep # code search and replace
+        shellcheck-minimal
+        pueue # daemon to manage long running shell tasks
+        gh # github cli
+        tea # gitea cli
       ]
     ++
       # Virtualization and Remote Desktop
@@ -114,7 +127,7 @@
         wl-clipboard
         git-lfs
         tmate
-        zellij
+        zellij # tmux alternative
         delta
         pwgen
         fzf
@@ -131,8 +144,9 @@
         wireshark
         wget
         curl
-        ldns
+        dnsutils
         nettools
+        lsof # list open files
       ]
     ++
       # File and Archive Utilities
@@ -149,6 +163,8 @@
         gnupg
         bitwarden
         bitwarden-cli
+        rbw # Bitwarden cli alternative
+        pinentry # rbw dependency
       ]
     ++
       # System Tools
