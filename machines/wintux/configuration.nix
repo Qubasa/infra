@@ -10,6 +10,7 @@
     flakeInputs.nix-index-database.nixosModules.nix-index
     ../../modules/backups.nix
     ../../modules/wallpaper
+    ../../modules/claude-code-gpt5
     ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
     ./webapps.nix
@@ -29,6 +30,8 @@
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";
   };
+
+  services.claude-code-gpt5.enable = true;
 
   nix = {
     package = pkgs.nixVersions.latest;
