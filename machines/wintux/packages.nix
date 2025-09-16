@@ -5,20 +5,7 @@
   ...
 }:
 
-let
 
-  pexpect-mcp = pkgs.python3.pkgs.callPackage ../../pkgs/pexpect-mcp { };
-  claude-code-gpt5 = pkgs.callPackage ../../pkgs/claude-code-gpt5 {
-    uv2nix = flakeInputs.uv2nix;
-    pyproject-nix = flakeInputs.pyproject-nix;
-    python312 = pkgs.python312;
-    pyproject-build-systems = flakeInputs.pyproject-build-systems;
-  };
-  my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
-    inherit pexpect-mcp;
-    inherit claude-code-gpt5;
-  };
-in
 {
 
   # Printing
@@ -109,7 +96,6 @@ in
         ghostty
         devtoolbox
         rust-analyzer
-        my-claude-code
         nix-init # init nix packages in a directory
         helix
         nixd

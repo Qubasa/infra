@@ -7,14 +7,8 @@
   pyproject-build-systems,
   python312,
 }:
-
 let
-  src = fetchFromGitHub {
-    owner = "teremterem";
-    repo = "claude-code-gpt-5";
-    rev = "HEAD"; # Replace with specific commit or tag
-    sha256 = "sha256-FcfunV5I6ZnNv04CAJhIVYAALYOdHyZaIZnyZIK34ms=";
-  };
+  src = lib.cleanSource ./claude-code-gpt-5-main;
 
   # Load workspace
   workspace = uv2nix.lib.workspace.loadWorkspace {
@@ -55,10 +49,46 @@ let
       );
 
   # Package a virtual environment
-  claude-code-gpt-5-env = pythonSet.mkVirtualEnv "claude-code-gpt-5" workspace.deps.default;
+  claude_code_gpt_5_env = pythonSet.mkVirtualEnv "claude-code-gpt-5" workspace.deps.default;
 
+  package = pkgs.writeShellScriptBin "claude-code-gpt-5" ''
+    export PATH="${claude_code_gpt_5_env}/bin:$PATH"
+    exec ${claude_code_gpt_5_env}/bin/litellm --config ${src}/config.yaml "$@"
+  '';
+
+  devShell = pkgs.mkShell {
+    packages = [
+      claude_code_gpt_5_env
+      pkgs.uv
+    ];
+    env =
+      {
+        # Don’t let uv manage a venv here
+        UV_NO_SYNC = "1";
+        # Force uv to use nixpkgs Python interpreter
+        UV_PYTHON = python312.interpreter;
+        # Prevent uv from downloading Python
+        UV_PYTHON_DOWNLOADS = "never";
+      }
+      // lib.optionalAttrs pkgs.stdenv.isLinux {
+        # Manylinux libs for projects that dlopen at runtime
+        LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
+      };
+
+    shellHook = ''
+      unset PYTHONPATH
+      echo "Dev shell ready. The claude-code-gpt-5 virtualenv is on PATH."
+    '';
+  };
 in
-pkgs.writeShellScriptBin "claude-code-gpt-5" ''
-  export PATH="${claude-code-gpt-5-env}/bin:$PATH"
-  exec ${claude-code-gpt-5-env}/bin/litellm --config ${src}/config.yaml "$@"
-''
+{
+  # Keep previous behavior: nix-build (or nix build with flakes disabled) builds the package
+  default = package;
+
+  # Enter with: nix-shell -A devShell
+  devShell = devShell;
+
+  # Optional: expose these by name as well
+  claude-code-gpt-5 = package;
+  claude-code-gpt-5-env = claude_code_gpt_5_env;
+}
