@@ -1,36 +1,29 @@
 {
   pkgs,
-  config,
-  lib,
   flakeInputs,
   ...
 }:
 
 let
-  claude-code-gpt5 = (pkgs.callPackage ../../pkgs/claude-code-gpt5 {
-    uv2nix = flakeInputs.uv2nix;
-    pyproject-nix = flakeInputs.pyproject-nix;
-    python312 = pkgs.python312;
-    pyproject-build-systems = flakeInputs.pyproject-build-systems;
-  }).default;
-  cfg = config.services.claude-code-gpt5;
+  claude-code-gpt5 =
+    (pkgs.callPackage ../../pkgs/claude-code-gpt5 {
+      uv2nix = flakeInputs.uv2nix;
+      pyproject-nix = flakeInputs.pyproject-nix;
+      python312 = pkgs.python312;
+      pyproject-build-systems = flakeInputs.pyproject-build-systems;
+    }).default;
 
-  pexpect-mcp = pkgs.python3.pkgs.callPackage ../../pkgs/pexpect-mcp { };
-
-  my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
-    inherit pexpect-mcp;
-    inherit claude-code-gpt5;
-  };
 in
 {
-  options.services.claude-code-gpt5.enable = lib.mkEnableOption "Claude Code GPT-5 litellm proxy user service";
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ my-claude-code ];
+  config = {
     systemd.user.services.claude-code-gpt5 = {
       enable = true;
       description = "Claude Code GPT-5 litellm proxy";
-      path = [ claude-code-gpt5 pkgs.rbw];
+      path = [
+        claude-code-gpt5
+        pkgs.rbw
+      ];
       script = ''
         set -euo pipefail
 

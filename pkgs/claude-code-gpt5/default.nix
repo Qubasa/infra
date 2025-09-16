@@ -2,7 +2,6 @@
   lib,
   uv2nix,
   pkgs,
-  fetchFromGitHub,
   pyproject-nix,
   pyproject-build-systems,
   python312,

@@ -15,16 +15,16 @@ repos:
         name: black
         entry: black
         language: system
-        types: [ python ]
+        types: [python]
       - id: black-jupyter
         name: black-jupyter
         entry: black
         language: system
-        types: [ jupyter ]
+        types: [jupyter]
   - repo: local
     hooks:
       - id: pylint
         name: pylint
         entry: pylint
         language: system
-        types: [ python ]
+        types: [python]

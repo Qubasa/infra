@@ -1,9 +1,11 @@
 {
+  lib,
   pkgs,
   writeShellApplication,
   claude-code,
   pexpect-mcp,
   claude-code-gpt5,
+  redirectToGpt5 ? false,
 }:
 
 writeShellApplication {
@@ -32,7 +34,8 @@ writeShellApplication {
        claude mcp add --transport http context7 https://mcp.context7.com/mcp --header "CONTEXT7_API_KEY: $(rbw get context7-api-key)" || true
     fi
 
-    export ANTHROPIC_BASE_URL=http://localhost:4000
+    ${lib.optionalString redirectToGpt5 "export ANTHROPIC_BASE_URL=http://localhost:4000"}
+
 
     # Run the actual claude command
     exec claude "$@"
