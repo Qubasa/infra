@@ -51,11 +51,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1758737077,
-        "narHash": "sha256-2xA51AGEJ69rNvNJGgt00bepYl2hTmH4NUTMBrIAsoA=",
-        "rev": "68d737eb188d249fa061ac05bb70cbc14d58ac9a",
+        "lastModified": 1758737582,
+        "narHash": "sha256-5geX1QTjHap6NjT+EAB99r1lQ4IDJ6B+QFMKXo6wo0Q=",
+        "rev": "e4e2648e3ba2dd623536aa90a5236a68959c08e3",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/68d737eb188d249fa061ac05bb70cbc14d58ac9a.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/e4e2648e3ba2dd623536aa90a5236a68959c08e3.tar.gz"
       },
       "original": {
         "type": "tarball",

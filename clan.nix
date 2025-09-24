@@ -88,18 +88,30 @@
         demo = { };
         gchq-local = { };
       };
-      roles.client.machines = {
-        wintux = { };
-      };
+      #roles.client.machines = {
+      #  wintux = { };
+      #};
     };
 
     borgbackup = {
       roles.client.machines."gchq-local".settings = {
         destinations."storagebox" = {
-          repo = "u494682@$u494682.your-storagebox.de:/./borgbackup";
-          rsh = ''ssh -oPort=23 -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+          repo = "u494682-sub1@u494682-sub1.your-storagebox.de:/./borgbackup";
+          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
         };
       };
+      roles.client.machines."qube-email".settings = {
+        destinations."storagebox" = {
+          repo = "u494682-sub2@u494682-sub2.your-storagebox.de:/./borgbackup";
+          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+        };
+      };
+      roles.client.machines."wintux".settings = {
+        destinations."storagebox" = {
+           repo = "u494682-sub3@u494682-sub3.your-storagebox.de:/./borgbackup";
+           rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+          };
+        };
     };
 
     user-lhebendanz =

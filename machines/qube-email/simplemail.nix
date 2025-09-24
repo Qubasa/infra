@@ -41,6 +41,11 @@
 
   security.acme.acceptTerms = true;
 
+  # TODO: Add service shutdown hook to stop mailserver first
+  clan.core.state.simplemail = {
+    folders = [ "/var/vmail" "/var/dkim" ];
+  };
+
   mailserver = {
     stateVersion = 3;
     enable = true;

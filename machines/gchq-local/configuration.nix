@@ -43,13 +43,13 @@
   # };
 
   # Disable deep sleep on lid close
-  services.logind = {
-    lidSwitch = "ignore";
-    powerKey = "ignore";
-    suspendKey = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandlePowerKey = "ignore";
+    HandleSuspendKey = "ignore";
     hibernateKey = "ignore";
-    suspendKeyLongPress = "ignore";
-    powerKeyLongPress = "poweroff";
+    HandleSuspendKeyLongPress = "ignore";
+    HandlePowerKeyLongPress = "poweroff";
   };
   # Disable display after 60s of inactivity
   boot.kernelParams = [ "consoleblank=60" ];
