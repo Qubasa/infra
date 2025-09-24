@@ -1,8 +1,6 @@
 {
   meta.name = "Qubasas_Clan";
 
-  # inventory.services.importer.base = {};
-
   # Testing the inventory
   inventory.instances = {
     sshd = {
@@ -27,11 +25,7 @@
     };
 
     monitoring = {
-      roles.telegraf.machines."gchq-local" = {
-        settings = {
-          allowAllInterfaces = true;
-        };
-      };
+      roles.telegraf.machines."gchq-local" = {};
     };
 
     admin = {
@@ -99,18 +93,15 @@
       };
     };
 
-    # user-root = {
-    #   module = {
-    #     name = "users";
-    #     input = "clan-core";
-    #   };
-    #   roles.default.settings = {
-    #     user = "root";
-    #   };
-    #   roles.default.tags = {
-    #     all = { };
-    #   };
-    # };
+    borgbackup = {
+      roles.client.machines."gchq-local".settings = {
+        destinations."storagebox" = {
+          repo = "u494682@$u494682.your-storagebox.de:/./borgbackup";
+          rsh = ''ssh -oPort=23 -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+        };
+      };
+    };
+
     user-lhebendanz =
       let
         username = "lhebendanz";
