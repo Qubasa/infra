@@ -26,6 +26,14 @@
       };
     };
 
+    monitoring = {
+      roles.telegraf.machines."gchq-local" = {
+        settings = {
+          allowAllInterfaces = true;
+        };
+      };
+    };
+
     admin = {
       roles.default.tags.all = { };
       roles.default.settings = {

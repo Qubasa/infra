@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
 
@@ -109,15 +109,15 @@
   system.stateVersion = "19.03"; # Did you read the comment?
 
   # 2. Add extra configuration directly to Postfix.
-  services.postfix.extraConfig =
-    let
-      submissionChecksFile = pkgs.writeText "submission_header_checks" ''
-        # This regular expression matches any "Received:" header and tells Postfix to IGNORE (delete) it.
-        /^Received: .*/ IGNORE
-      '';
-    in
-    ''
-      # Apply header checks only to mail coming through the submission service.
-      submission_header_checks = regexp:${submissionChecksFile}
-    '';
+  # services.postfix.extraConfig =
+  #   let
+  #     submissionChecksFile = pkgs.writeText "submission_header_checks" ''
+  #       # This regular expression matches any "Received:" header and tells Postfix to IGNORE (delete) it.
+  #       /^Received: .*/ IGNORE
+  #     '';
+  #   in
+  #   ''
+  #     # Apply header checks only to mail coming through the submission service.
+  #     submission_header_checks = regexp:${submissionChecksFile}
+  #   '';
 }

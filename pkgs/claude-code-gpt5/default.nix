@@ -60,19 +60,18 @@ let
       claude_code_gpt_5_env
       pkgs.uv
     ];
-    env =
-      {
-        # Don’t let uv manage a venv here
-        UV_NO_SYNC = "1";
-        # Force uv to use nixpkgs Python interpreter
-        UV_PYTHON = python312.interpreter;
-        # Prevent uv from downloading Python
-        UV_PYTHON_DOWNLOADS = "never";
-      }
-      // lib.optionalAttrs pkgs.stdenv.isLinux {
-        # Manylinux libs for projects that dlopen at runtime
-        LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
-      };
+    env = {
+      # Don’t let uv manage a venv here
+      UV_NO_SYNC = "1";
+      # Force uv to use nixpkgs Python interpreter
+      UV_PYTHON = python312.interpreter;
+      # Prevent uv from downloading Python
+      UV_PYTHON_DOWNLOADS = "never";
+    }
+    // lib.optionalAttrs pkgs.stdenv.isLinux {
+      # Manylinux libs for projects that dlopen at runtime
+      LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
+    };
 
     shellHook = ''
       unset PYTHONPATH

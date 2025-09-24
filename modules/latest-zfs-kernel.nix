@@ -17,8 +17,8 @@ let
     # Check ZFS module compatibility based on whether stable or unstable ZFS is used
     # Directly access meta.broken, assuming it exists if the package evaluates successfully
     && (
-      (!isUnstable && !kernelPackages.zfs.meta.broken)
-      || (isUnstable && !kernelPackages.zfs_unstable.meta.broken)
+      (!isUnstable && !kernelPackages."${pkgs.zfs.kernelModuleAttribute}".meta.broken)
+      || (isUnstable && !kernelPackages."${pkgs.zfs.kernelModuleAttribute}".meta.broken)
     )
   ) pkgs.linuxKernel.packages;
 
@@ -45,7 +45,8 @@ let
         sortedKernelPackageSets # or lib.elemAt sortedKernelPackageSets 0
     else
       # At least two compatible kernels - select the second-to-last one.
-      lib.last (lib.lists.init sortedKernelPackageSets)
+      # lib.last (lib.lists.init sortedKernelPackageSets)
+      lib.last sortedKernelPackageSets
   # Alternative using index: lib.elemAt sortedKernelPackageSets (kernelCount - 2)
   ;
 

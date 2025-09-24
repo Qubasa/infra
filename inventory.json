@@ -3,53 +3,18 @@
     "gchq-local": {
       "installedAt": 1756814302
     },
+    "demo": {
+      "deploy": {
+        "targetHost": "root@192.168.122.98"
+      }
+    },
     "wintux": {
       "installedAt": 1756814302
     },
     "qube-email": {
       "installedAt": 1756814302
-    },
-    "Mama": {
-      "installedAt": 1756814302,
-      "machineClass": "darwin",
-      "description": "",
-      "deploy": {
-        "targetHost": ""
-      },
-      "tags": [
-        "family"
-      ]
-    },
-    "Papa": {
-      "installedAt": 1756814302,
-      "deploy": {
-        "targetHost": ""
-      },
-      "machineClass": "darwin",
-      "description": "Johanne's work machine",
-      "tags": [
-        "family"
-      ]
-    },
-    "kinub": {
-      "tags": [
-        "family"
-      ]
     }
   },
   "instances": {
-    "monitoring": {
-      "roles": {
-        "telegraf": {
-          "machines": {
-            "kinub": {}
-          },
-          "tags": {}
-        }
-      },
-      "module": {
-        "name": "monitoring"
-      }
-    }
   }
 }

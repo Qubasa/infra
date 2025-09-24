@@ -61,11 +61,13 @@ in
 
                 "capture.props" = {
                   "audio.rate" = 48000;
-                } // capture;
+                }
+                // capture;
 
                 "playback.props" = {
                   "audio.rate" = 48000;
-                } // playback;
+                }
+                // playback;
               };
             };
 

@@ -10,7 +10,7 @@
       connect-timeout = lib.mkDefault 5;
       substituters = [
         "https://hetzner-cache.numtide.com"
-        "https://nixos.tvix.store"
+        #"https://nixos.tvix.store"
       ];
     };
   };

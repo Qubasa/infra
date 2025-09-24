@@ -32,7 +32,8 @@ set_wallpaper() {
 
     # Pick a random wallpaper from the directory
     local wallpaper
-    wallpaper=$(find "$wallpaper_dir" -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)
+    wallpaper=$(find "$wallpaper_dir" -type f | shuf -n 1)
+    echo "Selected wallpaper: $wallpaper"
 
     if [[ "$DIPC_ENABLED" == "true" ]]; then
         # Process the wallpaper with dipc
@@ -48,14 +49,16 @@ set_wallpaper() {
 
 if [[ "$MODE" == "'prefer-dark'" ]]; then
     PALETTE="$DARK_PALETTE"
-    OUTPUT_FILE="/tmp/dark_wallpaper.png"
+    mkdir -p "$XDG_RUNTIME_DIR/wallpaper"
+    OUTPUT_FILE="$XDG_RUNTIME_DIR/wallpaper/dark_wallpaper.png"
     URI_SETTING="picture-uri-dark"
     echo "Setting dark mode wallpaper with palette $PALETTE..."
 
     set_wallpaper "$PALETTE" "$DARK_WALLPAPER_DIR" "$OUTPUT_FILE" "$URI_SETTING"
 else
     PALETTE="$LIGHT_PALETTE"
-    OUTPUT_FILE="/tmp/light_wallpaper.png"
+    mkdir -p "$XDG_RUNTIME_DIR"
+    OUTPUT_FILE="$XDG_RUNTIME_DIR/wallpaper/light_wallpaper.png"
     URI_SETTING="picture-uri"
     echo "Setting light mode wallpaper with palette $PALETTE..."
 

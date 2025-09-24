@@ -2,6 +2,7 @@
   config,
   pkgs,
   flakeInputs,
+  unstablePkgs,
   ...
 }:
 
@@ -19,12 +20,13 @@ let
   my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
     inherit pexpect-mcp;
     inherit claude-code-gpt5;
-    redirectToGpt5 = config.systemd.user.services.claude-code-gpt5 or false;
+    claude-code = unstablePkgs.claude-code;
+    redirectToGpt5 = builtins.hasAttr "claude-code-gpt5" config.systemd.user.services;
   };
 in
 {
   imports = [
-    #../../modules/claude-code-gpt5
+    # ../../modules/claude-code-gpt5
   ];
 
   # Printing
@@ -126,7 +128,7 @@ in
         pueue # daemon to manage long running shell tasks
         gh # github cli
         tea # gitea cli
-        codex # gpt cli
+        unstablePkgs.codex # gpt cli
         my-claude-code # anthropic cli
       ]
     ++
