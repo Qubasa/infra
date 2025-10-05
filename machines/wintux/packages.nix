@@ -7,21 +7,12 @@
 }:
 
 let
-  claude-code-gpt5 =
-    (pkgs.callPackage ../../pkgs/claude-code-gpt5 {
-      uv2nix = flakeInputs.uv2nix;
-      pyproject-nix = flakeInputs.pyproject-nix;
-      python312 = pkgs.python312;
-      pyproject-build-systems = flakeInputs.pyproject-build-systems;
-    }).default;
 
   pexpect-mcp = pkgs.python3.pkgs.callPackage ../../pkgs/pexpect-mcp { };
 
   my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
     inherit pexpect-mcp;
-    inherit claude-code-gpt5;
     claude-code = unstablePkgs.claude-code;
-    redirectToGpt5 = builtins.hasAttr "claude-code-gpt5" config.systemd.user.services;
   };
 in
 {

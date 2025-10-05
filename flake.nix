@@ -5,8 +5,8 @@
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
-      url = "https://git.clan.lol/Qubasa/clan-core/archive/docs_fix2.zip";
-      #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      #url = "https://git.clan.lol/Qubasa/clan-core/archive/ai_support.zip";
+      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";
