@@ -51,15 +51,15 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1759933680,
-        "narHash": "sha256-CBPz9IKfCU4UcIcXFoZ9vXUi+afNzEdDKOi5SVbbghs=",
-        "rev": "50a8a697197fe40324d1f36c73e337bb4a7e8431",
+        "lastModified": 1760363678,
+        "narHash": "sha256-ZNrxSp93ZlQT87wyj3H1KZlh8DoztQnbuN+P+d6UUDE=",
+        "rev": "821ec4944254a2dcf59744815801baf58cb28a2b",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/50a8a697197fe40324d1f36c73e337bb4a7e8431.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/Qubasa/clan-core/archive/821ec4944254a2dcf59744815801baf58cb28a2b.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://git.clan.lol/clan/clan-core/archive/main.zip"
+        "url": "https://git.clan.lol/Qubasa/clan-core/archive/fix_sshd_docs.zip"
       }
     },
     "data-mesher": {
@@ -534,11 +534,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758728421,
-        "narHash": "sha256-ySNJ008muQAds2JemiyrWYbwbG+V7S5wg3ZVKGHSFu8=",
+        "lastModified": 1760120816,
+        "narHash": "sha256-gq9rdocpmRZCwLS5vsHozwB6b5nrOBDNc2kkEaTXHfg=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "5eda4ee8121f97b218f7cc73f5172098d458f1d1",
+        "rev": "761ae7aff00907b607125b2f57338b74177697ed",
         "type": "github"
       },
       "original": {

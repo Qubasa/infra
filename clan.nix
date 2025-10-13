@@ -3,11 +3,30 @@
 
   # Testing the inventory
   inventory.instances = {
+    # sshd = {
+    #   roles.server.tags = {
+    #     all = { };
+    #   };
+    # };
+
     sshd = {
-      roles.server.tags = {
-        all = { };
+      module = { name = "sshd"; input = "clan-core"; };
+      # Servers present certificates for <machine>.example.com
+      roles.server.tags.all = { };
+      roles.server.machines."gchq-local".settings = {
+        certificate.searchDomains = [ "gchq.icu" ];
+      };
+      roles.server.machines."qube-email".settings = {
+        certificate.searchDomains = [ "qube.email" ];
+      };
+
+      # Clients trust the CA for *.example.com
+      roles.client.tags.all = { };
+      roles.client.settings = {
+        certificate.searchDomains = [ "gchq.icu" "qube.email" ];
       };
     };
+
 
     matrix-synapse = {
       roles.default.machines."gchq-local" = { };
