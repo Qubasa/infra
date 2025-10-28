@@ -43,7 +43,10 @@
 
   # TODO: Add service shutdown hook to stop mailserver first
   clan.core.state.simplemail = {
-    folders = [ "/var/vmail" "/var/dkim" ];
+    folders = [
+      "/var/vmail"
+      "/var/dkim"
+    ];
   };
 
   mailserver = {

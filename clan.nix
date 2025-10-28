@@ -10,7 +10,10 @@
     # };
 
     sshd = {
-      module = { name = "sshd"; input = "clan-core"; };
+      module = {
+        name = "sshd";
+        input = "clan-core";
+      };
       # Servers present certificates for <machine>.example.com
       roles.server.tags.all = { };
       roles.server.machines."gchq-local".settings = {
@@ -23,10 +26,12 @@
       # Clients trust the CA for *.example.com
       roles.client.tags.all = { };
       roles.client.settings = {
-        certificate.searchDomains = [ "gchq.icu" "qube.email" ];
+        certificate.searchDomains = [
+          "gchq.icu"
+          "qube.email"
+        ];
       };
     };
-
 
     matrix-synapse = {
       roles.default.machines."gchq-local" = { };
@@ -44,7 +49,7 @@
     };
 
     monitoring = {
-      roles.telegraf.machines."gchq-local" = {};
+      roles.telegraf.machines."gchq-local" = { };
     };
 
     admin = {
@@ -127,10 +132,10 @@
       };
       roles.client.machines."wintux".settings = {
         destinations."storagebox" = {
-           repo = "u494682-sub3@u494682-sub3.your-storagebox.de:/./borgbackup";
-           rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
-          };
+          repo = "u494682-sub3@u494682-sub3.your-storagebox.de:/./borgbackup";
+          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
         };
+      };
     };
 
     user-lhebendanz =

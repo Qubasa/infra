@@ -1,4 +1,4 @@
-{ ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -14,6 +14,52 @@
     ];
   };
 
+  clan.core.vars.generators."kimai" = {
+    files.db-password = { };
+    runtimeInputs = [
+      pkgs.pwgen
+    ];
+    script = ''
+      pwgen -s 16 1 > $out/db-password
+    '';
+  };
+
+
+  #### KIMAI ####
+  users.users.kimai = {
+    isSystemUser = lib.mkForce false;
+    isNormalUser = true;
+    group = lib.mkForce "kimai";
+    createHome = lib.mkForce false;
+  };
+  users.groups.kimai = {};
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    ensureDatabases = [ "kimai" ];
+    settings = {
+      mysqld = {
+        bind-address = "localhost";
+      };
+    };
+    ensureUsers = [{
+      name = "kimai";
+      ensurePermissions = {
+        "kimai.*" = "ALL PRIVILEGES";
+      };
+    }];
+  };
+
+  services.kimai.sites."kimai.local" = {
+    database = {
+      createLocally = false;
+      serverVersion = "10.11.14-MariaDB";
+      user = "kimai";
+      passwordFile = config.clan.core.vars.generators."kimai".files.db-password.path;
+    };
+  };
+  #### END KIMAI ####
+
   services.nginx = {
     enable = true;
     defaultListen = [
@@ -27,12 +73,6 @@
         locations."/" = {
           proxyWebsockets = true;
           proxyPass = "http://localhost:2712";
-        };
-      };
-      "kimai.local" = {
-        locations."/" = {
-          proxyWebsockets = true;
-          proxyPass = "http://localhost:8001";
         };
       };
     };
