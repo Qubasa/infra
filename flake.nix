@@ -5,8 +5,9 @@
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     clan-core = {
-      url = "https://git.clan.lol/Qubasa/clan-core/archive/fix_sshd_docs.zip";
-      #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/Qubasa/clan-core/archive/fix_sshd_module.zip";
+      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/clan/clan-core/archive/fix-sshd-searchdomains-graceful-degrade.zip";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";

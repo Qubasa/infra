@@ -11,17 +11,5 @@
     }
   },
   "instances": {
-    "mycelium": {
-      "module": {
-        "name": "mycelium"
-      },
-      "roles": {
-        "peer": {
-          "tags": {
-            "nixos": {}
-          }
-        }
-      }
-    }
   }
 }
