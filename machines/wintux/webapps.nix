@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -24,7 +29,6 @@
     '';
   };
 
-
   #### KIMAI ####
   users.users.kimai = {
     isSystemUser = lib.mkForce false;
@@ -32,7 +36,7 @@
     group = lib.mkForce "kimai";
     createHome = lib.mkForce false;
   };
-  users.groups.kimai = {};
+  users.groups.kimai = { };
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
@@ -42,12 +46,14 @@
         bind-address = "localhost";
       };
     };
-    ensureUsers = [{
-      name = "kimai";
-      ensurePermissions = {
-        "kimai.*" = "ALL PRIVILEGES";
-      };
-    }];
+    ensureUsers = [
+      {
+        name = "kimai";
+        ensurePermissions = {
+          "kimai.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 
   services.kimai.sites."kimai.local" = {

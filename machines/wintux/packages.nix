@@ -126,6 +126,8 @@ in
       [
         google-cloud-sdk
         virt-manager
+        virtiofsd # share filesystems
+        moonlight-qt
         remmina
       ]
     ++
