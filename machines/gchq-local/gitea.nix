@@ -15,16 +15,16 @@
   clan.core.state.gitea = {
     folders = [ "/var/lib/gitea" ];
     preBackupScript = ''
-       export PATH=${
-          lib.makeBinPath [
-            config.systemd.package
-          ]
-        }
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
 
-        systemctl stop gitea.service
+       systemctl stop gitea.service
     '';
 
-    postBackupScript = ''
+    postRestoreScript = ''
       export PATH=${
         lib.makeBinPath [
           config.systemd.package

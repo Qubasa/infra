@@ -7,7 +7,7 @@
     nix-image-installer.url = "github:nix-community/nixos-images";
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/fix_sshd_module.zip";
-      url = "https://git.clan.lol/clan/clan-core/archive/ke-vars-shared-secrets-fix.zip";
+      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
       # url = "https://git.clan.lol/clan/clan-core/archive/fix-sshd-searchdomains-graceful-degrade.zip";
     };
 
@@ -72,7 +72,6 @@
       };
       # Small tool to iterate over each systems
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
-      lib = nixpkgs.lib;
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 

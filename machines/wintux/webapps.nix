@@ -56,6 +56,30 @@
     ];
   };
 
+  # clan.core.state."kimai" = {
+  #   folders = [
+  #     "/var/lib/kimai"
+  #   ];
+  #   preBackupScript = ''
+  #     export PATH=${
+  #       lib.makeBinPath [
+  #         config.systemd.package
+  #       ]
+  #     }
+
+  #      systemctl stop kimai-init-kimai.local.service
+  #   '';
+  #   postRestoreScript = ''
+  #     export PATH=${
+  #       lib.makeBinPath [
+  #         config.systemd.package
+  #       ]
+  #     }
+
+  #     systemctl start kimai-init-kimai.local.service
+  #   '';
+  # };
+
   services.kimai.sites."kimai.local" = {
     database = {
       createLocally = false;

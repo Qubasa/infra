@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, ... }:
+{ config, lib, ... }:
 
 {
 
@@ -46,7 +46,36 @@
     folders = [
       "/var/vmail"
       "/var/dkim"
+      "/var/certs"
+      "/var/sieve"
+
     ];
+
+    preBackupScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+       systemctl stop dovecot.service
+       systemctl stop postfix.service
+       systemctl stop redis-rspamd.service
+       systemctl stop rspamd.service
+    '';
+
+    postRestoreScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+      systemctl start dovecot.service
+      systemctl start postfix.service
+      systemctl start redis-rspamd.service
+      systemctl start rspamd.service
+    '';
   };
 
   mailserver = {

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 rec {
 
@@ -43,17 +48,17 @@ rec {
   clan.core.state.nextcloud = {
     folders = [ "/var/lib/nextcloud" ];
     preBackupScript = ''
-       export PATH=${
-          lib.makeBinPath [
-            config.systemd.package
-          ]
-        }
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
 
-        systemctl stop phpfpm-nextcloud.service
-        systemctl stop nextcloud-cron.timer
+       systemctl stop phpfpm-nextcloud.service
+       systemctl stop nextcloud-cron.timer
     '';
 
-    postBackupScript = ''
+    postRestoreScript = ''
       export PATH=${
         lib.makeBinPath [
           config.systemd.package

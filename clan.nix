@@ -24,7 +24,7 @@
       # Servers present certificates for <machine>.example.com
       roles.server.tags.all = { };
       roles.server.machines."gchq-local".settings = {
-        certificate.searchDomains = [ "*.gchq.icu"  ];
+        certificate.searchDomains = [ "*.gchq.icu" ];
       };
       roles.server.machines."qube-email".settings = {
         certificate.searchDomains = [ "qube.email" ];

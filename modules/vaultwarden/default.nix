@@ -72,15 +72,15 @@ in
       folders = [ "/var/lib/vaultwarden" ];
       preBackupScript = ''
         export PATH=${
-            lib.makeBinPath [
-              config.systemd.package
-            ]
-          }
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
 
           systemctl stop vaultwarden.service
       '';
 
-      postBackupScript = ''
+      postRestoreScript = ''
         export PATH=${
           lib.makeBinPath [
             config.systemd.package

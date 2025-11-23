@@ -24,15 +24,15 @@
       folders = [ "/var/lib/heisenbridge" ];
       preBackupScript = ''
         export PATH=${
-            lib.makeBinPath [
-              config.systemd.package
-            ]
-          }
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
 
           systemctl stop heisenbridge.service
       '';
 
-      postBackupScript = ''
+      postRestoreScript = ''
         export PATH=${
           lib.makeBinPath [
             config.systemd.package

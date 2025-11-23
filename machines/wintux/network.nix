@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   config = {
     networking.dhcpcd.enable = false;
@@ -20,5 +20,35 @@
       # "74d31bf1a7cfc9bf" # wendell japan demo
     ];
 
+  clan.core.state."tailscale" = {
+    folders = [
+      "/var/lib/tailscale"
+    ];
+    preBackupScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+       systemctl stop tailscaled.service
+    '';
+    postRestoreScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+      systemctl start tailscaled.service
+    '';
+  };
+
+
+    clan.core.state."network-manager" = {
+        folders = [
+          "/etc/NetworkManager"
+        ];
+    };
   };
 }
