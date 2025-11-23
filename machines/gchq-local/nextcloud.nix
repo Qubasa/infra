@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 rec {
 
@@ -38,6 +38,31 @@ rec {
     serviceConfig = {
       NoNewPrivileges = "yes";
     };
+  };
+
+  clan.core.state.nextcloud = {
+    folders = [ "/var/lib/nextcloud" ];
+    preBackupScript = ''
+       export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
+
+        systemctl stop phpfpm-nextcloud.service
+        systemctl stop nextcloud-cron.timer
+    '';
+
+    postBackupScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+      systemctl start phpfpm-nextcloud.service
+      systemctl start nextcloud-cron.timer
+    '';
   };
 
   # Note: The occ commands is called nextcloud-occ

@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, config, ... }:
 
 {
 
@@ -11,6 +11,29 @@
     OWNER = "gitea";
   };
   clan.core.postgresql.databases.gitea.restore.stopOnRestore = [ "gitea" ];
+
+  clan.core.state.gitea = {
+    folders = [ "/var/lib/gitea" ];
+    preBackupScript = ''
+       export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
+
+        systemctl stop gitea.service
+    '';
+
+    postBackupScript = ''
+      export PATH=${
+        lib.makeBinPath [
+          config.systemd.package
+        ]
+      }
+
+      systemctl start gitea.service
+    '';
+  };
 
   services.gitea = {
     database.type = "postgres";

@@ -68,6 +68,29 @@ in
     };
     clan.core.postgresql.databases.vaultwarden.restore.stopOnRestore = [ "vaultwarden" ];
 
+    clan.core.state.vaultwarden = {
+      folders = [ "/var/lib/vaultwarden" ];
+      preBackupScript = ''
+        export PATH=${
+            lib.makeBinPath [
+              config.systemd.package
+            ]
+          }
+
+          systemctl stop vaultwarden.service
+      '';
+
+      postBackupScript = ''
+        export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
+
+        systemctl start vaultwarden.service
+      '';
+    };
+
     services.nginx = {
       enable = true;
       virtualHosts = {

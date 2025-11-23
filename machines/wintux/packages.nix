@@ -104,7 +104,7 @@ in
       # Development Tools
       [
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
-        ghostty
+        unstablePkgs.ghostty
         devtoolbox
         rust-analyzer
         nix-init # init nix packages in a directory

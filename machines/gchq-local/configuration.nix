@@ -13,14 +13,9 @@
     ./initrd.nix
     ./gitea.nix
     ./nextcloud.nix
-    #./home-assistant.nix
     ../../modules/backups.nix
     #../../modules/porkbun-wildcard-certs.nix
 
-    #clan-core.clanModules.dyndns
-    #clan-core.clanModules.matrix-synapse
-    #clan-core.clanModules.vaultwarden
-    #clan-core.clanModules.heisenbridge
     ../../modules/heisenbridge
     ../../modules/vaultwarden
   ];
@@ -34,13 +29,6 @@
     gc.dates = "daily";
     gc.options = "--delete-older-than 30d";
   };
-
-  # nixpkgs.config = {
-  #   permittedInsecurePackages = [
-  #     "olm-3.2.16"
-  #   ];
-  #   allowUnfree = true;
-  # };
 
   # Disable deep sleep on lid close
   services.logind.settings.Login = {

@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   ...
 }:
@@ -18,5 +19,28 @@
     services.matrix-synapse.settings.app_service_config_files = [
       "/var/lib/heisenbridge/registration.yml"
     ];
+
+    clan.core.state.vaultwarden = {
+      folders = [ "/var/lib/heisenbridge" ];
+      preBackupScript = ''
+        export PATH=${
+            lib.makeBinPath [
+              config.systemd.package
+            ]
+          }
+
+          systemctl stop heisenbridge.service
+      '';
+
+      postBackupScript = ''
+        export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
+
+        systemctl start heisenbridge.service
+      '';
+    };
   };
 }

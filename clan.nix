@@ -8,6 +8,13 @@
     #     all = { };
     #   };
     # };
+    #
+
+    # wifi = {
+    #   roles.default.machines."wintux".settings.networks = {
+    #     "qubasas-home" = {};
+    #   };
+    # };
 
     sshd = {
       module = {
@@ -17,7 +24,7 @@
       # Servers present certificates for <machine>.example.com
       roles.server.tags.all = { };
       roles.server.machines."gchq-local".settings = {
-        certificate.searchDomains = [ "gchq.icu" ];
+        certificate.searchDomains = [ "*.gchq.icu"  ];
       };
       roles.server.machines."qube-email".settings = {
         certificate.searchDomains = [ "qube.email" ];
@@ -27,7 +34,7 @@
       roles.client.tags.all = { };
       roles.client.settings = {
         certificate.searchDomains = [
-          "gchq.icu"
+          "*.gchq.icu"
           "qube.email"
         ];
       };
