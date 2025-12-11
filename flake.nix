@@ -6,12 +6,16 @@
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     nix-image-installer.url = "github:nix-community/nixos-images";
     clan-core = {
-      # url = "https://git.clan.lol/Qubasa/clan-core/archive/fix_sshd_module.zip";
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      # url = "https://git.clan.lol/clan/clan-core/archive/fix-sshd-searchdomains-graceful-degrade.zip";
+      #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";
+
+    nix-ai-tools = {
+      url = "github:numtide/nix-ai-tools";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
 
     pyproject-nix = {
       url = "github:pyproject-nix/pyproject.nix";

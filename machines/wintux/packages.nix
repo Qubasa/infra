@@ -5,18 +5,9 @@
   ...
 }:
 
-let
-
-  pexpect-mcp = pkgs.python3.pkgs.callPackage ../../pkgs/pexpect-mcp { };
-
-  my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
-    inherit pexpect-mcp;
-    claude-code = unstablePkgs.claude-code;
-  };
-in
 {
   imports = [
-    # ../../modules/claude-code-gpt5
+    ./llm.nix
   ];
 
   # Printing
@@ -118,8 +109,6 @@ in
         pueue # daemon to manage long running shell tasks
         gh # github cli
         tea # gitea cli
-        unstablePkgs.codex # gpt cli
-        my-claude-code # anthropic cli
       ]
     ++
       # Virtualization and Remote Desktop
@@ -171,10 +160,10 @@ in
       # Security and Encryption
       [
         gnupg
-        bitwarden
+        bitwarden-desktop
         bitwarden-cli
         rbw # Bitwarden cli alternative
-        pinentry # rbw dependency
+        pinentry-gnome3 # rbw dependency
       ]
     ++
       # System Tools

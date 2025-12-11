@@ -24,7 +24,7 @@
        systemctl stop gitea.service
     '';
 
-    postRestoreScript = ''
+    postBackupScript = ''
       export PATH=${
         lib.makeBinPath [
           config.systemd.package

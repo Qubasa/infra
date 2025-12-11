@@ -20,35 +20,34 @@
       # "74d31bf1a7cfc9bf" # wendell japan demo
     ];
 
-  clan.core.state."tailscale" = {
-    folders = [
-      "/var/lib/tailscale"
-    ];
-    preBackupScript = ''
-      export PATH=${
-        lib.makeBinPath [
-          config.systemd.package
-        ]
-      }
+    clan.core.state."tailscale" = {
+      folders = [
+        "/var/lib/tailscale"
+      ];
+      preBackupScript = ''
+        export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
 
-       systemctl stop tailscaled.service
-    '';
-    postRestoreScript = ''
-      export PATH=${
-        lib.makeBinPath [
-          config.systemd.package
-        ]
-      }
+         systemctl stop tailscaled.service
+      '';
+      postBackupScript = ''
+        export PATH=${
+          lib.makeBinPath [
+            config.systemd.package
+          ]
+        }
 
-      systemctl start tailscaled.service
-    '';
-  };
-
+        systemctl start tailscaled.service
+      '';
+    };
 
     clan.core.state."network-manager" = {
-        folders = [
-          "/etc/NetworkManager"
-        ];
+      folders = [
+        "/etc/NetworkManager"
+      ];
     };
   };
 }

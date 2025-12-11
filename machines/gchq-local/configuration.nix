@@ -15,7 +15,7 @@
     ./nextcloud.nix
     ../../modules/backups.nix
     #../../modules/porkbun-wildcard-certs.nix
-
+    ./blog.nix
     ../../modules/heisenbridge
     ../../modules/vaultwarden
   ];

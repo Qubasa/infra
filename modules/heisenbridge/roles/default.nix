@@ -32,7 +32,7 @@
           systemctl stop heisenbridge.service
       '';
 
-      postRestoreScript = ''
+      postBackupScript = ''
         export PATH=${
           lib.makeBinPath [
             config.systemd.package

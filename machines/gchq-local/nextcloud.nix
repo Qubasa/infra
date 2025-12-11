@@ -17,7 +17,7 @@ rec {
     phpOptions = {
       "opcache.interned_strings_buffer" = "23";
     };
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     settings = {
       default_phone_region = "DE";
       # TODO: systemd backend needs a packaged https://github.com/systemd/php-systemd which doesn't exist yet
@@ -58,7 +58,7 @@ rec {
        systemctl stop nextcloud-cron.timer
     '';
 
-    postRestoreScript = ''
+    postBackupScript = ''
       export PATH=${
         lib.makeBinPath [
           config.systemd.package

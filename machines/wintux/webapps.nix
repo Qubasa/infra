@@ -69,7 +69,7 @@
 
   #      systemctl stop kimai-init-kimai.local.service
   #   '';
-  #   postRestoreScript = ''
+  #   postBackupScript = ''
   #     export PATH=${
   #       lib.makeBinPath [
   #         config.systemd.package

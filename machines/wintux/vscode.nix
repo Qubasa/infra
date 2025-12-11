@@ -24,7 +24,8 @@ in
         ]
         ++ (with pkgs.vscode-marketplace-release; [
           github.copilot
-          github.copilot-chat
+          anthropic.claude-code
+          #github.copilot-chat
         ]);
     })
   ];

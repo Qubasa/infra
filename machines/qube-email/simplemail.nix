@@ -64,7 +64,7 @@
        systemctl stop rspamd.service
     '';
 
-    postRestoreScript = ''
+    postBackupScript = ''
       export PATH=${
         lib.makeBinPath [
           config.systemd.package

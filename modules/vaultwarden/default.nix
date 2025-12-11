@@ -80,7 +80,7 @@ in
           systemctl stop vaultwarden.service
       '';
 
-      postRestoreScript = ''
+      postBackupScript = ''
         export PATH=${
           lib.makeBinPath [
             config.systemd.package

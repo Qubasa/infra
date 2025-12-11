@@ -22,16 +22,12 @@
     ./display.nix
     ./radeon.nix
     ./mitm.nix
-    # ./nvidia.nix
+    ./nvidia.nix
   ];
 
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";
-  };
-
-  nix = {
-    package = pkgs.nixVersions.latest;
   };
 
   environment.variables = {
@@ -41,6 +37,7 @@
 
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+  programs.adb.enable = true;
 
   services.chrome-pwa.enable = true;
 
@@ -92,6 +89,7 @@
   services.userborn.enable = true;
 
   nix = {
+    package = flakeInputs.unstable-nixpkgs.legacyPackages.x86_64-linux.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids cgroups
     '';

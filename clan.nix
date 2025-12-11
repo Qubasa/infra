@@ -92,6 +92,18 @@
               api_key = "pk1_b0a5183f51a42c3459cdce3e58a4482c6696f417d6408035d19189c2b40425f1";
             };
           };
+          "qubasa.blog" = {
+            provider = "porkbun";
+            domain = "qubasa.blog";
+            secret_field_name = "secret_api_key";
+            extraSettings = {
+              host = "@";
+              ip_version = "ipv4";
+              ipv6_suffix = "";
+              # This is a pubkey. It is not a secret.
+              api_key = "pk1_434f5b9f5074b70e286192b98e5a05c77d5b2b7533187dddfc50e86c33f930cd";
+            };
+          };
         };
       };
     };
@@ -160,6 +172,7 @@
         roles.default.settings = {
           user = username;
           groups = [
+            "adbusers"
             "dialout" # for writing to serial
             "wheel"
             "networkmanager"
