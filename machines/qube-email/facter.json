@@ -324,7 +324,7 @@
           "value": 133
         },
         "slot": {
-          "bus": 1,
+          "bus": 2,
           "number": 0
         },
         "base_class": {
@@ -344,19 +344,19 @@
         },
         "device": {
           "hex": "0000",
-          "name": "HUS722T2TAL",
+          "name": "HUS726020AL",
           "value": 0
         },
         "revision": {
           "hex": "0000",
-          "name": "CA09",
+          "name": "TD05",
           "value": 0
         },
-        "serial": "WMC6N0L89MU9",
-        "model": "HGST HUS722T2TAL",
+        "serial": "K5HEJXVD",
+        "model": "HGST HUS726020AL",
         "sysfs_id": "/class/block/sdb",
-        "sysfs_bus_id": "1:0:0:0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:17.0/ata2/host1/target1:0:0/1:0:0:0",
+        "sysfs_bus_id": "2:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:17.0/ata3/host2/target2:0:0/2:0:0:0",
         "unix_device_name": "/dev/sdb",
         "unix_device_number": {
           "type": 98,
@@ -365,10 +365,10 @@
           "range": 16
         },
         "unix_device_names": [
-          "/dev/disk/by-id/ata-HGST_HUS722T2TALA600_WMC6N0L89MU9",
-          "/dev/disk/by-id/wwn-0x50014ee059db455c",
-          "/dev/disk/by-path/pci-0000:00:17.0-ata-2",
-          "/dev/disk/by-path/pci-0000:00:17.0-ata-2.0",
+          "/dev/disk/by-id/ata-HGST_HUS726020ALE610_K5HEJXVD",
+          "/dev/disk/by-id/wwn-0x5000cca25ed43fe2",
+          "/dev/disk/by-path/pci-0000:00:17.0-ata-3",
+          "/dev/disk/by-path/pci-0000:00:17.0-ata-3.0",
           "/dev/sdb"
         ],
         "rom_id": "0x80",
@@ -413,7 +413,7 @@
           "value": 133
         },
         "slot": {
-          "bus": 2,
+          "bus": 1,
           "number": 0
         },
         "base_class": {
@@ -433,19 +433,19 @@
         },
         "device": {
           "hex": "0000",
-          "name": "HUS726020AL",
+          "name": "HUS722T2TAL",
           "value": 0
         },
         "revision": {
           "hex": "0000",
-          "name": "TD05",
+          "name": "CA09",
           "value": 0
         },
-        "serial": "K5HEJXVD",
-        "model": "HGST HUS726020AL",
+        "serial": "WMC6N0L89MU9",
+        "model": "HGST HUS722T2TAL",
         "sysfs_id": "/class/block/sda",
-        "sysfs_bus_id": "2:0:0:0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:17.0/ata3/host2/target2:0:0/2:0:0:0",
+        "sysfs_bus_id": "1:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:17.0/ata2/host1/target1:0:0/1:0:0:0",
         "unix_device_name": "/dev/sda",
         "unix_device_number": {
           "type": 98,
@@ -454,10 +454,10 @@
           "range": 16
         },
         "unix_device_names": [
-          "/dev/disk/by-id/ata-HGST_HUS726020ALE610_K5HEJXVD",
-          "/dev/disk/by-id/wwn-0x5000cca25ed43fe2",
-          "/dev/disk/by-path/pci-0000:00:17.0-ata-3",
-          "/dev/disk/by-path/pci-0000:00:17.0-ata-3.0",
+          "/dev/disk/by-id/ata-HGST_HUS722T2TALA600_WMC6N0L89MU9",
+          "/dev/disk/by-id/wwn-0x50014ee059db455c",
+          "/dev/disk/by-path/pci-0000:00:17.0-ata-2",
+          "/dev/disk/by-path/pci-0000:00:17.0-ata-2.0",
           "/dev/sda"
         ],
         "rom_id": "0x81",
@@ -771,7 +771,7 @@
     ],
     "keyboard": [
       {
-        "index": 30,
+        "index": 28,
         "attached_to": 29,
         "class_list": [
           "keyboard",
@@ -811,10 +811,10 @@
           "name": "1.00",
           "value": 0
         },
-        "serial": "1IT1600019",
+        "serial": "1IT4101447",
         "model": "Raritan DKX4-101",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.0",
-        "sysfs_bus_id": "1-8:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6:1.0",
+        "sysfs_bus_id": "1-6:1.0",
         "unix_device_name": "/dev/input/event0",
         "unix_device_number": {
           "type": 99,
@@ -823,9 +823,9 @@
           "range": 1
         },
         "unix_device_names": [
-          "/dev/input/by-id/usb-Raritan_DKX4-101_1IT1600019-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:8:1.0-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:8:1.0-event-kbd",
+          "/dev/input/by-id/usb-Raritan_DKX4-101_1IT4101447-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:6:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:6:1.0-event-kbd",
           "/dev/input/event0"
         ],
         "resources": [
@@ -903,7 +903,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 67194650624,
+            "range": 67194662912,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"
@@ -933,15 +933,16 @@
           "value": 2
         },
         "vendor": {
-          "hex": "2157",
-          "value": 8535
+          "hex": "4832",
+          "value": 18482
         },
         "device": {
-          "hex": "0000",
-          "name": "VGA TO HDMI",
-          "value": 0
+          "hex": "016f",
+          "name": "KX1920x1080",
+          "value": 367
         },
-        "model": "VGA TO HDMI",
+        "serial": "0",
+        "model": "KX1920x1080",
         "resources": [
           {
             "type": "monitor",
@@ -988,6 +989,13 @@
           {
             "type": "monitor",
             "width": 1280,
+            "height": 720,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 1280,
             "height": 960,
             "vertical_frequency": 60,
             "interlaced": false
@@ -1010,7 +1018,28 @@
             "type": "monitor",
             "width": 640,
             "height": 480,
+            "vertical_frequency": 72,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 640,
+            "height": 480,
             "vertical_frequency": 75,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 720,
+            "height": 400,
+            "vertical_frequency": 70,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 800,
+            "height": 600,
+            "vertical_frequency": 56,
             "interlaced": false
           },
           {
@@ -1024,32 +1053,39 @@
             "type": "monitor",
             "width": 800,
             "height": 600,
+            "vertical_frequency": 72,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 800,
+            "height": 600,
             "vertical_frequency": 75,
             "interlaced": false
           },
           {
             "type": "size",
             "unit": "mm",
-            "value_1": 509,
-            "value_2": 286
+            "value_1": 640,
+            "value_2": 360
           }
         ],
         "detail": {
-          "manufacture_year": 2013,
-          "manufacture_week": 41,
+          "manufacture_year": 2018,
+          "manufacture_week": 0,
           "vertical_sync": {
-            "min": 60,
-            "max": 61
+            "min": 24,
+            "max": 85
           },
           "horizontal_sync": {
-            "min": 30,
-            "max": 81
+            "min": 20,
+            "max": 99
           },
           "horizontal_sync_timings": {
             "disp": 1920,
-            "sync_start": 2008,
-            "sync_end": 2052,
-            "total": 2200
+            "sync_start": 2448,
+            "sync_end": 2492,
+            "total": 2640
           },
           "vertical_sync_timings": {
             "disp": 1080,
@@ -1060,31 +1096,31 @@
           "clock": 148500,
           "width": 1920,
           "height": 1080,
-          "width_millimetres": 509,
-          "height_millimetres": 286,
+          "width_millimetres": 640,
+          "height_millimetres": 360,
           "horizontal_flag": 43,
           "vertical_flag": 43,
           "vendor": "",
-          "name": "VGA TO HDMI"
+          "name": "KX1920x1080"
         },
         "driver_info": {
           "type": "display",
           "width": 1920,
           "height": 1080,
           "vertical_sync": {
-            "min": 60,
-            "max": 61
+            "min": 24,
+            "max": 85
           },
           "horizontal_sync": {
-            "min": 30,
-            "max": 81
+            "min": 20,
+            "max": 99
           },
           "bandwidth": 0,
           "horizontal_sync_timings": {
             "disp": 1920,
-            "sync_start": 2008,
-            "sync_end": 2052,
-            "total": 2200
+            "sync_start": 2448,
+            "sync_end": 2492,
+            "total": 2640
           },
           "vertical_sync_timings": {
             "disp": 1080,
@@ -1139,134 +1175,12 @@
           "name": "1.00",
           "value": 0
         },
-        "serial": "1IT1600019",
+        "serial": "1IT4101447",
         "compat_vendor": "Unknown",
         "compat_device": "Generic USB Mouse",
         "model": "Raritan DKX4-101",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.1",
-        "sysfs_bus_id": "1-8:1.1",
-        "unix_device_name": "/dev/input/mice",
-        "unix_device_number": {
-          "type": 99,
-          "major": 13,
-          "minor": 63,
-          "range": 1
-        },
-        "unix_device_names": [
-          "/dev/input/mice"
-        ],
-        "unix_device_name2": "/dev/input/mouse0",
-        "unix_device_number2": {
-          "type": 99,
-          "major": 13,
-          "minor": 32,
-          "range": 1
-        },
-        "resources": [
-          {
-            "type": "baud",
-            "speed": 12000000,
-            "bits": 0,
-            "stop_bits": 0,
-            "parity": 0,
-            "handshake": 0
-          }
-        ],
-        "detail": {
-          "device_class": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_protocol": 0,
-          "interface_class": {
-            "hex": "0003",
-            "name": "hid",
-            "value": 3
-          },
-          "interface_subclass": {
-            "hex": "0001",
-            "name": "audio",
-            "value": 1
-          },
-          "interface_protocol": 2,
-          "interface_number": 1,
-          "interface_alternate_setting": 0
-        },
-        "hotplug": "usb",
-        "driver": "usbhid",
-        "driver_module": "usbhid",
-        "drivers": [
-          "usbhid"
-        ],
-        "driver_modules": [
-          "usbhid"
-        ],
-        "driver_info": {
-          "type": "mouse",
-          "db_entry_0": [
-            "explorerps/2",
-            "exps2"
-          ],
-          "xf86": "explorerps/2",
-          "gpm": "exps2",
-          "buttons": -1,
-          "wheels": -1
-        },
-        "module_alias": "usb:v14DDp1010d0100dc00dsc00dp00ic03isc01ip02in01"
-      },
-      {
-        "index": 28,
-        "attached_to": 29,
-        "class_list": [
-          "mouse",
-          "usb"
-        ],
-        "bus_type": {
-          "hex": "0086",
-          "name": "USB",
-          "value": 134
-        },
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "base_class": {
-          "hex": "0105",
-          "name": "Mouse",
-          "value": 261
-        },
-        "sub_class": {
-          "hex": "0003",
-          "name": "USB Mouse",
-          "value": 3
-        },
-        "vendor": {
-          "hex": "14dd",
-          "name": "Raritan",
-          "value": 5341
-        },
-        "device": {
-          "hex": "1010",
-          "name": "DKX4-101",
-          "value": 4112
-        },
-        "revision": {
-          "hex": "0000",
-          "name": "1.00",
-          "value": 0
-        },
-        "serial": "1IT1600019",
-        "compat_vendor": "Unknown",
-        "compat_device": "Generic USB Mouse",
-        "model": "Raritan DKX4-101",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.2",
-        "sysfs_bus_id": "1-8:1.2",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6:1.2",
+        "sysfs_bus_id": "1-6:1.2",
         "unix_device_name": "/dev/input/mice",
         "unix_device_number": {
           "type": 99,
@@ -1341,6 +1255,128 @@
           "wheels": -1
         },
         "module_alias": "usb:v14DDp1010d0100dc00dsc00dp00ic03isc00ip00in02"
+      },
+      {
+        "index": 30,
+        "attached_to": 29,
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0105",
+          "name": "Mouse",
+          "value": 261
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Mouse",
+          "value": 3
+        },
+        "vendor": {
+          "hex": "14dd",
+          "name": "Raritan",
+          "value": 5341
+        },
+        "device": {
+          "hex": "1010",
+          "name": "DKX4-101",
+          "value": 4112
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "1IT4101447",
+        "compat_vendor": "Unknown",
+        "compat_device": "Generic USB Mouse",
+        "model": "Raritan DKX4-101",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-6/1-6:1.1",
+        "sysfs_bus_id": "1-6:1.1",
+        "unix_device_name": "/dev/input/mice",
+        "unix_device_number": {
+          "type": 99,
+          "major": 13,
+          "minor": 63,
+          "range": 1
+        },
+        "unix_device_names": [
+          "/dev/input/mice"
+        ],
+        "unix_device_name2": "/dev/input/mouse0",
+        "unix_device_number2": {
+          "type": 99,
+          "major": 13,
+          "minor": 32,
+          "range": 1
+        },
+        "resources": [
+          {
+            "type": "baud",
+            "speed": 12000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          }
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          },
+          "interface_protocol": 2,
+          "interface_number": 1,
+          "interface_alternate_setting": 0
+        },
+        "hotplug": "usb",
+        "driver": "usbhid",
+        "driver_module": "usbhid",
+        "drivers": [
+          "usbhid"
+        ],
+        "driver_modules": [
+          "usbhid"
+        ],
+        "driver_info": {
+          "type": "mouse",
+          "db_entry_0": [
+            "explorerps/2",
+            "exps2"
+          ],
+          "xf86": "explorerps/2",
+          "gpm": "exps2",
+          "buttons": -1,
+          "wheels": -1
+        },
+        "module_alias": "usb:v14DDp1010d0100dc00dsc00dp00ic03isc01ip02in01"
       }
     ],
     "network_controller": [
@@ -3263,9 +3299,9 @@
       "product": "D3401-H1",
       "version": "",
       "wake_up": {
-        "hex": "0003",
-        "name": "APM Timer",
-        "value": 3
+        "hex": "0001",
+        "name": "Other",
+        "value": 1
       }
     }
   }
