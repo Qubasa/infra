@@ -37,9 +37,25 @@
   # Disable logging of scan services
   networking.firewall.logRefusedConnections = false;
 
-  security.acme.defaults.email = "acme@qube.email";
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "acme@qube.email";
+    defaults.webroot = "/var/lib/acme/acme-challenge/";
+    certs.${config.mailserver.fqdn} = {
+       group = config.services.nginx.group;
+    };
+  };
 
-  security.acme.acceptTerms = true;
+
+  # webserver for http challenge
+  services.nginx = {
+    enable = true;
+    virtualHosts."${config.mailserver.fqdn}" = {
+      forceSSL = true;
+      useACMEHost = "${config.mailserver.fqdn}";
+      locations."/.well-known/".root = "/var/lib/acme/acme-challenge/";
+    };
+  };
 
   # TODO: Add service shutdown hook to stop mailserver first
   clan.core.state.simplemail = {
@@ -110,12 +126,12 @@
         catchAll = [ "qube.email" ];
         hashedPasswordFile = config.sops.secrets.qube-email-simplemail-notrust-hash.path;
       };
-
     };
 
     # debug = false;
 
-    certificateScheme = "acme-nginx";
+    # reference an existing ACME configuration
+    x509.useACMEHost = config.mailserver.fqdn;
     dkimSelector = "mail";
     dkimSigning = true;
     enableImap = true;

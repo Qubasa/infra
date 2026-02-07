@@ -23,9 +23,7 @@ in
           rust-lang.rust-analyzer
         ]
         ++ (with pkgs.vscode-marketplace-release; [
-          github.copilot
           anthropic.claude-code
-          #github.copilot-chat
         ]);
     })
   ];

@@ -18,9 +18,8 @@
     ./blog.nix
     ../../modules/heisenbridge
     ../../modules/vaultwarden
+   # ./monitoring.nix
   ];
-
-  networking.domain = "dark";
 
   clan.nginx.acme.email = "acme@qube.email";
 

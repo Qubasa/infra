@@ -1,6 +1,6 @@
 {
   writeShellApplication,
-  claude-code
+  claude-code,
 }:
 
 writeShellApplication {

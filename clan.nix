@@ -1,20 +1,15 @@
 {
   meta.name = "Qubasas_Clan";
+  meta.domain = "dark";
 
   # Testing the inventory
   inventory.instances = {
-    # sshd = {
-    #   roles.server.tags = {
-    #     all = { };
-    #   };
-    # };
-    #
 
-    # wifi = {
-    #   roles.default.machines."wintux".settings.networks = {
-    #     "qubasas-home" = {};
-    #   };
-    # };
+    wifi = {
+      roles.default.machines."wintux".settings.networks = {
+        "qubasas-home" = {};
+      };
+    };
 
     sshd = {
       module = {
@@ -56,7 +51,16 @@
     };
 
     monitoring = {
-      roles.telegraf.machines."gchq-local" = { };
+      roles = {
+        client = {
+          tags = [ "all" ];
+          settings.useSSL = true;
+        };
+
+        server.machines."gchq-local".settings = {
+            grafana.enable = true;
+        };
+      };
     };
 
     admin = {
@@ -120,20 +124,23 @@
     };
 
     internet = {
-      roles.default.machines.demo.settings.host = "root@192.168.122.67";
-      roles.default.machines.wintux.settings.host = "root@127.0.0.1";
-      roles.default.machines.gchq-local.settings.host = "root@home.gchq.icu";
-      roles.default.machines.qube-email.settings.host = "root@qube.email";
+      roles.default.machines.demo.settings = {
+        host = "192.168.122.67";
+      };
+      roles.default.machines.wintux.settings.host = "127.0.0.1";
+      roles.default.machines.gchq-local.settings.host = "home.gchq.icu";
+      roles.default.machines.qube-email.settings.host = "qube.email";
     };
 
     tor = {
       roles.server.machines = {
         demo = { };
         gchq-local = { };
+        installer = { }; 
       };
-      #roles.client.machines = {
-      #  wintux = { };
-      #};
+      # roles.client.machines = {
+      #   installer = { };
+      # };
     };
 
     borgbackup = {

@@ -8,18 +8,14 @@
 {
 
   imports = [
-    ./hardware-configuration.nix
     ./simplemail.nix
     flakeInputs.simple-nixos-mailserver.nixosModule
+    ./initrd.nix
   ];
-
-  networking.domain = "dark";
 
   clan.core.settings.machine-id.enable = true;
 
-  boot.tmp.cleanOnBoot = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  #boot.tmp.cleanOnBoot = true;
 
   nix = {
     settings = {

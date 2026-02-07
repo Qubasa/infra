@@ -37,7 +37,7 @@
 
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
-  programs.adb.enable = true;
+  # programs.adb.enable = true;
 
   services.chrome-pwa.enable = true;
 
@@ -91,7 +91,7 @@
   nix = {
     package = flakeInputs.unstable-nixpkgs.legacyPackages.x86_64-linux.nixVersions.latest;
     extraOptions = ''
-      experimental-features = nix-command flakes auto-allocate-uids cgroups
+      experimental-features = nix-command flakes auto-allocate-uids cgroups dynamic-derivations
     '';
     settings = {
       auto-optimise-store = true;

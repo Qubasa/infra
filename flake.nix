@@ -6,8 +6,9 @@
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     nix-image-installer.url = "github:nix-community/nixos-images";
     clan-core = {
+      # url = "https://git.clan.lol/Qubasa/clan-core/archive/borgbackup_fix.tar.gz";
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      #url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=merge_clean_change";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";

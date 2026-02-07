@@ -20,7 +20,9 @@
   };
 
   clan.core.vars.generators."kimai" = {
-    files.db-password = { };
+    files.db-password = {
+      owner = "kimai";
+    };
     runtimeInputs = [
       pkgs.pwgen
     ];
@@ -30,31 +32,31 @@
   };
 
   #### KIMAI ####
-  users.users.kimai = {
-    isSystemUser = lib.mkForce false;
-    isNormalUser = true;
-    group = lib.mkForce "kimai";
-    createHome = lib.mkForce false;
-  };
-  users.groups.kimai = { };
-  services.mysql = {
-    enable = true;
-    package = pkgs.mariadb;
-    ensureDatabases = [ "kimai" ];
-    settings = {
-      mysqld = {
-        bind-address = "localhost";
-      };
-    };
-    ensureUsers = [
-      {
-        name = "kimai";
-        ensurePermissions = {
-          "kimai.*" = "ALL PRIVILEGES";
-        };
-      }
-    ];
-  };
+  # users.users.kimai = {
+  #   isSystemUser = lib.mkForce false;
+  #   isNormalUser = true;
+  #   group = lib.mkForce "kimai";
+  #   createHome = lib.mkForce false;
+  # };
+  # users.groups.kimai = { };
+  # services.mysql = {
+  #   enable = true;
+  #   package = pkgs.mariadb;
+  #   ensureDatabases = [ "kimai" ];
+  #   settings = {
+  #     mysqld = {
+  #       bind-address = "localhost";
+  #     };
+  #   };
+  #   ensureUsers = [
+  #     {
+  #       name = "kimai";
+  #       ensurePermissions = {
+  #         "kimai.*" = "ALL PRIVILEGES";
+  #       };
+  #     }
+  #   ];
+  # };
 
   # clan.core.state."kimai" = {
   #   folders = [
@@ -80,14 +82,14 @@
   #   '';
   # };
 
-  services.kimai.sites."kimai.local" = {
-    database = {
-      createLocally = false;
-      serverVersion = "10.11.14-MariaDB";
-      user = "kimai";
-      passwordFile = config.clan.core.vars.generators."kimai".files.db-password.path;
-    };
-  };
+  # services.kimai.sites."kimai.local" = {
+  #   database = {
+  #     createLocally = false;
+  #     serverVersion = "10.11.14-MariaDB";
+  #     user = "kimai";
+  #     passwordFile = config.clan.core.vars.generators."kimai".files.db-password.path;
+  #   };
+  # };
   #### END KIMAI ####
 
   services.nginx = {

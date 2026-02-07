@@ -1,10 +1,11 @@
-{...}:
+{ ... }:
 {
 
   users.users.blog = {
     isSystemUser = true;
     home = "/var/www/blog";
     createHome = true;
+    homeMode = "750";
     description = "Blog user";
     group = "blog";
   };
@@ -17,8 +18,10 @@
       "qubasa.blog" = {
         forceSSL = true;
         enableACME = true;
+        root = "/var/www/blog";
+        locations."/assets" = { };
         locations."/" = {
-          root = "/var/www/blog";
+          tryFiles = "/index.html =404";
         };
       };
     };
