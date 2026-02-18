@@ -8,7 +8,7 @@
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/borgbackup_fix.tar.gz";
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=merge_clean_change";
+      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=monitoring_server_address";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";

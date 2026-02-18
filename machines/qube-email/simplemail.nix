@@ -2,23 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-
-  networking.interfaces.ens3.ipv6 = {
-    addresses = [
-      {
-        address = "2a01:4f9:c010:51cd::2";
-        prefixLength = 64;
-      }
-    ];
-  };
-  networking.defaultGateway6 = {
-    address = "fe80::1";
-    interface = "ens3";
-  };
-
   services.fail2ban = {
     enable = false;
     jails = {
@@ -42,10 +33,9 @@
     defaults.email = "acme@qube.email";
     defaults.webroot = "/var/lib/acme/acme-challenge/";
     certs.${config.mailserver.fqdn} = {
-       group = config.services.nginx.group;
+      group = config.services.nginx.group;
     };
   };
-
 
   # webserver for http challenge
   services.nginx = {
@@ -54,6 +44,7 @@
       forceSSL = true;
       useACMEHost = "${config.mailserver.fqdn}";
       locations."/.well-known/".root = "/var/lib/acme/acme-challenge/";
+      locations."/".root = pkgs.writeTextDir "index.html" (builtins.readFile ./impressum.html);
     };
   };
 

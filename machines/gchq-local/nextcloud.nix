@@ -96,6 +96,6 @@ rec {
   services.nginx.virtualHosts.${services.nextcloud.hostName} = {
     enableACME = true;
     onlySSL = true;
-    extraConfig = '''';
+    extraConfig = "";
   };
 }

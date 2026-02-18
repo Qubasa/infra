@@ -15,6 +15,9 @@
     enable = true;
     drivers = [ pkgs.hplipWithPlugin ];
   };
+  
+  services.pcscd.enable = true;
+  
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -164,6 +167,10 @@
         bitwarden-cli
         rbw # Bitwarden cli alternative
         pinentry-gnome3 # rbw dependency
+
+        # hardware security dongle
+        opensc
+        pcsclite
       ]
     ++
       # System Tools

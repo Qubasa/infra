@@ -7,7 +7,7 @@
 
     wifi = {
       roles.default.machines."wintux".settings.networks = {
-        "qubasas-home" = {};
+        "qubasas-home" = { };
       };
     };
 
@@ -57,8 +57,9 @@
           settings.useSSL = true;
         };
 
-        server.machines."gchq-local".settings = {
-            grafana.enable = true;
+        server.machines."qube-email".settings = {
+          grafana.enable = true;
+          host = "qube.email";
         };
       };
     };
@@ -124,11 +125,8 @@
     };
 
     internet = {
-      roles.default.machines.demo.settings = {
-        host = "192.168.122.67";
-      };
       roles.default.machines.wintux.settings.host = "127.0.0.1";
-      roles.default.machines.gchq-local.settings.host = "home.gchq.icu";
+      roles.default.machines.gchq-local.settings.host = "gchq.icu";
       roles.default.machines.qube-email.settings.host = "qube.email";
     };
 
@@ -136,7 +134,7 @@
       roles.server.machines = {
         demo = { };
         gchq-local = { };
-        installer = { }; 
+        installer = { };
       };
       # roles.client.machines = {
       #   installer = { };
@@ -147,19 +145,19 @@
       roles.client.machines."gchq-local".settings = {
         destinations."storagebox" = {
           repo = "u494682-sub1@u494682-sub1.your-storagebox.de:/./borgbackup";
-          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+          rsh = "ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh";
         };
       };
       roles.client.machines."qube-email".settings = {
         destinations."storagebox" = {
           repo = "u494682-sub2@u494682-sub2.your-storagebox.de:/./borgbackup";
-          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+          rsh = "ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh";
         };
       };
       roles.client.machines."wintux".settings = {
         destinations."storagebox" = {
           repo = "u494682-sub3@u494682-sub3.your-storagebox.de:/./borgbackup";
-          rsh = ''ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh'';
+          rsh = "ssh -p 23 -oStrictHostKeyChecking=accept-new -i /run/secrets/vars/borgbackup/borgbackup.ssh";
         };
       };
     };

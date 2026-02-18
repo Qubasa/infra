@@ -9,8 +9,10 @@
 
   imports = [
     ./simplemail.nix
+    ./networking.nix
     flakeInputs.simple-nixos-mailserver.nixosModule
     ./initrd.nix
+    ./monitoring.nix
   ];
 
   clan.core.settings.machine-id.enable = true;
@@ -70,10 +72,6 @@
     fd
     ripgrep
   ];
-
-  # Set this for clan commands use ssh i.e. `clan machines update`
-  # clan.core.networking.targetHost = "admin@qube.email";
-  clan.core.networking.buildHost = "root@127.0.0.1";
 
   # IMPORTANT! Add your SSH key here
   # e.g. > cat ~/.ssh/id_ed25519.pub
