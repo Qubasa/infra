@@ -5,6 +5,10 @@
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     nix-image-installer.url = "github:nix-community/nixos-images";
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/borgbackup_fix.tar.gz";
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
@@ -55,6 +59,7 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
     };
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
   };
 
   outputs =

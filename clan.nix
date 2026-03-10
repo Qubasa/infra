@@ -2,14 +2,17 @@
   meta.name = "Qubasas_Clan";
   meta.domain = "dark";
 
+  modules.stoatchat = ./services/stoatchat;
+  modules.sable = ./services/sable;
+
   # Testing the inventory
   inventory.instances = {
 
-    wifi = {
-      roles.default.machines."wintux".settings.networks = {
-        "qubasas-home" = { };
-      };
-    };
+    # wifi = {
+    #   roles.default.machines."wintux".settings.networks = {
+    #     "qubasas-home" = { };
+    #   };
+    # };
 
     sshd = {
       module = {
@@ -90,7 +93,7 @@
             domain = "gchq.icu";
             secret_field_name = "secret_api_key";
             extraSettings = {
-              host = "@,element,gitea,home,bitwarden,cloud";
+              host = "@,element,sable,gitea,home,bitwarden,cloud";
               ip_version = "ipv4";
               ipv6_suffix = "";
               # This is a pubkey. It is not a secret.

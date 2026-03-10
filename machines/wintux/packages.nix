@@ -17,6 +17,7 @@
   };
   
   services.pcscd.enable = true;
+  security.polkit.enable = true;
   
   services.avahi = {
     enable = true;
@@ -75,12 +76,13 @@
     # Web tools
     [
       signal-desktop
-      brave
+      unstablePkgs.brave
     ]
     ++
       # Office tools
       [
         solaar # logitech device tool
+        pavucontrol
         gimp
         inkscape-with-extensions
         docker-compose
@@ -98,7 +100,7 @@
       # Development Tools
       [
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
-        unstablePkgs.ghostty
+        flakeInputs.ghostty.outputs.packages.x86_64-linux.ghostty-releasefast       
         devtoolbox
         rust-analyzer
         nix-init # init nix packages in a directory
@@ -109,14 +111,12 @@
         difftastic
         ast-grep # code search and replace
         shellcheck-minimal
-        pueue # daemon to manage long running shell tasks
         gh # github cli
         tea # gitea cli
       ]
     ++
       # Virtualization and Remote Desktop
       [
-        google-cloud-sdk
         virt-manager
         virtiofsd # share filesystems
         moonlight-qt

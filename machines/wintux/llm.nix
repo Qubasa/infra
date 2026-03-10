@@ -19,6 +19,7 @@ in
     my-claude-code
     ai-tools.coderabbit-cli
     ai-tools.tuicr
+    ai-tools.openspec
   ];
 
 }
