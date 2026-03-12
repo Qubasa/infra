@@ -148,11 +148,11 @@
             pkgs.python3
             pkgs.python3Packages.argcomplete
             pkgs.mkpasswd
-            # inputs.clan-core.packages.x86_64-linux.clan-cli
+            inputs.clan-core.packages.x86_64-linux.clan-cli
           ];
           shellHook = ''
             export GIT_ROOT="$(git rev-parse --show-toplevel)"
-            export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
+            # export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
           '';
         }
       );

@@ -20,6 +20,7 @@ in
     ai-tools.coderabbit-cli
     ai-tools.tuicr
     ai-tools.openspec
+    ai-tools.claudebox
   ];
 
 }
