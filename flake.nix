@@ -130,6 +130,7 @@
 
       inherit (clan.config) nixosConfigurations clanInternals;
       clan = clan.config;
+      clanOptions = clan.options;
 
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
