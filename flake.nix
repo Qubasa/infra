@@ -3,12 +3,19 @@
 
   inputs = {
 
+    my-private-pkgs = {
+      type = "git";
+      url = "ssh://gitea@gitea.gchq.icu/Luis/my-private-nix-packages.git";
+    };
+
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
     nix-image-installer.url = "github:nix-community/nixos-images";
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
+
     clan-core = {
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/borgbackup_fix.tar.gz";
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
@@ -53,7 +60,7 @@
     };
     simple-nixos-mailserver = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/44c63067d4ca9548c14b54620eaa9b981bc9c9db";
     };
     chrome-pwa = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
@@ -149,11 +156,11 @@
             pkgs.python3
             pkgs.python3Packages.argcomplete
             pkgs.mkpasswd
-            inputs.clan-core.packages.x86_64-linux.clan-cli
+            # inputs.clan-core.packages.x86_64-linux.clan-cli
           ];
           shellHook = ''
             export GIT_ROOT="$(git rev-parse --show-toplevel)"
-            # export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
+            export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
           '';
         }
       );

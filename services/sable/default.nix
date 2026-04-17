@@ -72,7 +72,12 @@
             cfg = settings;
 
             sources = import ../../pkgs/sable/_sources/generated.nix {
-              inherit (pkgs) fetchurl fetchgit fetchFromGitHub dockerTools;
+              inherit (pkgs)
+                fetchurl
+                fetchgit
+                fetchFromGitHub
+                dockerTools
+                ;
             };
 
             sable = pkgs.callPackage ../../pkgs/sable/package.nix { inherit sources; };

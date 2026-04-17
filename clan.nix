@@ -1,9 +1,18 @@
 {
+
   meta.name = "Qubasas_Clan";
   meta.domain = "dark";
 
   modules.stoatchat = ./services/stoatchat;
   modules.sable = ./services/sable;
+
+  inventory.machines = {
+    gchq-local = {
+      deploy = {
+        buildHost = "root@qube.email";
+      };
+    };
+  };
 
   # Testing the inventory
   inventory.instances = {

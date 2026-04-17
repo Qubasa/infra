@@ -15,10 +15,10 @@
     enable = true;
     drivers = [ pkgs.hplipWithPlugin ];
   };
-  
+
   services.pcscd.enable = true;
   security.polkit.enable = true;
-  
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -77,12 +77,16 @@
     [
       signal-desktop
       unstablePkgs.brave
+
+      # Just to test private package inputs
+      flakeInputs.my-private-pkgs.packages.x86_64-linux.hello-world
     ]
     ++
       # Office tools
       [
         solaar # logitech device tool
         pavucontrol
+        thorium-reader
         gimp
         inkscape-with-extensions
         docker-compose
@@ -100,7 +104,7 @@
       # Development Tools
       [
         # flakeInputs.ghostty.packages.x86_64-linux.ghostty-releasefast
-        flakeInputs.ghostty.outputs.packages.x86_64-linux.ghostty-releasefast       
+        flakeInputs.ghostty.outputs.packages.x86_64-linux.ghostty-releasefast
         devtoolbox
         rust-analyzer
         nix-init # init nix packages in a directory
@@ -146,7 +150,7 @@
         wireshark
         wget
         curl
-        dnsutils
+        ldns
         nettools
         lsof # list open files
       ]

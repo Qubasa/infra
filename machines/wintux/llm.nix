@@ -8,9 +8,19 @@ let
   ai-tools = flakeInputs.nix-ai-tools.packages."x86_64-linux";
 
   my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
-    #inherit pexpect-mcp;
     claude-code = ai-tools.claude-code;
-    #claude-code-router = ai-tools.claude-code-router;
+    sandbox-runtime = ai-tools.sandbox-runtime;
+  };
+
+  managedSettings = {
+    sandbox = {
+      enabled = true;
+      enabledPlatforms = [ "linux" ];
+      requireOnStartup = true;
+      seccomp = {
+        applyPath = my-claude-code.applySeccomp;
+      };
+    };
   };
 in
 {
@@ -22,5 +32,7 @@ in
     ai-tools.openspec
     ai-tools.claudebox
   ];
+
+  environment.etc."claude-code/managed-settings.json".text = builtins.toJSON managedSettings;
 
 }

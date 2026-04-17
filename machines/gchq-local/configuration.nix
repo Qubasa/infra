@@ -22,6 +22,16 @@
 
   clan.nginx.acme.email = "acme@qube.email";
 
+  specialisation = {
+    testSpecial = {
+      configuration = {
+        environment.systemPackages = [
+          pkgs.hello
+        ];
+      };
+    };
+  };
+
   nix = {
     gc.automatic = true;
     gc.dates = "daily";

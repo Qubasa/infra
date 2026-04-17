@@ -23,6 +23,7 @@
     ./radeon.nix
     ./mitm.nix
     ./nvidia.nix
+    ./sunshine.nix
   ];
 
   programs.wallpaper = {
@@ -40,6 +41,16 @@
   # programs.adb.enable = true;
 
   services.chrome-pwa.enable = true;
+
+  specialisation = {
+    testSpecial = {
+      configuration = {
+        environment.systemPackages = [
+          pkgs.hello
+        ];
+      };
+    };
+  };
 
   security.sudo = {
     enable = true;
