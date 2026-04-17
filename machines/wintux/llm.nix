@@ -9,8 +9,10 @@ let
 
   my-claude-code = pkgs.callPackage ../../pkgs/claude-code {
     claude-code = ai-tools.claude-code;
-    sandbox-runtime = ai-tools.sandbox-runtime;
   };
+
+  seccompArch = if pkgs.stdenv.hostPlatform.isAarch64 then "arm64" else "x64";
+  applySeccomp = "${ai-tools.sandbox-runtime}/lib/node_modules/@anthropic-ai/sandbox-runtime/vendor/seccomp/${seccompArch}/apply-seccomp";
 
   managedSettings = {
     sandbox = {
@@ -18,7 +20,7 @@ let
       enabledPlatforms = [ "linux" ];
       requireOnStartup = true;
       seccomp = {
-        applyPath = my-claude-code.applySeccomp;
+        applyPath = applySeccomp;
       };
     };
   };
@@ -30,7 +32,6 @@ in
     ai-tools.coderabbit-cli
     ai-tools.tuicr
     ai-tools.openspec
-    ai-tools.claudebox
   ];
 
   environment.etc."claude-code/managed-settings.json".text = builtins.toJSON managedSettings;
