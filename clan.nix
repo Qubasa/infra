@@ -9,7 +9,7 @@
   inventory.machines = {
     gchq-local = {
       deploy = {
-        buildHost = "root@qube.email";
+        # buildHost = "root@qube.email";
       };
     };
   };
@@ -22,6 +22,16 @@
     #     "qubasas-home" = { };
     #   };
     # };
+    #
+    #
+    #
+
+    # harmonia = {
+    #     input = "clan-community";
+
+    #     roles.server.machines.gchq-icu = {};
+    #     roles.client.tags.all = {};
+    # };
 
     sshd = {
       module = {
@@ -30,6 +40,9 @@
       };
       # Servers present certificates for <machine>.example.com
       roles.server.tags.all = { };
+      roles.server.settings = {
+        certificate.enable = false;
+      };
       roles.server.machines."gchq-local".settings = {
         certificate.searchDomains = [ "*.gchq.icu" ];
       };
@@ -139,7 +152,7 @@
     internet = {
       roles.default.machines.wintux.settings.host = "127.0.0.1";
       roles.default.machines.gchq-local.settings.host = "gchq.icu";
-      roles.default.machines.qube-email.settings.host = "qube.email";
+      roles.default.machines.qube-email.settings.host = "2a01:4f8:171:21d5::1";
     };
 
     tor = {

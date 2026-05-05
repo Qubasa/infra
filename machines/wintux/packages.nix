@@ -69,7 +69,6 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ flakeInputs.nix-vscode-extensions.overlays.default ];
 
   environment.systemPackages =
     with pkgs;
@@ -116,6 +115,7 @@
         ast-grep # code search and replace
         shellcheck-minimal
         gh # github cli
+        android-tools
         tea # gitea cli
       ]
     ++

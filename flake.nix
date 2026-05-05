@@ -3,9 +3,20 @@
 
   inputs = {
 
+    clan-core = {
+      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=fix_sshd_or_true";
+    };
+
     my-private-pkgs = {
       type = "git";
       url = "ssh://gitea@gitea.gchq.icu/Luis/my-private-nix-packages.git";
+    };
+
+    clan-community = {
+      url = "git+https://git.clan.lol/clan/clan-community?ref=nim65s-harmonia";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
@@ -14,12 +25,6 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
-    };
-
-    clan-core = {
-      # url = "https://git.clan.lol/Qubasa/clan-core/archive/borgbackup_fix.tar.gz";
-      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=monitoring_server_address";
     };
 
     nixpkgs.follows = "clan-core/nixpkgs";
@@ -47,9 +52,6 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-    };
     nix-index-database = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";

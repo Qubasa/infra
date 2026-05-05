@@ -11,13 +11,14 @@
     ../../modules/backups.nix
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix
-    ./vscode.nix
+    # ./vscode.nix
     ./webapps.nix
     # ./kernel.nix
     ./disko.nix
     ./initrd.nix
     ./network.nix
     ./packages.nix
+    ./zed.nix
     ./zsh.nix
     ./display.nix
     ./radeon.nix
