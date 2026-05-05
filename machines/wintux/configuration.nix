@@ -11,7 +11,7 @@
     ../../modules/backups.nix
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix
-    # ./vscode.nix
+    ./vscode.nix
     ./webapps.nix
     # ./kernel.nix
     ./disko.nix
@@ -23,7 +23,6 @@
     ./display.nix
     ./radeon.nix
     ./mitm.nix
-    ./nvidia.nix
     ./sunshine.nix
   ];
 
@@ -44,11 +43,9 @@
   services.chrome-pwa.enable = true;
 
   specialisation = {
-    testSpecial = {
+    nvidia = {
       configuration = {
-        environment.systemPackages = [
-          pkgs.hello
-        ];
+        imports = [ ./nvidia.nix ];
       };
     };
   };

@@ -149,19 +149,19 @@ in
       };
     };
 
-    agent_servers = {
-      claude-acp = {
-        type = "registry";
-        env = {
-          CLAUDE_CODE_EXECUTABLE = lib.getExe claudeCode;
-        };
-        default_config_options = {
-          mode = "bypassPermissions";
-        };
-        favorite_config_option_values = {
-          mode = [ "bypassPermissions" ];
-        };
-      };
-    };
+    # agent_servers = {
+    #   claude-acp = {
+    #     type = "registry";
+    #     env = {
+    #       CLAUDE_CODE_EXECUTABLE = lib.getExe claudeCode;
+    #     };
+    #     default_config_options = {
+    #       mode = "bypassPermissions";
+    #     };
+    #     favorite_config_option_values = {
+    #       mode = [ "bypassPermissions" ];
+    #     };
+    #   };
+    # };
   };
 }

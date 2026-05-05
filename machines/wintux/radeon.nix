@@ -1,14 +1,17 @@
 { ... }:
 
 {
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidia"
+    "nvidia_drm"
+    "nvidia_modeset"
+    "nvidia_uvm"
+  ];
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    # extraPackages = [
-    #   pkgs.rocmPackages.clr.icd
-    # ];
   };
 
   # systemd.tmpfiles.rules =

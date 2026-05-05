@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
-    unstable-nixpkgs.url = "github:NixOS/nixpkgs/master?shallow=1";
+    unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
     nix-image-installer.url = "github:nix-community/nixos-images";
 
     ghostty = {
@@ -27,7 +27,7 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
-    nixpkgs.follows = "clan-core/nixpkgs";
+    nixpkgs.follows = "unstable-nixpkgs";
 
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
@@ -52,6 +52,9 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+    };
     nix-index-database = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:nix-community/nix-index-database";

@@ -3,9 +3,9 @@
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-  services.displayManager.autoLogin.enable = true;
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
+  # services.displayManager.autoLogin.enable = true;
   services.xserver.xkb.layout = "de";
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

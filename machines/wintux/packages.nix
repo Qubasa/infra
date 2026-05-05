@@ -10,6 +10,19 @@
     ./llm.nix
   ];
 
+  nixpkgs.overlays = [
+    flakeInputs.nix-vscode-extensions.overlays.default
+    # Workaround: GitLab regenerated the wireshark v4.6.5 archive, breaking the
+    # hash pinned in our locked nixpkgs. Override the src hash to the current one.
+    (_final: prev: {
+      wireshark = prev.wireshark.overrideAttrs (old: {
+        src = old.src.overrideAttrs (_: {
+          outputHash = "sha256-Zvrwxjp4LK2J3QnxmPxKKrU01YHQvPyp54UWzeGNCjA=";
+        });
+      });
+    })
+  ];
+
   # Printing
   services.printing = {
     enable = true;
