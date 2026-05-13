@@ -125,6 +125,7 @@
         radare2
         mergiraf
         difftastic
+        bubblewrap
         ast-grep # code search and replace
         shellcheck-minimal
         gh # github cli
