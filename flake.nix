@@ -2,7 +2,6 @@
   description = "Qubasa's cLANs";
 
   inputs = {
-
     clan-core = {
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
       # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
@@ -65,7 +64,8 @@
     };
     simple-nixos-mailserver = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/44c63067d4ca9548c14b54620eaa9b981bc9c9db";
+      # url = "gitlab:simple-nixos-mailserver/nixos-mailserver/44c63067d4ca9548c14b54620eaa9b981bc9c9db";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     };
     chrome-pwa = {
       inputs.nixpkgs.follows = "clan-core/nixpkgs";

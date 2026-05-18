@@ -68,6 +68,7 @@ in
 
   environment.systemPackages = [
     my-claude-code
+    ai-tools.opencode
     ai-tools.coderabbit-cli
     ai-tools.tuicr
     ai-tools.openspec
