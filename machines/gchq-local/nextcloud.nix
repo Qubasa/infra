@@ -22,7 +22,20 @@ rec {
       default_phone_region = "DE";
       # TODO: systemd backend needs a packaged https://github.com/systemd/php-systemd which doesn't exist yet
       log_type = "file";
+
+      mail_smtpmode = "smtp";
+      mail_sendmailmode = "smtp";
+      mail_smtphost = "qube.email";
+      mail_smtpport = 465;
+      mail_smtpsecure = "ssl";
+      mail_smtpauth = true;
+      mail_smtpauthtype = "LOGIN";
+      mail_smtpname = "nextcloud-noreply@qube.email";
+      mail_from_address = "nextcloud-noreply";
+      mail_domain = "qube.email";
     };
+    secretFile =
+      config.clan.core.vars.generators.qube-email-nextcloud-smtp.files.nextcloud-secrets-json.path;
     config = {
       dbtype = "pgsql";
       dbuser = "nextcloud";

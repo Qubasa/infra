@@ -1,6 +1,13 @@
 { lib, config, ... }:
 
 {
+  # gitea-pre-start runs as the gitea user and reads the password via
+  # `replace-secret`, so the deployed secret must be readable by gitea.
+  clan.core.vars.generators.qube-email-gitea-smtp.files.password = {
+    owner = "gitea";
+    group = "gitea";
+    restartUnits = [ "gitea.service" ];
+  };
 
   clan.core.postgresql.users.gitea = { };
   clan.core.postgresql.databases.gitea.create.options = {
@@ -47,16 +54,19 @@
         DOMAIN = "gitea.gchq.icu";
         LEVEL = "Warn";
       };
-      # mailer = {
-      #   ENABLED = true;
-      #   MAILER_TYPE = "smtps";
-      #   FROM = "noreply@qube.email";
-      # };
+      mailer = {
+        ENABLED = true;
+        PROTOCOL = "smtps";
+        SMTP_ADDR = "qube.email";
+        SMTP_PORT = 465;
+        FROM = "Gitea <gitea-noreply@qube.email>";
+        USER = "gitea-noreply@qube.email";
+      };
       other = {
         SHOW_FOOTER_VERSION = false;
       };
     };
-    # mailerPasswordFile = config.sops.secrets.gchq-local-gitea-smtp.path;
+    mailerPasswordFile = config.clan.core.vars.generators.qube-email-gitea-smtp.files.password.path;
     enable = true;
   };
 

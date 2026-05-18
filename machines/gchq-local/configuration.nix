@@ -18,6 +18,7 @@
     ./blog.nix
     ../../modules/heisenbridge
     ../../modules/vaultwarden
+    ../../modules/qube-email-smtp-accounts.nix
   ];
 
   clan.nginx.acme.email = "acme@qube.email";

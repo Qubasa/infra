@@ -13,6 +13,7 @@
     flakeInputs.simple-nixos-mailserver.nixosModule
     ./initrd.nix
     ./monitoring.nix
+    ../../modules/qube-email-smtp-accounts.nix
   ];
 
   clan.core.settings.machine-id.enable = true;

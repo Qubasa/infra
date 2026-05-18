@@ -104,9 +104,16 @@
         hashedPasswordFile = config.sops.secrets.qube-email-simplemail-luis-hash.path;
       };
 
-      "noreply@qube.email" = {
+      "gitea-noreply@qube.email" = {
         sendOnly = true;
-        hashedPasswordFile = config.sops.secrets.qube-email-simplemail-noreply-hash.path;
+        hashedPasswordFile =
+          config.clan.core.vars.generators.qube-email-gitea-smtp.files.password-hash.path;
+      };
+
+      "nextcloud-noreply@qube.email" = {
+        sendOnly = true;
+        hashedPasswordFile =
+          config.clan.core.vars.generators.qube-email-nextcloud-smtp.files.password-hash.path;
       };
 
       "notrust@qube.email" = {
