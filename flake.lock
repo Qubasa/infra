@@ -827,6 +827,22 @@
         "type": "github"
       }
     },
+    "qubasa-nixpkgs": {
+      "locked": {
+        "lastModified": 1779188765,
+        "narHash": "sha256-0rhwHzktqAPSwUFaEuIic8vzoDp5ASxn/fDvbobehTA=",
+        "owner": "Qubasa",
+        "repo": "nixpkgs",
+        "rev": "3509a9bb0cab139bcd6e10a2991a33263f3a8273",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qubasa",
+        "ref": "update_sunshine",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "chrome-pwa": "chrome-pwa",
@@ -844,6 +860,7 @@
         "pyproject-build-systems": "pyproject-build-systems",
         "pyproject-nix": "pyproject-nix",
         "quadlet-nix": "quadlet-nix",
+        "qubasa-nixpkgs": "qubasa-nixpkgs",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "systems": "systems_6",
         "treefmt-nix": "treefmt-nix_5",

@@ -19,6 +19,7 @@
     };
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
+    qubasa-nixpkgs.url = "github:Qubasa/nixpkgs?ref=update_sunshine";
     nix-image-installer.url = "github:nix-community/nixos-images";
 
     ghostty = {
