@@ -116,47 +116,32 @@ in
       };
     };
 
-    clan.core.vars.generators = {
-      vaultwarden-admin = {
-        migrateFact = "vaultwarden-admin";
-        files."vaultwarden-admin" = { };
-        files."vaultwarden-admin-hash" = { };
-        runtimeInputs = with pkgs; [
-          coreutils
-          pwgen
-          libargon2
-          openssl
-        ];
-        script = ''
-          ADMIN_PWD=$(pwgen 16 -n1 | tr -d "\n")
-          ADMIN_HASH=$(echo -n "$ADMIN_PWD" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4)
+    clan.core.vars.generators.vaultwarden-admin = {
+      migrateFact = "vaultwarden-admin";
+      files."vaultwarden-admin" = { };
+      files."vaultwarden-admin-hash" = { };
+      runtimeInputs = with pkgs; [
+        coreutils
+        pwgen
+        libargon2
+        openssl
+      ];
+      script = ''
+        ADMIN_PWD=$(pwgen 16 -n1 | tr -d "\n")
+        ADMIN_HASH=$(echo -n "$ADMIN_PWD" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4)
 
-          config="
-          ADMIN_TOKEN=\"$ADMIN_HASH\"
-          "
-          echo -n "$ADMIN_PWD" > "$out"/vaultwarden-admin
-          echo -n "$config" > "$out"/vaultwarden-admin-hash
-        '';
-      };
-      vaultwarden-smtp = {
-        migrateFact = "vaultwarden-smtp";
-        prompts."vaultwarden-smtp".description = "${cfg.smtp.from} SMTP password";
-        prompts."vaultwarden-smtp".persist = true;
-        runtimeInputs = with pkgs; [ coreutils ];
-        script = ''
-          prompt_value="$(cat "$prompts"/vaultwarden-smtp)"
-          config="
-            SMTP_PASSWORD=\"$prompt_value\"
-          "
-          echo -n "$config" > "$out"/vaultwarden-smtp
-        '';
-      };
+        config="
+        ADMIN_TOKEN=\"$ADMIN_HASH\"
+        "
+        echo -n "$ADMIN_PWD" > "$out"/vaultwarden-admin
+        echo -n "$config" > "$out"/vaultwarden-admin-hash
+      '';
     };
 
     systemd.services."vaultwarden" = {
       serviceConfig = {
         EnvironmentFile = [
-          config.clan.core.vars.generators."vaultwarden-smtp".files."vaultwarden-smtp".path
+          config.clan.core.vars.generators.qube-email-vaultwarden-smtp.files.env.path
         ];
       };
     };

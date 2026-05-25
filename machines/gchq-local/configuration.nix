@@ -59,8 +59,8 @@
   clan.vaultwarden = {
     domain = "bitwarden.gchq.icu";
     smtp = {
-      username = "noreply@qube.email";
-      from = "noreply@qube.email";
+      username = "vaultwarden-noreply@qube.email";
+      from = "vaultwarden-noreply@qube.email";
       host = "qube.email";
     };
   };

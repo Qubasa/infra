@@ -18,7 +18,7 @@
     ./initrd.nix
     ./network.nix
     ./packages.nix
-    ./zed.nix
+    # ./zed.nix
     ./zsh.nix
     ./display.nix
     ./radeon.nix

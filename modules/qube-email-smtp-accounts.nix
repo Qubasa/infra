@@ -38,5 +38,16 @@ in
         printf '{"mail_smtppassword":"%s"}' "$PASSWORD" > "$out"/nextcloud-secrets-json
       '';
     };
+
+    qube-email-vaultwarden-smtp = {
+      share = true;
+      files.password = { };
+      files.password-hash = { };
+      files.env = { };
+      inherit runtimeInputs;
+      script = baseScript + ''
+        printf 'SMTP_PASSWORD="%s"\n' "$PASSWORD" > "$out"/env
+      '';
+    };
   };
 }

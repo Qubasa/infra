@@ -116,6 +116,12 @@
           config.clan.core.vars.generators.qube-email-nextcloud-smtp.files.password-hash.path;
       };
 
+      "vaultwarden-noreply@qube.email" = {
+        sendOnly = true;
+        hashedPasswordFile =
+          config.clan.core.vars.generators.qube-email-vaultwarden-smtp.files.password-hash.path;
+      };
+
       "notrust@qube.email" = {
         # Can send emails back as every other user
         aliases = [

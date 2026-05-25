@@ -171,6 +171,7 @@
     ++
       # File and Archive Utilities
       [
+        trashy
         pika-backup
         fd
         ripgrep
