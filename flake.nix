@@ -4,6 +4,7 @@
   inputs = {
     clan-core = {
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip?ref=add_target_machine_option";
       # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
       # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=fix_sshd_or_true";
     };
@@ -172,6 +173,7 @@
           shellHook = ''
             export GIT_ROOT="$(git rev-parse --show-toplevel)"
             export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
+            # export PATH=$PATH:~/Projects/clan-core/buildHostPr/pkgs/clan-cli/bin
           '';
         }
       );

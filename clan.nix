@@ -8,9 +8,9 @@
 
   inventory.machines = {
     gchq-local = {
-      deploy = {
-        # buildHost = "root@qube.email";
-      };
+      # deploy = {
+      #   buildHost = "localhost";
+      # };
     };
   };
 
@@ -143,6 +143,15 @@
       roles.peer.tags.all = { };
     };
 
+    # zerotier-test = {
+    #   module = {
+    #     name = "zerotier";
+    #     input = "clan-core";
+    #   };
+    #   roles.controller.machines."wintux" = { };
+    #   roles.peer.tags.all = { };
+    # };
+    
     trusted-nix-caches = {
       roles.default.tags = {
         all = { };

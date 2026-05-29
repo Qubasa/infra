@@ -75,7 +75,7 @@ in
     ai-tools.openspec
     ai-tools.nono
     ai-tools.rtk
-    qubasa-ai-tools.opencode-quota
+    # qubasa-ai-tools.opencode-quota
   ];
 
   environment.etc."claude-code/managed-settings.json".text = builtins.toJSON managedSettings;
