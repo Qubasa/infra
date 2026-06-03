@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  # Enable kernel same page merging
+  hardware.ksm.enable = true;
+  
   boot.crashDump.enable = true;
   boot.kernelPackages = pkgs.linuxPackagesFor (
     pkgs.linux_6_6.override {
