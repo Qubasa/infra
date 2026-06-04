@@ -18,6 +18,7 @@ in
 
   environment.systemPackages = [
     my-claude-code
+    ai-tools.claude-code
     ai-tools.opencode
     ai-tools.git-surgeon
     ai-tools.tuicr

@@ -182,7 +182,7 @@
       # Security and Encryption
       [
         gnupg
-        bitwarden-desktop
+        # bitwarden-desktop
         bitwarden-cli
         rbw # Bitwarden cli alternative
         pinentry-gnome3 # rbw dependency

@@ -26,6 +26,9 @@
     ./sunshine.nix
   ];
 
+
+  hardware.ksm.enable =  true;
+  
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";

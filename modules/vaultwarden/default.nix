@@ -117,7 +117,6 @@ in
     };
 
     clan.core.vars.generators.vaultwarden-admin = {
-      migrateFact = "vaultwarden-admin";
       files."vaultwarden-admin" = { };
       files."vaultwarden-admin-hash" = { };
       runtimeInputs = with pkgs; [
