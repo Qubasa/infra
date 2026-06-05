@@ -934,11 +934,11 @@
     },
     "qubasa-nixpkgs": {
       "locked": {
-        "lastModified": 1779795653,
-        "narHash": "sha256-DXM7o6DNcVY0s6TgrtbfpcIpKvcRECgG4SXZhzJaEuE=",
+        "lastModified": 1780670869,
+        "narHash": "sha256-vNjd59YIP2eH6wfcjcaNW0ec+xjIe0/ZsjKHycGt/5Y=",
         "owner": "Qubasa",
         "repo": "nixpkgs",
-        "rev": "b0c4630d607147a700c69c16a53bb0223e3b4d59",
+        "rev": "391d69d880514742b8612cbcd6480b5a8c3c08b5",
         "type": "github"
       },
       "original": {

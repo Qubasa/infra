@@ -12,7 +12,7 @@
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
-    ./webapps.nix
+    # ./webapps.nix
     # ./kernel.nix
     ./disko.nix
     ./initrd.nix
