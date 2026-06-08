@@ -9,6 +9,11 @@
       # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=fix_sshd_or_true";
     };
 
+    focus-timer = {
+      url = "github:Qubasa/FocusTimer?ref=feat_dismiss";
+      inputs.nixpkgs.follows =  "clan-core/nixpkgs";
+    };
+
     my-private-pkgs = {
       type = "git";
       url = "ssh://gitea@gitea.gchq.icu/Luis/my-private-nix-packages.git";

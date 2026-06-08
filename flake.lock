@@ -465,6 +465,28 @@
         "type": "github"
       }
     },
+    "focus-timer": {
+      "inputs": {
+        "nixpkgs": [
+          "clan-core",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780676800,
+        "narHash": "sha256-SVfA2Ehmlz+/5puoc7ecNEMuLZ/bIuOZSLPd15L+lEg=",
+        "owner": "Qubasa",
+        "repo": "FocusTimer",
+        "rev": "25b6c5716a138405323dbbf6ceca49b769f503e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qubasa",
+        "ref": "feat_dismiss",
+        "repo": "FocusTimer",
+        "type": "github"
+      }
+    },
     "ghostty": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -953,6 +975,7 @@
         "chrome-pwa": "chrome-pwa",
         "clan-community": "clan-community",
         "clan-core": "clan-core_2",
+        "focus-timer": "focus-timer",
         "ghostty": "ghostty",
         "my-private-pkgs": "my-private-pkgs",
         "nix-ai-tools": "nix-ai-tools",

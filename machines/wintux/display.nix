@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, flakeInputs, ... }:
 {
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
@@ -11,8 +11,8 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
-    gnome-pomodoro
     gnomeExtensions.night-theme-switcher
+    flakeInputs.focus-timer.packages.x86_64-linux.focus-timer
     gnomeExtensions.tactile
     dipc
     gnome-tweaks
