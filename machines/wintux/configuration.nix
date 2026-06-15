@@ -12,7 +12,7 @@
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
-    # ./webapps.nix
+    ./webapps.nix
     # ./kernel.nix
     ./disko.nix
     ./initrd.nix
@@ -28,6 +28,10 @@
 
 
   hardware.ksm.enable =  true;
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+  };
   
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";

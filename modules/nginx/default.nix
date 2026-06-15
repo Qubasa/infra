@@ -56,7 +56,6 @@
         in
         map escapeIPv6 resolvers;
 
-      sslDhparam = true;
     };
   };
 

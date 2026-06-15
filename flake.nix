@@ -10,7 +10,7 @@
     };
 
     focus-timer = {
-      url = "github:Qubasa/FocusTimer?ref=feat_dismiss";
+      url = "github:Qubasa/FocusTimer";
       inputs.nixpkgs.follows =  "clan-core/nixpkgs";
     };
 
