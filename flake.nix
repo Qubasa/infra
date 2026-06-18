@@ -6,7 +6,6 @@
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
       # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip?ref=add_target_machine_option";
       # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      # url = "git+https://git.clan.lol/Qubasa/clan-core?ref=fix_sshd_or_true";
     };
 
     focus-timer = {
@@ -45,24 +44,6 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
-    pyproject-nix = {
-      url = "github:pyproject-nix/pyproject.nix";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
-    };
-
-    pyproject-build-systems = {
-      url = "github:pyproject-nix/build-system-pkgs";
-      inputs.pyproject-nix.follows = "pyproject-nix";
-      inputs.uv2nix.follows = "uv2nix";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
-    };
-
-    uv2nix = {
-      url = "github:pyproject-nix/uv2nix";
-      # inputs.pyproject-nix.follows = "pyproject-nix";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
-    };
-
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };
@@ -83,7 +64,6 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
     };
-    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
   };
 
   outputs =
