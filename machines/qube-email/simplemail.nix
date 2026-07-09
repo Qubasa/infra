@@ -54,8 +54,6 @@
       "/var/vmail"
       "/var/dkim"
       "/var/certs"
-      "/var/sieve"
-
     ];
 
     preBackupScript = ''
@@ -86,20 +84,15 @@
   };
 
   mailserver = {
-    stateVersion = 3;
+    stateVersion = 5;
     enable = true;
     fqdn = "qube.email";
     domains = [ "qube.email" ];
     localDnsResolver = true;
 
-    monitoring = {
-      enable = true;
-      alertAddress = "monitoring@qube.email";
-    };
-
     # Generate password with:
     # mkpasswd -sm bcrypt
-    loginAccounts = {
+    accounts = {
       "luis@qube.email" = {
         hashedPasswordFile = config.sops.secrets.qube-email-simplemail-luis-hash.path;
       };
@@ -142,8 +135,8 @@
 
     # reference an existing ACME configuration
     x509.useACMEHost = config.mailserver.fqdn;
-    dkimSelector = "mail";
-    dkimSigning = true;
+    dkim.defaults.selector = "mail";
+    dkim.enable = true;
     enableImap = true;
     enablePop3 = true;
     enableImapSsl = true;
@@ -156,8 +149,8 @@
 
   system.autoUpgrade.allowReboot = true;
 
-  systemd.watchdog.runtimeTime = "5m";
-  systemd.watchdog.rebootTime = "15m";
+  systemd.settings.Manager.RuntimeWatchdogSec = "5m";
+  systemd.settings.Manager.RebootWatchdogSec = "15m";
 
   networking.firewall.allowedTCPPorts = [
     7171
