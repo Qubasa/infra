@@ -26,13 +26,12 @@
     ./sunshine.nix
   ];
 
-
-  hardware.ksm.enable =  true;
+  hardware.ksm.enable = true;
   zramSwap = {
     enable = true;
     algorithm = "lz4";
   };
-  
+
   programs.wallpaper = {
     darkWallDir = "$HOME/Pictures/Wallpapers/dark";
     lightWallDir = "$HOME/Pictures/Wallpapers/light";

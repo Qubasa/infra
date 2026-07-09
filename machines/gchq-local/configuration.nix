@@ -6,10 +6,8 @@
 {
   system.stateVersion = "24.11";
 
-
   # clan.core.networking.buildHost = "localhost";
 
-  
   imports = [
     ./hardware-configuration.nix
     ./disko.nix

@@ -1,27 +1,18 @@
-{ ... }:
+{ unstablePkgs, ... }:
+let
+  qubasa-blog = unstablePkgs.callPackage ../../pkgs/qubasa-blog/nix { };
+in
 {
-
-  users.users.blog = {
-    isSystemUser = true;
-    home = "/var/www/blog";
-    createHome = true;
-    homeMode = "750";
-    description = "Blog user";
-    group = "blog";
-  };
-
-  users.users.nginx.extraGroups = [ "blog" ];
-  users.groups.blog = { };
-
   services.nginx = {
     virtualHosts = {
       "qubasa.blog" = {
         forceSSL = true;
         enableACME = true;
-        root = "/var/www/blog";
-        locations."/assets" = { };
+        root = "${qubasa-blog}";
+        # Prerendered pages live at <route>/index.html; static assets
+        # (/_app, /_pagefind, /feed.xml) are served directly.
         locations."/" = {
-          tryFiles = "/index.html =404";
+          tryFiles = "$uri $uri/index.html $uri.html =404";
         };
       };
     };

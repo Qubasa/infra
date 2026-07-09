@@ -10,7 +10,7 @@
 
     focus-timer = {
       url = "github:Qubasa/FocusTimer";
-      inputs.nixpkgs.follows =  "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
     my-private-pkgs = {
@@ -38,7 +38,7 @@
       url = "github:Qubasa/llm-agents.nix?ref=opencode-quota";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
-    
+
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
@@ -64,103 +64,86 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
     };
+
+    systems.url = "github:nix-systems/default";
+    flake-parts.follows = "clan-core/flake-parts";
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      systems,
-      unstable-nixpkgs,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-      # 123
-      # Override the unstable-nixpkgs with allowUnfree set to true
-      unstablePkgs = import unstable-nixpkgs {
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { self, ... }:
+      let
         system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
+        # Override the unstable-nixpkgs with allowUnfree set to true
+        unstablePkgs = import inputs.unstable-nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
         };
-      };
-      # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
-      # Eval the treefmt modules from ./treefmt.nix
-      treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      in
+      {
+        systems = import inputs.systems;
 
-      clan = inputs.clan-core.lib.clan {
-        imports = [ ./clan.nix ];
+        imports = [
+          inputs.clan-core.flakeModules.default
+          inputs.treefmt-nix.flakeModule
+          ./pkgs/qubasa-blog/flake-module.nix
+        ];
 
-        inherit self;
+        clan = {
+          imports = [ ./clan.nix ];
 
-        specialArgs = {
-          flakeInputs = inputs;
-          inherit unstablePkgs;
-        };
-
-        machines = {
-          gchq-local = {
-            imports = [
-              ./modules/shared.nix
-
-            ];
-            nixpkgs.hostPlatform = system;
+          specialArgs = {
+            flakeInputs = inputs;
+            inherit unstablePkgs;
           };
-          qube-email = {
-            imports = [
-              ./modules/shared.nix
-            ];
 
-            nixpkgs.hostPlatform = system;
+          machines = {
+            gchq-local = {
+              imports = [ ./modules/shared.nix ];
+              nixpkgs.hostPlatform = system;
+            };
+            qube-email = {
+              imports = [ ./modules/shared.nix ];
+              nixpkgs.hostPlatform = system;
+            };
+            wintux = {
+              imports = [ ./modules/shared.nix ];
+              nixpkgs.hostPlatform = system;
+            };
           };
-          wintux = {
-            imports = [
-              ./modules/shared.nix
-            ];
-            nixpkgs.hostPlatform = system;
-          };
-        };
 
-        templates.disko = {
-          "single-disk" = {
-            description = "A simple ext4 disk with a single partition";
-            path = ./modules;
+          templates.disko = {
+            "single-disk" = {
+              description = "A simple ext4 disk with a single partition";
+              path = ./modules;
+            };
           };
         };
-      };
-    in
-    {
 
-      inherit (clan.config) nixosConfigurations clanInternals;
-      clan = clan.config;
-      clanOptions = clan.options;
+        flake = {
+          myDirtyRev = self.sourceInfo.dirtyRev;
+        };
 
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+        perSystem =
+          { pkgs, ... }:
+          {
+            treefmt = import ./treefmt.nix;
 
-      flake = {
-        myDirtyRev = self.sourceInfo.dirtyRev;
-      };
-
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
-
-      devShell = eachSystem (
-        pkgs:
-        pkgs.mkShell {
-          packages = [
-            pkgs.python3
-            pkgs.python3Packages.argcomplete
-            pkgs.mkpasswd
-            # inputs.clan-core.packages.x86_64-linux.clan-cli
-          ];
-          shellHook = ''
-            export GIT_ROOT="$(git rev-parse --show-toplevel)"
-            export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
-            # export PATH=$PATH:~/Projects/clan-core/buildHostPr/pkgs/clan-cli/bin
-          '';
-        }
-      );
-    };
+            devShells.default = pkgs.mkShell {
+              packages = [
+                pkgs.python3
+                pkgs.python3Packages.argcomplete
+                pkgs.mkpasswd
+                # inputs.clan-core.packages.x86_64-linux.clan-cli
+              ];
+              shellHook = ''
+                export GIT_ROOT="$(git rev-parse --show-toplevel)"
+                export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
+                # export PATH=$PATH:~/Projects/clan-core/buildHostPr/pkgs/clan-cli/bin
+              '';
+            };
+          };
+      }
+    );
 }

@@ -122,6 +122,12 @@
           config.clan.core.vars.generators.qube-email-vaultwarden-smtp.files.password-hash.path;
       };
 
+      "news@qube.email" = {
+        sendOnly = true;
+        hashedPasswordFile =
+          config.clan.core.vars.generators.qube-email-listmonk-smtp.files.password-hash.path;
+      };
+
       "notrust@qube.email" = {
         # Can send emails back as every other user
         aliases = [

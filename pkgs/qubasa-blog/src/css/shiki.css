@@ -1,0 +1,151 @@
+/* Shiki custom properties are used in this file, which are not defined by us */
+/* stylelint-disable csstools/value-no-unknown-custom-properties */
+.shiki {
+  position: relative;
+  /* This is needed because in safari the code slightly bleed out after being
+  scrolled */
+  overflow: hidden;
+  margin: 1em -14px;
+  background-color: var(--shiki-light-bg);
+  font:
+    16px ui-monospace,
+    "Fira Code",
+    "Cascadia Code",
+    "Source Code Pro",
+    Menlo,
+    Consolas,
+    "DejaVu Sans Mono",
+    monospace;
+
+  li &,
+  .tabs & {
+    margin-inline: 0;
+    border-radius: 5px;
+  }
+
+  .title {
+    display: block;
+    padding: 14px;
+    color: var(--content-fg-color);
+    border-block-end: 1px solid var(--shiki-title-border-color);
+    font-weight: 500;
+  }
+
+  code {
+    display: block;
+    overflow: auto;
+    padding: 14px 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .code {
+    display: flex;
+    flex-direction: column;
+    inline-size: fit-content;
+    min-inline-size: 100%;
+  }
+
+  span {
+    color: var(--shiki-light);
+    font-weight: var(--shiki-light-font-weight);
+    font-style: var(--shiki-light-font-style);
+    text-decoration: var(--shiki-light-text-decoration);
+  }
+
+  .indent {
+    position: relative;
+    inset-inline-start: var(--indent-offset);
+
+    &:empty {
+      vertical-align: bottom;
+      block-size: 1lh;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inline-size: 1px;
+      block-size: 100%;
+      background-color: var(--shiki-indent-guide-color);
+    }
+  }
+
+  .line {
+    padding-inline: 14px;
+
+    &.diff {
+      &.remove {
+        background-color: var(--shiki-diff-remove-bg-color);
+
+        span {
+          color: var(--shiki-diff-remove-fg-color);
+        }
+      }
+
+      &.add {
+        background-color: var(--shiki-diff-add-bg-color);
+      }
+    }
+
+    &.highlighted {
+      background-color: var(--shiki-highlighted-bg-color);
+    }
+  }
+
+  &.line-numbers {
+    code {
+      counter-increment: step 0;
+      counter-reset: step;
+    }
+
+    .line {
+      padding-inline-start: 0;
+
+      &::before {
+        content: counter(step);
+        position: sticky;
+        inset-inline-start: 0;
+        z-index: 1;
+        display: inline-block;
+        flex: none;
+        box-sizing: content-box;
+        inline-size: 2em;
+        padding-inline-end: 10px;
+        color: rgb(115 138 148 / 40%);
+        background-color: var(--shiki-light-bg);
+        counter-increment: step;
+        text-align: end;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .shiki {
+    background-color: var(--shiki-dark-bg);
+
+    span {
+      color: var(--shiki-dark);
+      font-weight: var(--shiki-dark-font-weight);
+      font-style: var(--shiki-dark-font-style);
+      text-decoration: var(--shiki-dark-text-decoration);
+    }
+
+    &.line-numbers .line::before {
+      background-color: var(--shiki-dark-bg);
+    }
+  }
+}
+
+@media (--docs-tablet) {
+  .shiki {
+    margin-inline: 0;
+    border-radius: 5px;
+  }
+}

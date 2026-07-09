@@ -23,7 +23,7 @@ in
           rust-lang.rust-analyzer
         ]
         ++ (with pkgs.vscode-marketplace-release; [
-          anthropic.claude-code
+          # anthropic.claude-code
         ]);
     })
   ];

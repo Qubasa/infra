@@ -10,7 +10,7 @@
   imports = [
     ./simplemail.nix
     ./networking.nix
-    flakeInputs.simple-nixos-mailserver.nixosModule
+    flakeInputs.simple-nixos-mailserver.nixosModules.mailserver
     ./initrd.nix
     ./monitoring.nix
     ../../modules/qube-email-smtp-accounts.nix

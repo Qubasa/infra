@@ -49,5 +49,16 @@ in
         printf 'SMTP_PASSWORD="%s"\n' "$PASSWORD" > "$out"/env
       '';
     };
+
+    qube-email-listmonk-smtp = {
+      share = true;
+      files.password = { };
+      files.password-hash = { };
+      files.env = { };
+      inherit runtimeInputs;
+      script = baseScript + ''
+        printf 'SMTP_PASSWORD="%s"\n' "$PASSWORD" > "$out"/env
+      '';
+    };
   };
 }
