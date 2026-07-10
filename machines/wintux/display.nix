@@ -14,6 +14,7 @@
     gnomeExtensions.night-theme-switcher
     flakeInputs.focus-timer.packages.x86_64-linux.focus-timer
     gnomeExtensions.tactile
+    eyedropper
     dipc
     gnome-tweaks
     dconf-editor

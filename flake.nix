@@ -44,6 +44,9 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
+    # Own nixpkgs (not followed) so the cached muvm/libkrun/mesa builds resolve.
+    munix.url = "git+https://git.clan.lol/clan/munix";
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };

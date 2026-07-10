@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { siteTitle } from "$config";
   import { resolve } from "$app/paths";
+  import RssIcon from "$lib/assets/icons/rss.svg?component";
   import Search from "$lib/components/Search.svelte";
+  import { siteTitle } from "$config";
 </script>
 
 <header class="site-header" data-pagefind-ignore>
@@ -10,6 +11,14 @@
     <a href={resolve("/")}>Home</a>
     <a href={resolve("/tags")}>Tags</a>
   </nav>
+  <a
+    class="feed"
+    href={resolve("/feed.xml")}
+    title="RSS feed"
+    aria-label="RSS feed"
+  >
+    <RssIcon height="18" />
+  </a>
   <Search />
 </header>
 
@@ -39,5 +48,15 @@
 
   nav a {
     text-decoration: none;
+  }
+
+  .feed {
+    display: flex;
+    align-items: center;
+    color: inherit;
+
+    :global(svg) {
+      display: block;
+    }
   }
 </style>
