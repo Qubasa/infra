@@ -138,19 +138,6 @@
       };
     };
 
-    zerotier = {
-      roles.controller.machines."wintux" = { };
-      roles.peer.tags.all = { };
-    };
-
-    # zerotier-test = {
-    #   module = {
-    #     name = "zerotier";
-    #     input = "clan-core";
-    #   };
-    #   roles.controller.machines."wintux" = { };
-    #   roles.peer.tags.all = { };
-    # };
 
     trusted-nix-caches = {
       roles.default.tags = {

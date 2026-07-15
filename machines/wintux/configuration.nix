@@ -13,7 +13,7 @@
     ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
     ./webapps.nix
-    ./claudevm.nix
+    ./mvm.nix
     # ./kernel.nix
     ./disko.nix
     ./initrd.nix

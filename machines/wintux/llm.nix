@@ -16,7 +16,7 @@ in
     ai-tools.git-surgeon
     ai-tools.tuicr
     ai-tools.openspec
-    ai-tools.nono
+    # ai-tools.nono
     # qubasa-ai-tools.opencode-quota
   ];
 

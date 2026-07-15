@@ -4,12 +4,13 @@ let
   patch_atuin = pkgs.callPackage ../../pkgs/atuin { };
 in
 {
+  imports = [ ../../modules/zsh.nix ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
   ];
 
   environment.systemPackages = with pkgs; [
-    zoxide
     patch_atuin
     colordiff
     bat
@@ -29,7 +30,6 @@ in
   environment.etc."zshrc.local".text = ''
     # Delay Atuin init until after zsh-vi-mode init to prevent overwriting of keybinds
     eval "$(${lib.getExe patch_atuin} init zsh --disable-up-arrow)"
-    eval "$(${lib.getExe pkgs.zoxide} init zsh)"
   '';
 
   programs.zsh = {
@@ -43,15 +43,6 @@ in
       c = "wl-copy";
       v = "wl-paste";
       brave-browser = "brave";
-    };
-
-    # With Oh-My-Zsh:
-    ohMyZsh = {
-      enable = true;
-      plugins = [
-        "git"
-      ];
-      theme = "gnzh";
     };
 
     syntaxHighlighting.enable = true;
