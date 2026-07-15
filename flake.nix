@@ -91,6 +91,7 @@
           inputs.clan-core.flakeModules.default
           inputs.treefmt-nix.flakeModule
           ./pkgs/qubasa-blog/flake-module.nix
+          ./pkgs/mvm/flake-module.nix
         ];
 
         clan = {

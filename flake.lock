@@ -216,11 +216,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1782882723,
-        "narHash": "sha256-T1br9YV7GNHF65ydTxXCM1wPJlfrhFovyMpS2zdg7+8=",
-        "rev": "3ed6a5394c5e8e5176e101ee658ab9c4454c8bb0",
+        "lastModified": 1784091878,
+        "narHash": "sha256-AHuBRIQAjefafNKOHRcsA7wBkmsd0+4NHSfKWvd7PcU=",
+        "rev": "599e462fb2a417c816372fbfee5e42f72f5b905e",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/3ed6a5394c5e8e5176e101ee658ab9c4454c8bb0.zip"
+        "url": "https://git.clan.lol/api/v1/repos/clan/clan-core/archive/599e462fb2a417c816372fbfee5e42f72f5b905e.zip"
       },
       "original": {
         "type": "tarball",
@@ -273,11 +273,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778718524,
-        "narHash": "sha256-pXLoI6Ax0EnUK6r34UM1vibVC7CfTu6j72R2692ZzPs=",
-        "rev": "12c552ad547d87254f33f33bddd1a2cdbeac754d",
+        "lastModified": 1783973243,
+        "narHash": "sha256-uD1Kuh3YW5OJk5XxlCPgncTrUiVggyaoT+tlObEYBd0=",
+        "rev": "f5ea0a65bc886572266f816590ccbbe80dc8f3fc",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/12c552ad547d87254f33f33bddd1a2cdbeac754d.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/f5ea0a65bc886572266f816590ccbbe80dc8f3fc.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -410,11 +410,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "lastModified": 1782949081,
+        "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
         "type": "github"
       },
       "original": {
@@ -431,11 +431,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769996383,
-        "narHash": "sha256-AnYjnFWgS49RlqX7LrC4uA+sCCDBj0Ry/WOJ5XWAsa0=",
+        "lastModified": 1778716662,
+        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "57928607ea566b5db3ad13af0e57e921e6b12381",
+        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
         "type": "github"
       },
       "original": {
@@ -605,17 +605,17 @@
     "libkrun-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1772170018,
-        "narHash": "sha256-pi4Mrx9wFE8zT8lx+0su2bP1tTkJBh5FaGNQjAFUAx4=",
+        "lastModified": 1780628108,
+        "narHash": "sha256-EhYnN5Ne1EsyyvIC9F/lrYLYwzhxVeFySQZ7G3lbTNw=",
         "owner": "valpackett",
         "repo": "libkrun",
-        "rev": "eeafbc55379b60379414168e7a22d5f95b73d7a0",
+        "rev": "f70dcf152e706429c84285a58107a255efc9a813",
         "type": "github"
       },
       "original": {
         "owner": "valpackett",
         "repo": "libkrun",
-        "rev": "eeafbc55379b60379414168e7a22d5f95b73d7a0",
+        "rev": "f70dcf152e706429c84285a58107a255efc9a813",
         "type": "github"
       }
     },
@@ -629,11 +629,11 @@
         "wl-backdrop": "wl-backdrop"
       },
       "locked": {
-        "lastModified": 1772790339,
-        "narHash": "sha256-ss/+sK9VruX+Nix2ENpRu95nG1RV20qghgMnJ3Rzkwc=",
+        "lastModified": 1780985206,
+        "narHash": "sha256-i9W/KeRGxDuhiHeQqUxXyN94xcuSUlHfrXwdGs7ZysI=",
         "ref": "refs/heads/main",
-        "rev": "a7fe813f1776e546ec505f5e89ae36174b42f377",
-        "revCount": 85,
+        "rev": "83b61f09565236fd0aff84d3e9df62332f5b9b54",
+        "revCount": 100,
         "type": "git",
         "url": "https://git.clan.lol/clan/munix"
       },
@@ -645,17 +645,17 @@
     "muvm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1772176363,
-        "narHash": "sha256-aSWulv3ml4XmMYnFOkZCd2YBLIY0Rr8CUHK1NDYk5jw=",
+        "lastModified": 1780628452,
+        "narHash": "sha256-Iog/h51Si3f+tUg2KNqHwxWjWtoeEV3udu61gOWyCkQ=",
         "owner": "valpackett",
         "repo": "muvm",
-        "rev": "c68742bcedb96deb6f23ed5a83188022d1cdf71d",
+        "rev": "5107ba4170b1e23c6661dbf86d1311d621a928ae",
         "type": "github"
       },
       "original": {
         "owner": "valpackett",
         "repo": "muvm",
-        "rev": "c68742bcedb96deb6f23ed5a83188022d1cdf71d",
+        "rev": "5107ba4170b1e23c6661dbf86d1311d621a928ae",
         "type": "github"
       }
     },
@@ -892,11 +892,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1770197578,
-        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "lastModified": 1780243769,
+        "narHash": "sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "rev": "331800de5053fcebacf6813adb5db9c9dca22a0c",
         "type": "github"
       },
       "original": {
@@ -1019,10 +1019,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1772183103,
-        "narHash": "sha256-9jbqBtaLUdOeT95PVUMz45JdUpVeJ25ZYZHEOQn9XsI=",
+        "lastModified": 1779855965,
+        "narHash": "sha256-EfTDIIulXSvuusXC2agACcg91XjOtoEsBoJh0R/nm5E=",
         "ref": "main",
-        "rev": "c42eaef55440e2594677ede5279bd8c3eaf128f2",
+        "rev": "b8052f17dcb1e01b2ae67ec3e0709cb2e1f5869b",
         "shallow": true,
         "type": "git",
         "url": "https://git.clan.lol/clan/sidebus"
@@ -1088,11 +1088,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782165805,
-        "narHash": "sha256-478kKQBvK6SYTOdN2h9jhKJv94nbXRbFMfuL1WshErg=",
+        "lastModified": 1783174389,
+        "narHash": "sha256-aCWC8ngycU7OdJrU2+Je3qf+1a2ykuBvpPhZT/9tXMc=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "56b24064fdcaedca53553b1a6d607fd23b613a24",
+        "rev": "f1406619a3884cd5c47992a70b8b35c9c0fcb4c9",
         "type": "github"
       },
       "original": {
@@ -1363,10 +1363,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1772781884,
-        "narHash": "sha256-epVLmAHnJi4EoZea5DUmxB3r6SPSMu3Nzki7JzbK0sA=",
+        "lastModified": 1773997786,
+        "narHash": "sha256-+z7/nTyXK/tpcWEhdtleCfR76Q1+NWIL/P8NlKgkDWI=",
         "ref": "main",
-        "rev": "20e3910ef60aa627933a5d750b60cc3dcd0653cf",
+        "rev": "fd5a43ff62dafe11a1f636f96fdd59e726478774",
         "shallow": true,
         "type": "git",
         "url": "https://git.clan.lol/valpackett/wl-backdrop"
