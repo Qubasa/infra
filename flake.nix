@@ -23,7 +23,7 @@
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
-    unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable?shallow=1";
+    unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qubasa-nixpkgs.url = "github:Qubasa/nixpkgs?ref=update_sunshine";
     nix-image-installer.url = "github:nix-community/nixos-images";
 
@@ -70,6 +70,22 @@
 
     systems.url = "github:nix-systems/default";
     flake-parts.follows = "clan-core/flake-parts";
+
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -92,6 +108,7 @@
           inputs.treefmt-nix.flakeModule
           ./pkgs/qubasa-blog/flake-module.nix
           ./pkgs/mvm/flake-module.nix
+          ./pkgs/omnigent/flake-module.nix
         ];
 
         clan = {
