@@ -6,6 +6,7 @@ in
 {
   environment.systemPackages = [
     (vscode.override {
+      vscode = pkgs.vscodium;
       vscodeExtensions =
         with pkgs.vscode-marketplace;
         [

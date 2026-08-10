@@ -35,7 +35,7 @@
     nixpkgs.follows = "unstable-nixpkgs";
 
     qubasa-ai-tools = {
-      url = "github:Qubasa/llm-agents.nix?ref=opencode-quota";
+      url = "github:Qubasa/llm-agents.nix?ref=init_uncomment";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 

@@ -9,6 +9,7 @@
     flakeInputs.chrome-pwa.nixosModule
     flakeInputs.nix-index-database.nixosModules.nix-index
     ../../modules/backups.nix
+    ../../modules/fontconfig-compat.nix
     ../../modules/wallpaper
     ../../modules/latest-zfs-kernel.nix
     ./vscode.nix
