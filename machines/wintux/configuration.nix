@@ -122,9 +122,9 @@
     gc.automatic = true;
     gc.dates = "daily";
     gc.options = "--delete-older-than 30d";
-    settings.trusted-users = [
-      "@wheel"
-    ];
+    # settings.trusted-users = [
+    #   "@wheel"
+    # ];
   };
 
   system.stateVersion = "24.11";
