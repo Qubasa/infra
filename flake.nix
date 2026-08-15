@@ -8,6 +8,9 @@
       # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     };
 
+
+    slopo.url = "github:Qubasa/slopo";
+
     focus-timer = {
       url = "github:Qubasa/FocusTimer";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
