@@ -115,7 +115,7 @@
             domain = "gchq.icu";
             secret_field_name = "secret_api_key";
             extraSettings = {
-              host = "@,element,sable,gitea,home,bitwarden,cloud";
+              host = "@,element,sable,gitea,home,bitwarden,cloud,cook";
               ip_version = "ipv4";
               ipv6_suffix = "";
               # This is a pubkey. It is not a secret.

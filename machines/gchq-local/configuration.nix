@@ -15,6 +15,7 @@
     ./initrd.nix
     ./gitea.nix
     ./nextcloud.nix
+    ./cookbook.nix
     ../../modules/backups.nix
     #../../modules/porkbun-wildcard-certs.nix
     ./blog.nix
