@@ -78,15 +78,12 @@
       passwordFile = config.clan.core.vars.generators."kimai".files.db-password.path;
     };
   };
-  services.open-webui = {
-    enable = true;
-    port = 2712;
-  };
+  # services.open-webui = {
+  #   enable = true;
+  #   port = 2712;
+  # };
 
-  networking.hosts = {
-
-    
-    
+  networking.hosts = {  
     "127.0.0.1" = [
       "openwebui.local"
       "kimai.local"
@@ -103,12 +100,12 @@
       }
     ];
     virtualHosts = {
-      "openwebui.local" = {
-        locations."/" = {
-          proxyWebsockets = true;
-          proxyPass = "http://localhost:2712";
-        };
-      };
+      # "openwebui.local" = {
+      #   locations."/" = {
+      #     proxyWebsockets = true;
+      #     proxyPass = "http://localhost:2712";
+      #   };
+      # };
     };
   };
 }

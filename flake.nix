@@ -137,12 +137,6 @@
             };
           };
 
-          templates.disko = {
-            "single-disk" = {
-              description = "A simple ext4 disk with a single partition";
-              path = ./modules;
-            };
-          };
         };
 
         flake = {
