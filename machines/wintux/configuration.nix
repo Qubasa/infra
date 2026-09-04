@@ -28,6 +28,13 @@
     ./sunshine.nix
   ];
 
+  security.wrappers.perf = {
+    source = "${pkgs.linuxPackages.perf}/bin/perf";
+    capabilities = "cap_perfmon,cap_sys_ptrace,cap_syslog+ep";
+    owner = "root";
+    group = "root";
+  };
+
   hardware.ksm.enable = true;
   zramSwap = {
     enable = true;

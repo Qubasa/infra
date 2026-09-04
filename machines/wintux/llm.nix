@@ -14,12 +14,12 @@ in
 {
 
   environment.systemPackages = [
-    omnigent
     flakeInputs.slopo.packages.x86_64-linux.default
     ghidra-cli
-    ai-tools.herdr
     qubasa-ai-tools.uncomment
+    qubasa-ai-tools.lemmalog
     ai-tools.claude-code
+    ai-tools.beads
     ai-tools.git-surgeon
     ai-tools.omp
     ai-tools.tuicr
@@ -27,7 +27,6 @@ in
     ai-tools.jscpd
     ai-tools.agent-browser
     pkgs.openjdk25_headless
-    pkgs.pueue
     # ai-tools.nono
   ];
 
