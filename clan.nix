@@ -75,20 +75,6 @@
       };
     };
 
-    monitoring = {
-      roles = {
-        client = {
-          tags = [ "all" ];
-          settings.useSSL = true;
-        };
-
-        server.machines."qube-email".settings = {
-          grafana.enable = true;
-          host = "qube.email";
-        };
-      };
-    };
-
     admin = {
       roles.default.tags.all = { };
       roles.default.settings = {

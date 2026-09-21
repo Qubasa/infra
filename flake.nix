@@ -8,7 +8,6 @@
       # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     };
 
-
     slopo.url = "github:Qubasa/slopo";
 
     focus-timer = {
@@ -44,6 +43,16 @@
 
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
+    mics-skills = {
+      url = "github:Mic92/mics-skills";
+      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+    };
+
+    afk = {
+      url = "github:DavHau/afk";
       inputs.nixpkgs.follows = "clan-core/nixpkgs";
     };
 
@@ -112,6 +121,7 @@
           ./pkgs/qubasa-blog/flake-module.nix
           ./pkgs/mvm/flake-module.nix
           ./pkgs/omnigent/flake-module.nix
+          ./pkgs/sunshine-display/flake-module.nix
         ];
 
         clan = {
