@@ -111,6 +111,7 @@
         devtoolbox
         rust-analyzer
         nix-init # init nix packages in a directory
+        jujutsu
         helix
         nixd
         radare2

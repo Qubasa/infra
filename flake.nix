@@ -4,15 +4,13 @@
   inputs = {
     clan-core = {
       url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
-      # url = "https://git.clan.lol/Qubasa/clan-core/archive/main.zip?ref=add_target_machine_option";
-      # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
     };
 
     slopo.url = "github:Qubasa/slopo";
 
     focus-timer = {
       url = "github:Qubasa/FocusTimer";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     my-private-pkgs = {
@@ -22,7 +20,7 @@
 
     clan-community = {
       url = "git+https://git.clan.lol/clan/clan-community?ref=nim65s-harmonia";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -31,29 +29,29 @@
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs.follows = "unstable-nixpkgs";
 
     qubasa-ai-tools = {
       url = "github:Qubasa/llm-agents.nix?ref=init_uncomment";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     mics-skills = {
       url = "github:Mic92/mics-skills";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     afk = {
       url = "github:DavHau/afk";
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Own nixpkgs (not followed) so the cached muvm/libkrun/mesa builds resolve.
@@ -63,20 +61,19 @@
       url = "github:nix-community/nix-vscode-extensions";
     };
     nix-index-database = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nix-index-database";
     };
     treefmt-nix = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
     simple-nixos-mailserver = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
-      # url = "gitlab:simple-nixos-mailserver/nixos-mailserver/44c63067d4ca9548c14b54620eaa9b981bc9c9db";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     };
     chrome-pwa = {
-      inputs.nixpkgs.follows = "clan-core/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Qubasa/nixos-chrome-pwa";
     };
 

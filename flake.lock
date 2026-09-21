@@ -4,7 +4,6 @@
       "inputs": {
         "llm-agents": "llm-agents",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "superpowers": "superpowers",
@@ -148,7 +147,6 @@
     "chrome-pwa": {
       "inputs": {
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ]
       },
@@ -171,7 +169,6 @@
         "clan-core": "clan-core",
         "flake-parts": "flake-parts_3",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "systems": "systems_3",
@@ -524,7 +521,6 @@
     "focus-timer": {
       "inputs": {
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ]
       },
@@ -547,7 +543,6 @@
         "flake-compat": "flake-compat",
         "home-manager": "home-manager",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "systems": "systems_5",
@@ -660,7 +655,6 @@
     "mics-skills": {
       "inputs": {
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "treefmt-nix": "treefmt-nix_5"
@@ -742,7 +736,6 @@
         "bun2nix": "bun2nix_2",
         "flake-parts": "flake-parts_6",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "systems": "systems_6",
@@ -827,7 +820,6 @@
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ]
       },
@@ -1112,7 +1104,6 @@
         "bun2nix": "bun2nix_3",
         "flake-parts": "flake-parts_7",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ],
         "systems": "systems_7",
@@ -1216,7 +1207,6 @@
         "flake-compat": "flake-compat_2",
         "git-hooks": "git-hooks",
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ]
       },
@@ -1590,7 +1580,6 @@
     "treefmt-nix_8": {
       "inputs": {
         "nixpkgs": [
-          "clan-core",
           "nixpkgs"
         ]
       },
