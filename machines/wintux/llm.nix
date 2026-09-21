@@ -23,6 +23,7 @@ in
     flakeInputs.afk.packages.x86_64-linux.afk
     ghidra-cli
     pkgs.openjdk25_headless
+    pkgs.jjui
     qubasa-ai-tools.uncomment
     qubasa-ai-tools.lemmalog
     ai-tools.claude-code

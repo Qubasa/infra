@@ -8,7 +8,7 @@ in
     (vscode.override {
       vscode = pkgs.vscodium;
       vscodeExtensions =
-        with pkgs.vscode-marketplace;
+        with pkgs.open-vsx;
         [
           ms-python.python
           llvm-vs-code-extensions.vscode-clangd
@@ -19,13 +19,8 @@ in
           james-yu.latex-workshop
           hashicorp.terraform
           matangover.mypy
-          charliermarsh.ruff
-          ms-vscode-remote.remote-ssh
           rust-lang.rust-analyzer
-        ]
-        ++ (with pkgs.vscode-marketplace-release; [
-          # anthropic.claude-code
-        ]);
+        ];
     })
   ];
 }
