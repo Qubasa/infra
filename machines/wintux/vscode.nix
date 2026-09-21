@@ -20,6 +20,7 @@ in
           hashicorp.terraform
           matangover.mypy
           rust-lang.rust-analyzer
+          jjk.jjk
         ];
     })
   ];
