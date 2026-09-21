@@ -22,18 +22,16 @@ in
     flakeInputs.slopo.packages.x86_64-linux.default
     flakeInputs.afk.packages.x86_64-linux.afk
     ghidra-cli
+    pkgs.openjdk25_headless
     qubasa-ai-tools.uncomment
     qubasa-ai-tools.lemmalog
     ai-tools.claude-code
-    ai-tools.beads
     ai-tools.git-surgeon
     ai-tools.omp
     ai-tools.tuicr
     ai-tools.openspec
     ai-tools.jscpd
     ai-tools.agent-browser
-    pkgs.openjdk25_headless
-    # ai-tools.nono
   ]
   ++ skillPackages;
 
@@ -42,7 +40,4 @@ in
   systemd.user.tmpfiles.rules = map (
     p: "L+ %h/.claude/skills/${p.pname} - - - - ${p}/share/skills/${p.pname}"
   ) skillPackages;
-
-  # environment.etc."claude-code/managed-settings.json".text = builtins.toJSON managedSettings;
-
 }
