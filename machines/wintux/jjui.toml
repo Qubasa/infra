@@ -1,0 +1,41 @@
+# Installed as /etc/jjui/config.toml, selected via JJUI_CONFIG_DIR.
+# Per-repo overrides go in <repo>/.jjui/config.toml; for personal overrides
+# export JJUI_CONFIG_DIR=$HOME/.config/jjui.
+
+[ui]
+auto_refresh_interval = 2
+
+[preview]
+show_at_start = true
+width_percentage = 55.0
+# The commands inherit ui.diff-formatter = ":git" from /etc/jj, so the
+# preview shows git hunks instead of color-words.
+
+[[actions]]
+name = "revisions.diff_in_vscodium"
+desc = "diff in vscodium"
+key = "alt+c"
+scope = "revisions"
+lua = """
+local rev = jjui.context.change_id()
+if rev == nil then
+  flash({ text = "no revision selected", error = true })
+  return
+end
+jj_async("diff", "--tool", "vscodium", "-r", rev)
+"""
+
+[[actions]]
+name = "revisions.details.diff_in_vscodium"
+desc = "diff file in vscodium"
+key = "alt+c"
+scope = "revisions.details"
+lua = """
+local rev = jjui.context.change_id()
+local file = jjui.context.file()
+if rev == nil or file == nil then
+  flash({ text = "no file selected", error = true })
+  return
+end
+jj_async("diff", "--tool", "vscodium", "-r", rev, file)
+"""

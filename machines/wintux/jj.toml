@@ -1,0 +1,36 @@
+# Installed as /etc/jj/conf.d/10-defaults.toml.
+# jj loads system config before ~/.config/jj/config.toml, so per-user
+# settings still override everything here.
+
+[user]
+name = "Qubasa"
+email = "consulting@qube.email"
+
+[ui]
+default-command = ["log", "--limit", "20"]
+# Git-style hunks instead of the :color-words default. Readable in narrow
+# panes (jjui preview) and the only format delta and mergiraf understand.
+diff-formatter = ":git"
+pager = ["delta", "--paging=always"]
+# diff3 markers, so mergiraf can reconstruct the base revision.
+conflict-marker-style = "git"
+# `jj resolve` runs mergiraf instead of opening an editor.
+merge-editor = "mergiraf"
+
+[merge-tools.difftastic]
+program = "difft"
+diff-args = ["--color=always", "--width=$width", "$left", "$right"]
+diff-expected-exit-codes = [0, 1]
+
+[revset-aliases]
+"closest_bookmark(to)" = "heads(::to & bookmarks())"
+
+[aliases]
+# Move the nearest bookmark up to @-, the usual "advance my branch" step.
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+# External viewers: VSCodium side-by-side, difftastic in the terminal.
+vdiff = ["diff", "--tool", "vscodium"]
+vshow = ["show", "--tool", "vscodium"]
+tdiff = ["diff", "--tool", "difftastic"]
+# Manual conflict resolution in VSCodium when mergiraf gives up.
+vresolve = ["resolve", "--tool", "vscodium"]

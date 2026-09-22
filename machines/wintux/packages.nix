@@ -63,6 +63,16 @@
     config = builtins.fromJSON (builtins.readFile ./git.json);
   };
 
+  # jj reads /etc/jj/conf.d before ~/.config/jj, jjui only knows about
+  # JJUI_CONFIG_DIR, and mergiraf needs the merge driver registered in
+  # gitattributes to ever be called by git.
+  environment.etc = {
+    "jj/conf.d/10-defaults.toml".source = ./jj.toml;
+    "jjui/config.toml".source = ./jjui.toml;
+    gitattributes.text = "* merge=mergiraf\n";
+  };
+  environment.variables.JJUI_CONFIG_DIR = "/etc/jjui";
+
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
