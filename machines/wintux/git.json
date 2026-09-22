@@ -33,11 +33,14 @@
     "unstage": "reset HEAD --"
   },
   "diff": {
-    "tool": "difftastic",
+    "tool": "vscodium",
     "external": "difft"
   },
   "difftool": {
     "prompt": false,
+    "vscodium": {
+      "cmd": "codium --wait --diff \"$LOCAL\" \"$REMOTE\""
+    },
     "difftastic": {
       "cmd": "difft \"$LOCAL\" \"$REMOTE\""
     }
