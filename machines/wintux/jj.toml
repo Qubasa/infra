@@ -9,7 +9,6 @@ email = "consulting@qube.email"
 [ui]
 default-command = ["log", "--limit", "20"]
 # Git-style hunks instead of the :color-words default. Readable in narrow
-# panes (jjui preview) and the only format delta and mergiraf understand.
 diff-formatter = ":git"
 pager = ["delta", "--paging=always"]
 # diff3 markers, so mergiraf can reconstruct the base revision.
