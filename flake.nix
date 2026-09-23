@@ -49,9 +49,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # afk's patch set is rebased onto omp 18.1.13, which ships bun's 1.3.14
+    # runtime template and asserts that version at install-check time.
+    # Our nixpkgs carries bun 1.4.x, and compiling omp 18.1.13 with it emits
+    # a standalone binary that aborts on startup parsing an embedded LICENSE
+    # file. afk's own flake.lock points at this channel snapshot (bun 1.3.13),
+    # so pinning it reuses the build upstream already cached. Delete the pin
+    # here once afk wraps an omp that builds against current bun; the version
+    # guard in machines/wintux/llm.nix throws when that happens.
     afk = {
       url = "github:DavHau/afk";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.url = "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1064949.34ab99075ac4/nixexprs.tar.xz";
     };
 
     # Own nixpkgs (not followed) so the cached muvm/libkrun/mesa builds resolve.
