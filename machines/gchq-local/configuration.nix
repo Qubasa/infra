@@ -14,6 +14,7 @@
     ./network.nix
     ./initrd.nix
     ./gitea.nix
+    ./tinc-auth.nix
     ./nextcloud.nix
     ./cookbook.nix
     ../../modules/backups.nix
