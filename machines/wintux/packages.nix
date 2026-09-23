@@ -143,7 +143,6 @@
         # ghostty
         wl-clipboard
         git-lfs
-        tmate
         zellij # tmux alternative
         delta
         pwgen
