@@ -12,11 +12,6 @@ let
   ghidra-cli = pkgs.callPackage ../../pkgs/ghidra-cli { };
 
   afk = flakeInputs.afk.packages."x86_64-linux".afk;
-  afk-guarded = lib.throwIf ((afk.version or "18.1.13") != "18.1.13") ''
-    afk now wraps omp ${afk.version}, not 18.1.13: drop
-    inputs.afk.inputs.nixpkgs.url in flake.nix (the bun 1.3.x channel pin)
-    and this guard in machines/wintux/llm.nix.
-  '' afk;
 
   skillPackages = [
     mics-skills.kagi-search
@@ -28,7 +23,7 @@ in
 
   environment.systemPackages = [
     flakeInputs.slopo.packages.x86_64-linux.default
-    afk-guarded
+    afk
     ghidra-cli
     pkgs.openjdk25_headless
     qubasa-ai-tools.uncomment
