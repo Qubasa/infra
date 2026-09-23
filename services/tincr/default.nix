@@ -2,6 +2,7 @@
 { clanLib, lib, ... }:
 let
   inherit (lib)
+    allUnique
     attrNames
     concatMapStringsSep
     concatStringsSep
@@ -93,11 +94,16 @@ in
               )
               + "\n";
 
-            dialable = filterAttrs (
-              name: peer: name != machine.name && peer.settings.endpoints != [ ]
-            ) peers;
+            dialable = filterAttrs (name: peer: name != machine.name && peer.settings.endpoints != [ ]) peers;
           in
           {
+            assertions = [
+              {
+                assertion = allUnique (map nodeName (attrNames peers));
+                message = "tincr ${instanceName}: machine names collide after '-' -> '_' (${concatStringsSep ", " (attrNames peers)}).";
+              }
+            ];
+
             clan.core.vars.generators.${generator} = {
               files."ed25519_key.priv" = { };
               files."ed25519_key.pub".secret = false;
@@ -116,11 +122,12 @@ in
 
             services.tincr.networks.${instanceName} = {
               nodeName = nodeName machine.name;
-              ed25519PrivateKeyFile =
-                config.clan.core.vars.generators.${generator}.files."ed25519_key.priv".path;
+              ed25519PrivateKeyFile = config.clan.core.vars.generators.${generator}.files."ed25519_key.priv".path;
               addresses = [ "${meshIp instanceName machine.name}/64" ];
               connectTo = map nodeName (attrNames dialable);
               openFirewall = true;
+              # Needs AES-NI on every peer and all peers must agree.
+              extraConfig = "SPTPSCipher = aes-256-gcm";
               hosts = mapAttrs' (name: peer: nameValuePair (nodeName name) (hostFile name peer)) peers;
             };
 
@@ -132,6 +139,21 @@ in
   };
 
   perMachine = _: {
-    nixosModule.imports = [ tincrModule ];
+    nixosModule =
+      { config, ... }:
+      let
+        ports = mapAttrsToList (_: net: net.listenPort) (
+          filterAttrs (_: net: net.enable) config.services.tincr.networks
+        );
+      in
+      {
+        imports = [ tincrModule ];
+        assertions = [
+          {
+            assertion = allUnique ports;
+            message = "services.tincr.networks: every network needs its own listenPort (default 655).";
+          }
+        ];
+      };
   };
 }
