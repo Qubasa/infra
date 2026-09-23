@@ -1,3 +1,4 @@
+{ self, lib, ... }:
 {
 
   meta.name = "Qubasas_Clan";
@@ -5,6 +6,9 @@
 
   modules.stoatchat = ./services/stoatchat;
   modules.sable = ./services/sable;
+  modules.tincr = lib.modules.importApply ./services/tincr {
+    tincrModule = self.inputs.tincr.nixosModules.tincr;
+  };
 
   inventory.machines = {
     gchq-local = {
@@ -124,7 +128,6 @@
       };
     };
 
-
     trusted-nix-caches = {
       roles.default.tags = {
         all = { };
@@ -135,6 +138,19 @@
       roles.default.machines.wintux.settings.host = "127.0.0.1";
       roles.default.machines.gchq-local.settings.host = "gchq.icu";
       roles.default.machines.qube-email.settings.host = "2a01:4f8:171:21d5::1";
+    };
+
+    tincr = {
+      module = {
+        name = "tincr";
+        input = "self";
+      };
+      roles.peer.tags.all = { };
+      roles.peer.machines.gchq-local.settings.endpoints = [ "gchq.icu" ];
+      roles.peer.machines.qube-email.settings.endpoints = [
+        "136.243.172.251"
+        "2a01:4f8:171:21d5::1"
+      ];
     };
 
     tor = {
