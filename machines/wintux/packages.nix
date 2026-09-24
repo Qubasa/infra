@@ -77,6 +77,7 @@ in
   environment.etc = {
     "jj/conf.d/10-defaults.toml".source = ./jj.toml;
     "jjui/config.toml".source = ./jjui.toml;
+    "jjui/config.lua".source = ./jjui.lua;
     gitattributes.text = "* merge=mergiraf\n";
   };
 

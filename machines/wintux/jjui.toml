@@ -3,6 +3,7 @@
 # use your own. jjui skips repo-local .jjui/config.toml while it is set.
 # Log revset, log template, colours, merge tools and the diff formatter
 # (difftastic under jjui, see jj.toml) still come from jj config.
+# Key bindings and custom actions live in jjui.lua (/etc/jjui/config.lua).
 
 [ui]
 # Pick up changes made outside jjui (a shell, an agent, VSCodium).
@@ -11,55 +12,5 @@ auto_refresh_interval = 5
 set_window_title = "base"
 
 [preview]
+# lazygit always shows the main panel next to the list.
 show_at_start = true
-
-# Conflict handling, all under the `x` prefix in the revision list.
-# `x m` tries mergiraf first. Whatever it cannot settle stays recorded as a
-# conflict, ready for `x v` in the VSCodium merge editor.
-
-[[actions]]
-name = "conflicts-mergiraf"
-desc = "resolve with mergiraf"
-scope = "revisions"
-seq = ["x", "m"]
-lua = '''
-local rev = jjui.revisions.current()
-if rev == nil then
-  flash({ text = "no revision selected", error = true })
-  return
-end
-jj_async("resolve", "-r", rev, "--tool", "mergiraf")
-'''
-
-[[actions]]
-name = "conflicts-vscodium"
-desc = "resolve in VSCodium"
-scope = "revisions"
-seq = ["x", "v"]
-lua = '''
-local rev = jjui.revisions.current()
-if rev == nil then
-  flash({ text = "no revision selected", error = true })
-  return
-end
-jj_interactive("resolve", "-r", rev, "--tool", "vscodium")
-'''
-
-[[actions]]
-name = "conflicts-list"
-desc = "list conflicted files"
-scope = "revisions"
-seq = ["x", "l"]
-lua = '''
-local rev = jjui.revisions.current()
-if rev == nil then
-  flash({ text = "no revision selected", error = true })
-  return
-end
-local out, err = jj("resolve", "--list", "-r", rev)
-if err ~= nil then
-  flash({ text = err, error = true })
-else
-  flash({ text = out, sticky = true })
-end
-'''
