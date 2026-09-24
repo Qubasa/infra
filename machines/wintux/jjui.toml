@@ -1,0 +1,64 @@
+# Installed as /etc/jjui/config.toml. The jjui wrapper in packages.nix points
+# JJUI_CONFIG_DIR here unless it is already set, so export JJUI_CONFIG_DIR to
+# use your own. jjui skips repo-local .jjui/config.toml while it is set.
+# Log revset, log template, colours and merge tools still come from jj config.
+
+[ui]
+# Pick up changes made outside jjui (a shell, an agent, VSCodium).
+# Each tick snapshots the working copy, so keep it coarse.
+auto_refresh_interval = 5
+set_window_title = "base"
+
+[preview]
+show_at_start = true
+
+# Conflict handling, all under the `x` prefix in the revision list.
+# `jj resolve` hands each conflicted file to mergiraf. Whatever mergiraf cannot
+# settle stays recorded as a conflict, ready for `x v`.
+
+[[actions]]
+name = "conflicts-mergiraf"
+desc = "resolve with mergiraf"
+scope = "revisions"
+seq = ["x", "m"]
+lua = '''
+local rev = jjui.revisions.current()
+if rev == nil then
+  flash({ text = "no revision selected", error = true })
+  return
+end
+jj_async("resolve", "-r", rev, "--tool", "mergiraf")
+'''
+
+[[actions]]
+name = "conflicts-vscodium"
+desc = "resolve in VSCodium"
+scope = "revisions"
+seq = ["x", "v"]
+lua = '''
+local rev = jjui.revisions.current()
+if rev == nil then
+  flash({ text = "no revision selected", error = true })
+  return
+end
+jj_interactive("resolve", "-r", rev, "--tool", "vscodium")
+'''
+
+[[actions]]
+name = "conflicts-list"
+desc = "list conflicted files"
+scope = "revisions"
+seq = ["x", "l"]
+lua = '''
+local rev = jjui.revisions.current()
+if rev == nil then
+  flash({ text = "no revision selected", error = true })
+  return
+end
+local out, err = jj("resolve", "--list", "-r", rev)
+if err ~= nil then
+  flash({ text = err, error = true })
+else
+  flash({ text = out, sticky = true })
+end
+'''
