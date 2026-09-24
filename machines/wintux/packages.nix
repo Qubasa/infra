@@ -6,12 +6,13 @@
 }:
 let
   # jjui only reads a per-user config, so point it at the system one by default.
+  # JJUI=1 lets jj.toml switch jjui's diffs to difftastic.
   jjui = pkgs.symlinkJoin {
     inherit (pkgs.jjui) name meta;
     paths = [ pkgs.jjui ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/jjui --set-default JJUI_CONFIG_DIR /etc/jjui
+      wrapProgram $out/bin/jjui --set-default JJUI_CONFIG_DIR /etc/jjui --set JJUI 1
     '';
   };
 in

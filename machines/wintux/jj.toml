@@ -21,6 +21,14 @@ program = "difft"
 diff-args = ["--color=always", "--width=$width", "$left", "$right"]
 diff-expected-exit-codes = [0, 1]
 
+# jjui runs jj with JJUI=1 (set by its wrapper in packages.nix), so its diff
+# view and preview use difftastic while terminal `jj diff` keeps :git + delta.
+# jjui passes the pane width as COLUMNS, which jj forwards as $width.
+[[--scope]]
+--when.environments = ["JJUI=1"]
+[--scope.ui]
+diff-formatter = "difftastic"
+
 [revset-aliases]
 "closest_bookmark(to)" = "heads(::to & bookmarks())"
 
