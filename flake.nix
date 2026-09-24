@@ -166,9 +166,9 @@
                 pkgs.mkpasswd
                 # inputs.clan-core.packages.x86_64-linux.clan-cli
               ];
-              env.CLAN_NO_COMMIT = "1";
               shellHook = ''
-                export GIT_ROOT="$(git rev-parse --show-toplevel)"
+                # export GIT_ROOT="$(git rev-parse --show-toplevel)"
+                export CLAN_NO_COMMIT = "1";
                 export PATH=$PATH:~/Projects/clan-core/pkgs/clan-cli/bin
                 # export PATH=$PATH:~/Projects/clan-core/buildHostPr/pkgs/clan-cli/bin
               '';
