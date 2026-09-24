@@ -4,7 +4,17 @@
   unstablePkgs,
   ...
 }:
-
+let
+  # jjui only reads a per-user config, so point it at the system one by default.
+  jjui = pkgs.symlinkJoin {
+    inherit (pkgs.jjui) name meta;
+    paths = [ pkgs.jjui ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/jjui --set-default JJUI_CONFIG_DIR /etc/jjui
+    '';
+  };
+in
 {
   imports = [
     ./llm.nix
@@ -65,6 +75,7 @@
 
   environment.etc = {
     "jj/conf.d/10-defaults.toml".source = ./jj.toml;
+    "jjui/config.toml".source = ./jjui.toml;
     gitattributes.text = "* merge=mergiraf\n";
   };
 
@@ -117,6 +128,7 @@
         rust-analyzer
         nix-init # init nix packages in a directory
         jujutsu
+        jjui
         helix
         nixd
         radare2
