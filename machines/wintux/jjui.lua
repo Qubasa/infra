@@ -227,7 +227,7 @@ end
 local function difftool()
   local rev = current()
   if rev ~= nil then
-    jj_interactive("diff", "--tool", "vscodium", "-r", rev)
+    jj_interactive("diff", "--tool", "vscode", "-r", rev)
   end
 end
 
@@ -359,7 +359,7 @@ end
 local function file_difftool()
   local rev, file = selected_file()
   if rev ~= nil then
-    jj_interactive("diff", "--tool", "vscodium", "-r", rev, fileset(file))
+    jj_interactive("diff", "--tool", "vscode", "-r", rev, fileset(file))
   end
 end
 
@@ -378,7 +378,7 @@ local function blame(at_revision)
 end
 
 -- Conflicts live under the `x` prefix. `x m` tries mergiraf first and leaves
--- whatever it cannot settle recorded as a conflict for `x v` in VSCodium.
+-- whatever it cannot settle recorded as a conflict for `x v` in VS Code.
 local function resolve_with(tool, interactive)
   return function()
     local rev = current()
@@ -523,7 +523,7 @@ end
 
 local conflict_keys = {
   { "m", "conflicts.mergiraf", "resolve with mergiraf", resolve_with("mergiraf", false) },
-  { "v", "conflicts.vscodium", "resolve in VSCodium", resolve_with("vscodium", true) },
+  { "v", "conflicts.vscode", "resolve in VS Code", resolve_with("vscode", true) },
   { "l", "conflicts.list", "list conflicted files", list_conflicts },
 }
 

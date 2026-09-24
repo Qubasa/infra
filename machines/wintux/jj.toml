@@ -14,8 +14,8 @@ pager = ["delta", "--paging=always"]
 # Git-style markers carry the base section, so `mergiraf solve` and any
 # editor can see all three sides.
 conflict-marker-style = "git"
-# `jj resolve` opens the VSCodium merge editor. `jj mresolve` tries mergiraf.
-merge-editor = "vscodium"
+# `jj resolve` opens the VS Code merge editor. `jj mresolve` tries mergiraf.
+merge-editor = "vscode"
 
 [merge-tools.difftastic]
 program = "difft"
@@ -36,9 +36,9 @@ diff-formatter = "difftastic"
 [aliases]
 # Move the nearest bookmark up to @-, the usual "advance my branch" step.
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
-# External viewers: VSCodium side-by-side, difftastic in the terminal.
-vdiff = ["diff", "--tool", "vscodium"]
-vshow = ["show", "--tool", "vscodium"]
+# External viewers: VS Code side-by-side, difftastic in the terminal.
+vdiff = ["diff", "--tool", "vscode"]
+vshow = ["show", "--tool", "vscode"]
 tdiff = ["diff", "--tool", "difftastic"]
 # Structural merge with mergiraf. What it cannot settle stays a conflict.
 mresolve = ["resolve", "--tool", "mergiraf"]

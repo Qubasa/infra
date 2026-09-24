@@ -48,7 +48,7 @@
 
   environment.variables = {
     EDITOR = "hx";
-    VISUAL = "vscode";
+    VISUAL = "hx";
   };
 
   virtualisation.libvirtd.enable = true;

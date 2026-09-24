@@ -6,7 +6,7 @@
 # Key bindings and custom actions live in jjui.lua (/etc/jjui/config.lua).
 
 [ui]
-# Pick up changes made outside jjui (a shell, an agent, VSCodium).
+# Pick up changes made outside jjui (a shell, an agent, VS Code).
 # Each tick snapshots the working copy, so keep it coarse.
 auto_refresh_interval = 5
 set_window_title = "base"
