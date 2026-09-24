@@ -1,6 +1,6 @@
 .direnv
 workdirs/**
-.omp
+.omp/**
 openspec/**
 reset-demo.sh
 **/result
