@@ -1,7 +1,8 @@
 # Installed as /etc/jjui/config.toml. The jjui wrapper in packages.nix points
 # JJUI_CONFIG_DIR here unless it is already set, so export JJUI_CONFIG_DIR to
 # use your own. jjui skips repo-local .jjui/config.toml while it is set.
-# Log revset, log template, colours and merge tools still come from jj config.
+# Log revset, log template, colours, merge tools and the diff formatter
+# (difftastic under jjui, see jj.toml) still come from jj config.
 
 [ui]
 # Pick up changes made outside jjui (a shell, an agent, VSCodium).
