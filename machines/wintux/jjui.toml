@@ -14,3 +14,8 @@ set_window_title = "base"
 [preview]
 # lazygit always shows the main panel next to the list.
 show_at_start = true
+
+[bookmark]
+# `b` opens a bookmarks pane beside the revisions, like lazygit's branches
+# panel, instead of a one-shot menu. tab switches focus between the two.
+interactive_bookmark_pane = true

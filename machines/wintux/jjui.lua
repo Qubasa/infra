@@ -414,7 +414,8 @@ local function push()
 end
 
 -- The revision list plays lazygit's commits panel, details its commit files
--- panel, the oplog its reflog tab. Each row is { scope, keys, action, desc }
+-- panel, the bookmark pane its branches panel, the oplog its reflog tab.
+-- Each row is { scope, keys, action, desc }
 -- plus a Lua function for custom actions or builtin args. A row replaces every
 -- default binding of its action in that scope and takes its keys from other
 -- defaults there, so help lists each key once. jjui builtins with no lazygit
@@ -503,6 +504,16 @@ local keymap = {
   { "oplog", { "esc", "[", "]" }, "oplog.close", "back to revisions" },
   { "oplog.quick_search", "n", "oplog.quick_search.next", "next match" },
   { "oplog.quick_search", "shift+n", "oplog.quick_search.prev", "prev match" },
+
+  { "bookmark_pane", "space", "bookmark_pane.new", "checkout (jj new)" },
+  { "bookmark_pane", "n", "bookmark_pane.create", "new bookmark" },
+  { "bookmark_pane", "shift+r", "bookmark_pane.rename", "rename" },
+  { "bookmark_pane", "shift+d", "bookmark_pane.forget", "forget (local only)" },
+  { "bookmark_pane", { "f", "p" }, "bookmark_pane.fetch", "fetch (pull)" },
+  { "bookmark_pane", "enter", "bookmark_pane.set_revset", "view commits" },
+  { "bookmark_pane", "=", "bookmark_pane.toggle_expand", "expand remotes" },
+  { "bookmark_pane", "v", "bookmark_pane.toggle_select", "select" },
+  { "bookmark_pane", { "esc", "b", "\\" }, "ui.preview_toggle", "back to diff" },
 }
 
 for _, scope in ipairs({ "revisions", "revisions.details", "revisions.evolog", "oplog" }) do
