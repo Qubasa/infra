@@ -11,10 +11,11 @@ default-command = ["log", "--limit", "20"]
 # Git-style hunks instead of the :color-words default. Readable in narrow
 diff-formatter = ":git"
 pager = ["delta", "--paging=always"]
-# diff3 markers, so mergiraf can reconstruct the base revision.
+# Git-style markers carry the base section, so `mergiraf solve` and any
+# editor can see all three sides.
 conflict-marker-style = "git"
-# `jj resolve` runs mergiraf instead of opening an editor.
-merge-editor = "mergiraf"
+# `jj resolve` opens the VSCodium merge editor. `jj mresolve` tries mergiraf.
+merge-editor = "vscodium"
 
 [merge-tools.difftastic]
 program = "difft"
@@ -39,5 +40,5 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 vdiff = ["diff", "--tool", "vscodium"]
 vshow = ["show", "--tool", "vscodium"]
 tdiff = ["diff", "--tool", "difftastic"]
-# Manual conflict resolution in VSCodium when mergiraf gives up.
-vresolve = ["resolve", "--tool", "vscodium"]
+# Structural merge with mergiraf. What it cannot settle stays a conflict.
+mresolve = ["resolve", "--tool", "mergiraf"]

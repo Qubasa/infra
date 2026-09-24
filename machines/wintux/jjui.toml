@@ -14,8 +14,8 @@ set_window_title = "base"
 show_at_start = true
 
 # Conflict handling, all under the `x` prefix in the revision list.
-# `jj resolve` hands each conflicted file to mergiraf. Whatever mergiraf cannot
-# settle stays recorded as a conflict, ready for `x v`.
+# `x m` tries mergiraf first. Whatever it cannot settle stays recorded as a
+# conflict, ready for `x v` in the VSCodium merge editor.
 
 [[actions]]
 name = "conflicts-mergiraf"
