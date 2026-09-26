@@ -131,6 +131,7 @@ in
         nix-init # init nix packages in a directory
         jujutsu
         jjui
+        lazyjj
         helix
         nixd
         radare2
