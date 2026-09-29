@@ -30,6 +30,20 @@ diff-expected-exit-codes = [0, 1]
 [--scope.ui]
 diff-formatter = "difftastic"
 
+# lazyjj runs jj with LAZYJJ=1 (set by its wrapper in packages.nix).
+# Its diff pane is only part of the terminal, but jj and difft only see the
+# full width, so difftastic renders inline there instead of side by side.
+# `w` still cycles to color-words and git. `:resolve` uses mergiraf, and
+# `:resolve --tool vscode` opens the VS Code merge editor.
+[[--scope]]
+--when.environments = ["LAZYJJ=1"]
+[--scope.lazyjj]
+diff-tool = "difftastic"
+[--scope.ui]
+merge-editor = "mergiraf"
+[--scope.merge-tools.difftastic]
+diff-args = ["--color=always", "--display=inline", "$left", "$right"]
+
 [revset-aliases]
 "closest_bookmark(to)" = "heads(::to & bookmarks())"
 

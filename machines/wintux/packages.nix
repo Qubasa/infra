@@ -15,6 +15,15 @@ let
       wrapProgram $out/bin/jjui --set-default JJUI_CONFIG_DIR /etc/jjui --set JJUI 1
     '';
   };
+  # LAZYJJ=1 lets jj.toml give lazyjj difftastic diffs and mergiraf resolves.
+  lazyjj = pkgs.symlinkJoin {
+    inherit (pkgs.lazyjj) name meta;
+    paths = [ pkgs.lazyjj ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/lazyjj --set LAZYJJ 1
+    '';
+  };
 in
 {
   imports = [
