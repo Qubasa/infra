@@ -12,9 +12,10 @@
 
   inventory.machines = {
     gchq-local = {
-      # deploy = {
-      #   buildHost = "localhost";
-      # };
+      deploy = {
+        targetHost = "root@home.gchq.icu";
+        # buildHost = "localhost";
+      };
     };
   };
 

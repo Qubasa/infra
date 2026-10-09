@@ -3,7 +3,8 @@
 
   inputs = {
     clan-core = {
-      url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      # url = "https://git.clan.lol/clan/clan-core/archive/main.zip";
+      url = "https://github.com/clan-lol/clan-core/archive/refs/heads/main.zip";
     };
 
     slopo.url = "github:Qubasa/slopo";

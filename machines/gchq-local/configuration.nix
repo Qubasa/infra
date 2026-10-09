@@ -131,7 +131,7 @@
   ];
 
   # Set this for clan commands use ssh i.e. `clan machines update`
-  #clan.core.networking.targetHost = pkgs.lib.mkDefault "root@home.gchq.icu";
+  clan.core.networking.targetHost = pkgs.lib.mkDefault "root@home.gchq.icu";
 
   # IMPORTANT! Add your SSH key here
   # e.g. > cat ~/.ssh/id_ed25519.pub
