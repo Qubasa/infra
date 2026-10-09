@@ -14,6 +14,7 @@
     ./initrd.nix
     ./monitoring.nix
     ../../modules/qube-email-smtp-accounts.nix
+    ../../modules/heisenbridge
   ];
 
   clan.core.settings.machine-id.enable = true;

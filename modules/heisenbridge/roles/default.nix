@@ -20,7 +20,7 @@
       "/var/lib/heisenbridge/registration.yml"
     ];
 
-    clan.core.state.vaultwarden = {
+    clan.core.state.heisenbridge = {
       folders = [ "/var/lib/heisenbridge" ];
       preBackupScript = ''
         export PATH=${

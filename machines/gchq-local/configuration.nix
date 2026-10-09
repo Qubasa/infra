@@ -20,7 +20,6 @@
     ../../modules/backups.nix
     #../../modules/porkbun-wildcard-certs.nix
     ./blog.nix
-    ../../modules/heisenbridge
     ../../modules/vaultwarden
     ../../modules/qube-email-smtp-accounts.nix
   ];
